@@ -43,46 +43,60 @@ filterButtons.forEach((button) => {
   });
 });
 
-const carousel = document.querySelector("[data-carousel]");
-if (carousel) {
-  const slides = Array.from(carousel.querySelectorAll(".dashboard-slide"));
-  const dots = Array.from(document.querySelectorAll(".dot"));
-  const prevBtn = carousel.querySelector(".carousel-btn.prev");
-  const nextBtn = carousel.querySelector(".carousel-btn.next");
-  let currentIndex = 0;
+const gallerySlides = Array.from(document.querySelectorAll("[data-gallery-slide]"));
+const galleryThumbs = Array.from(document.querySelectorAll("[data-gallery-thumb]"));
+const galleryKicker = document.querySelector("#gallery-kicker");
+const galleryTitle = document.querySelector("#gallery-title");
+const galleryText = document.querySelector("#gallery-text");
+const galleryTags = document.querySelector("#gallery-tags");
 
-  function renderSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === index);
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === index);
-    });
-  }
-
-  function goTo(index) {
-    const max = slides.length - 1;
-    if (index < 0) {
-      currentIndex = max;
-    } else if (index > max) {
-      currentIndex = 0;
-    } else {
-      currentIndex = index;
-    }
-    renderSlide(currentIndex);
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => goTo(currentIndex - 1));
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => goTo(currentIndex + 1));
-  }
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => goTo(i));
+function renderGallery(index) {
+  gallerySlides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
   });
 
-  renderSlide(currentIndex);
+  galleryThumbs.forEach((thumb, i) => {
+    thumb.classList.toggle("active", i === index);
+  });
+
+  const activeThumb = galleryThumbs[index];
+  if (!activeThumb) {
+    return;
+  }
+
+  if (galleryKicker) {
+    galleryKicker.textContent = activeThumb.dataset.kicker || "";
+  }
+
+  if (galleryTitle) {
+    galleryTitle.textContent = activeThumb.dataset.title || "";
+  }
+
+  if (galleryText) {
+    galleryText.textContent = activeThumb.dataset.text || "";
+  }
+
+  if (galleryTags) {
+    const tags = (activeThumb.dataset.tags || "")
+      .split(",")
+      .map((tag) => tag.trim())
+      .filter(Boolean);
+
+    galleryTags.innerHTML = "";
+    tags.forEach((tag) => {
+      const element = document.createElement("span");
+      element.textContent = tag;
+      galleryTags.appendChild(element);
+    });
+  }
+}
+
+galleryThumbs.forEach((thumb, index) => {
+  thumb.addEventListener("click", () => {
+    renderGallery(index);
+  });
+});
+
+if (galleryThumbs.length > 0) {
+  renderGallery(0);
 }
