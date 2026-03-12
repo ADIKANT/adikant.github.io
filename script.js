@@ -42,3 +42,47 @@ filterButtons.forEach((button) => {
     applyFilter(selected);
   });
 });
+
+const carousel = document.querySelector("[data-carousel]");
+if (carousel) {
+  const slides = Array.from(carousel.querySelectorAll(".dashboard-slide"));
+  const dots = Array.from(document.querySelectorAll(".dot"));
+  const prevBtn = carousel.querySelector(".carousel-btn.prev");
+  const nextBtn = carousel.querySelector(".carousel-btn.next");
+  let currentIndex = 0;
+
+  function renderSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+  }
+
+  function goTo(index) {
+    const max = slides.length - 1;
+    if (index < 0) {
+      currentIndex = max;
+    } else if (index > max) {
+      currentIndex = 0;
+    } else {
+      currentIndex = index;
+    }
+    renderSlide(currentIndex);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => goTo(currentIndex - 1));
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => goTo(currentIndex + 1));
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => goTo(i));
+  });
+
+  renderSlide(currentIndex);
+}
