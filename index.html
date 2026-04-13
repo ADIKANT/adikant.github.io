@@ -5,617 +5,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Александр Попов - Руководитель BI и аналитики</title>
     <meta
+      id="meta-description"
       name="description"
-      content="Портфолио Александра Попова: BI, аналитика, delivery, self-service, кейсы Atom и Mars."
+      content="Александр Попов строит и масштабирует BI и аналитику как управленческую функцию: запуск с нуля, команда 6 человек, 50+ дашбордов, 25+ источников, 0→200 MAU, кейсы Atom и Mars."
     />
+    <meta
+      id="meta-keywords"
+      name="keywords"
+      content="Александр Попов, BI, аналитика, head of analytics, head of BI, BI lead, executive portfolio"
+    />
+    <meta id="meta-theme" name="theme-color" content="#102327" />
+    <meta id="og-type" property="og:type" content="website" />
+    <meta id="og-locale" property="og:locale" content="ru_RU" />
+    <meta id="og-title" property="og:title" content="Александр Попов - Руководитель BI и аналитики" />
+    <meta
+      id="og-description"
+      property="og:description"
+      content="Строю и масштабирую BI и аналитику как управленческую функцию: от первых дашбордов и команды до operating model, self-service и регулярного использования данных."
+    />
+    <meta id="og-url" property="og:url" content="https://adikant.github.io/" />
+    <meta
+      id="og-image"
+      property="og:image"
+      content="https://adikant.github.io/assets/images/og-preview.svg"
+    />
+    <meta
+      id="og-image-alt"
+      property="og:image:alt"
+      content="Портфолио Александра Попова для head / lead ролей в BI и аналитике"
+    />
+    <meta
+      id="twitter-card"
+      name="twitter:card"
+      content="summary_large_image"
+    />
+    <meta
+      id="twitter-title"
+      name="twitter:title"
+      content="Александр Попов - Руководитель BI и аналитики"
+    />
+    <meta
+      id="twitter-description"
+      name="twitter:description"
+      content="Портфолио для head / lead ролей в BI и аналитике."
+    />
+    <meta
+      id="twitter-image"
+      name="twitter:image"
+      content="https://adikant.github.io/assets/images/og-preview.svg"
+    />
+    <link id="canonical-link" rel="canonical" href="https://adikant.github.io/" />
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Spectral:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script id="schema-person" type="application/ld+json">
+      {}
+    </script>
+    <script defer src="content.js"></script>
     <script defer src="script.js"></script>
   </head>
   <body>
-    <div class="bg-orb orb-a"></div>
-    <div class="bg-orb orb-b"></div>
+    <div class="page-noise" aria-hidden="true"></div>
+    <div class="page-glow page-glow-a" aria-hidden="true"></div>
+    <div class="page-glow page-glow-b" aria-hidden="true"></div>
 
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="#top">Александр Попов / BI</a>
-        <nav class="nav-links">
-          <a href="#dashboards">Дашборды</a>
-          <a href="#cases">Кейсы</a>
-          <a href="#experience">Опыт</a>
-          <a href="#model">Процесс</a>
-          <a href="#contact">Контакты</a>
+        <a class="brand" href="#top" data-brand>Александр Попов</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <div class="nav-links" id="site-nav"></div>
         </nav>
       </div>
     </header>
 
     <main id="top">
-      <section class="hero container reveal">
-        <div class="hero-layout">
-          <aside class="hero-aside">
-            <div class="hero-photo">
-              <img
-                src="assets/images/profile.jpg"
-                alt="Александр Попов"
-                loading="eager"
-              />
-            </div>
-            <div class="hero-note">
-              <p class="hero-note-title">Текущий фокус</p>
-              <p>BI delivery, self-service, data quality, управленческая отчетность.</p>
-            </div>
-          </aside>
+      <section class="hero" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy" id="hero-copy"></div>
+          <aside class="hero-media" id="hero-media"></aside>
+        </div>
+      </section>
 
-          <div class="hero-content">
-            <p class="eyebrow">Портфолио</p>
-            <h1>Александр Попов</h1>
-            <p class="hero-role">Руководитель BI и аналитики</p>
-            <p class="lead">
-              Запускаю и развиваю BI-функции, строю рабочий процесс от запроса до
-              релиза, собираю команды и перевожу бизнес на регулярную работу с
-              данными.
-            </p>
-            <div class="hero-meta">
-              <span>Москва</span>
-              <span>6+ лет опыта</span>
-              <span>Atom и Mars</span>
-              <span>BI / аналитика / данные</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="#cases">Посмотреть кейсы</a>
-              <a
-                class="btn btn-secondary"
-                href="assets/docs/popov-resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Резюме PDF</a
-              >
-              <a
-                class="btn btn-ghost"
-                href="https://t.me/adikant"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Telegram</a
-              >
+      <noscript>
+        <section class="section section-noscript">
+          <div class="container">
+            <div class="noscript-panel">
+              <p class="section-kicker">JavaScript отключен</p>
+              <h1>Александр Попов — руководитель BI и аналитики</h1>
+              <p>
+                Публичное портфолио использует JavaScript для сборки секций из
+                структурированного контента. Для полной версии откройте страницу
+                в браузере с включенным JavaScript.
+              </p>
+              <p>
+                Контакт: <a href="mailto:minelik4@gmail.com">minelik4@gmail.com</a>
+                · <a href="https://t.me/adikant">@adikant</a> ·
+                <a href="assets/docs/popov-resume.pdf">резюме PDF</a>
+              </p>
             </div>
           </div>
-        </div>
+        </section>
+      </noscript>
+
+      <section class="section nav-target" id="value">
+        <div class="container" id="value-section"></div>
       </section>
 
-      <section class="section container reveal" id="focus">
-        <div class="focus-grid">
-          <article class="focus-card">
-            <h2>BI с нуля</h2>
-            <p>
-              Запускал аналитику и корпоративную отчетность в компании, где этого
-              слоя раньше не было.
-            </p>
-          </article>
-          <article class="focus-card">
-            <h2>Процесс и delivery</h2>
-            <p>
-              Строю intake, оценку, backlog, S2T, релиз, поддержку и контроль
-              качества данных.
-            </p>
-          </article>
-          <article class="focus-card">
-            <h2>Self-service и adoption</h2>
-            <p>
-              Подключаю команды к данным через понятные витрины, дашборды,
-              стандарты и обучение.
-            </p>
-          </article>
-        </div>
+      <section class="section nav-target" id="impact">
+        <div class="container" id="impact-section"></div>
       </section>
 
-      <section class="section container reveal" id="impact">
-        <div class="section-head">
-          <h2>Что уже сделано</h2>
-          <p>Коротко по масштабу решений и результатам.</p>
-        </div>
-        <div class="metric-grid">
-          <article class="metric-card">
-            <p class="metric-value">6+</p>
-            <p class="metric-label">Лет в BI и аналитике</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-value">30+</p>
-            <p class="metric-label">Команд вовлечено в работу с данными</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-value">50+</p>
-            <p class="metric-label">Дашбордов</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-value">25+</p>
-            <p class="metric-label">Источников данных</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-value">100+</p>
-            <p class="metric-label">DAG в Airflow</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-value">100+</p>
-            <p class="metric-label">Витрин данных</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-value">0 -> 200</p>
-            <p class="metric-label">MAU BI-системы</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-value">1000+</p>
-            <p class="metric-label">Часов автоматизации в месяц</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-value">+59 / +200 / +600 млн ₽</p>
-            <p class="metric-label">Коммерческий эффект кейсов в Mars</p>
-          </article>
-        </div>
+      <section class="section nav-target" id="cases">
+        <div class="container" id="cases-section"></div>
       </section>
 
-      <section class="section container reveal" id="dashboards">
-        <div class="section-head">
-          <h2>Примеры дашбордов</h2>
-          <p>
-            Санитизированные рабочие экраны. Полные описания можно добавить
-            отдельным следующим шагом.
-          </p>
-        </div>
-
-        <div class="gallery-layout">
-          <div class="gallery-stage" data-gallery-stage>
-            <figure class="gallery-slide active" data-gallery-slide="0">
-              <img
-                src="assets/images/dashboard-1.png"
-                alt="Dashboard по использованию и бронированию автопарка"
-                loading="lazy"
-              />
-            </figure>
-            <figure class="gallery-slide" data-gallery-slide="1">
-              <img
-                src="assets/images/dashboard-2.png"
-                alt="Dashboard по телематике автомобилей"
-                loading="lazy"
-              />
-            </figure>
-            <figure class="gallery-slide" data-gallery-slide="2">
-              <img
-                src="assets/images/dashboard-3.png"
-                alt="Dashboard по задачам и загрузке команды в Jira"
-                loading="lazy"
-              />
-            </figure>
-            <figure class="gallery-slide" data-gallery-slide="3">
-              <img
-                src="assets/images/dashboard-4.png"
-                alt="Dashboard по эффективности планирования спринтов"
-                loading="lazy"
-              />
-            </figure>
-          </div>
-
-          <aside class="gallery-panel">
-            <p class="gallery-kicker" id="gallery-kicker">Atom / Операции</p>
-            <h3 id="gallery-title">Использование и бронирование автопарка</h3>
-            <p id="gallery-text">
-              Дашборд для контроля доступности машин, использования автопарка,
-              отмен бронирований и нагрузки по командам.
-            </p>
-            <div class="gallery-tags" id="gallery-tags">
-              <span>операции</span>
-              <span>бронирования</span>
-              <span>использование</span>
-            </div>
-          </aside>
-        </div>
-
-        <div class="gallery-thumbs">
-          <button
-            class="gallery-thumb active"
-            type="button"
-            data-gallery-thumb="0"
-            data-kicker="Atom / Операции"
-            data-title="Использование и бронирование автопарка"
-            data-text="Дашборд для контроля доступности машин, использования автопарка, отмен бронирований и нагрузки по командам."
-            data-tags="операции,бронирования,использование"
-          >
-            <img
-              src="assets/images/dashboard-1.png"
-              alt="Миниатюра дашборда по использованию автопарка"
-              loading="lazy"
-            />
-            <span>Автопарк</span>
-          </button>
-          <button
-            class="gallery-thumb"
-            type="button"
-            data-gallery-thumb="1"
-            data-kicker="Atom / Телематика"
-            data-title="Дашборд по телематике"
-            data-text="Дашборд по пробегу, маршрутам, состояниям автомобиля и покрытию телематикой. Использовался для верхнеуровневого контроля парка."
-            data-tags="телематика,пробег,состояния"
-          >
-            <img
-              src="assets/images/dashboard-2.png"
-              alt="Миниатюра дашборда Telematics"
-              loading="lazy"
-            />
-            <span>Телематика</span>
-          </button>
-          <button
-            class="gallery-thumb"
-            type="button"
-            data-gallery-thumb="2"
-            data-kicker="Atom / Delivery"
-            data-title="Jira дашборд по delivery"
-            data-text="Операционный экран по спринту: загрузка по исполнителям, состав задач, статусы, initial и post-launch изменения."
-            data-tags="jira,delivery,спринт"
-          >
-            <img
-              src="assets/images/dashboard-3.png"
-              alt="Миниатюра дашборда Jira Delivery"
-              loading="lazy"
-            />
-            <span>Jira delivery</span>
-          </button>
-          <button
-            class="gallery-thumb"
-            type="button"
-            data-gallery-thumb="3"
-            data-kicker="Atom / Planning"
-            data-title="Jira дашборд по planning"
-            data-text="Экран по planning efficiency: объем задач по спринтам, статусы, приоритеты, moved и removed задачи."
-            data-tags="planning,спринты,jira"
-          >
-            <img
-              src="assets/images/dashboard-4.png"
-              alt="Миниатюра дашборда Sprint Planning"
-              loading="lazy"
-            />
-            <span>Planning</span>
-          </button>
-        </div>
+      <section class="section section-cta">
+        <div class="container" id="mid-cta-section"></div>
       </section>
 
-      <section class="section container reveal" id="cases">
-        <div class="section-head">
-          <h2>Кейсы</h2>
-          <p>Те задачи, которые лучше всего показывают мой профиль.</p>
-        </div>
-
-        <div class="filter-row" aria-label="Фильтр кейсов">
-          <button class="filter-btn active" data-filter="all">Все</button>
-          <button class="filter-btn" data-filter="atom">Atom</button>
-          <button class="filter-btn" data-filter="mars">Mars</button>
-          <button class="filter-btn" data-filter="leadership">Leadership</button>
-        </div>
-
-        <div class="cases-grid">
-          <article class="case-card reveal" data-tags="atom leadership">
-            <div class="tag-row">
-              <span class="tag">Atom</span>
-              <span class="tag">Leadership</span>
-              <span class="tag">BI</span>
-            </div>
-            <h3>Запуск BI-функции и команды</h3>
-            <p class="case-summary">
-              Пришел первым аналитиком и выстроил направление вокруг
-              корпоративной отчетности.
-            </p>
-            <div class="case-facts">
-              <span>Команда: 6 человек</span>
-              <span>30+ команд-заказчиков</span>
-              <span>0 -> 200 MAU</span>
-            </div>
-            <ul>
-              <li>Запустил BI-отчетность по ключевым доменам.</li>
-              <li>Настроил рабочую модель команды и распределение ролей.</li>
-              <li>Взял на себя коммуникацию с бизнесом и roadmap.</li>
-            </ul>
-            <p class="result">Эффект: BI стал регулярным инструментом работы.</p>
-          </article>
-
-          <article class="case-card reveal" data-tags="atom leadership">
-            <div class="tag-row">
-              <span class="tag">Atom</span>
-              <span class="tag">Delivery</span>
-              <span class="tag">RICE</span>
-            </div>
-            <h3>Delivery-процесс для BI и аналитики</h3>
-            <p class="case-summary">
-              Сформировал прозрачный путь от запроса до релиза и поддержки.
-            </p>
-            <div class="case-facts">
-              <span>Intake</span>
-              <span>RICE</span>
-              <span>S2T и prod</span>
-            </div>
-            <ul>
-              <li>Ввел intake, оценку и приоритизацию запросов.</li>
-              <li>Закрепил этапы S2T, разработки, тестирования и релиза.</li>
-              <li>Стандартизировал дашборды и контроль качества.</li>
-            </ul>
-            <p class="result">Эффект: предсказуемый backlog и понятные сроки.</p>
-          </article>
-
-          <article class="case-card reveal" data-tags="atom">
-            <div class="tag-row">
-              <span class="tag">Atom</span>
-              <span class="tag">Операции</span>
-              <span class="tag">Telematics</span>
-            </div>
-            <h3>Телематика и использование автопарка</h3>
-            <p class="case-summary">
-              Отчетность для верхнего уровня по пробегу, состояниям и
-              использованию машин.
-            </p>
-            <div class="case-facts">
-              <span>автопарк</span>
-              <span>бронирования</span>
-              <span>состояния</span>
-            </div>
-            <ul>
-              <li>Собрал метрики пробега, маршрутов и статусов.</li>
-              <li>Показал загрузку машин, команд и водителей.</li>
-              <li>Свел телематику и бронирования в единый слой.</li>
-            </ul>
-            <p class="result">Эффект: появился единый взгляд на автопарк.</p>
-          </article>
-
-          <article class="case-card reveal" data-tags="atom">
-            <div class="tag-row">
-              <span class="tag">Atom</span>
-              <span class="tag">Self-service</span>
-              <span class="tag">Governance</span>
-            </div>
-            <h3>Self-service и описание данных</h3>
-            <p class="case-summary">
-              Развиваю подход, при котором команды могут работать с готовыми
-              данными без ручных выгрузок.
-            </p>
-            <div class="case-facts">
-              <span>семантический слой</span>
-              <span>метрики</span>
-              <span>обучение</span>
-            </div>
-            <ul>
-              <li>Сформировал подход к описанию метрик и витрин.</li>
-              <li>Запустил демо и обучение пользователей.</li>
-              <li>Увязал self-service с BI-стандартами и governance.</li>
-            </ul>
-            <p class="result">Эффект: меньше ручных запросов, выше скорость анализа.</p>
-          </article>
-
-          <article class="case-card reveal" data-tags="mars">
-            <div class="tag-row">
-              <span class="tag">Mars</span>
-              <span class="tag">Sales</span>
-              <span class="tag">Retail</span>
-            </div>
-            <h3>Модель расширения полочного пространства</h3>
-            <p class="case-summary">
-              Нашел точки с высоким спросом и недостаточной представленностью
-              категории.
-            </p>
-            <div class="case-facts">
-              <span>Пятерочка</span>
-              <span>X5</span>
-              <span>сегментация точек</span>
-            </div>
-            <ul>
-              <li>Сегментировал магазины по формату и продажам.</li>
-              <li>Подготовил рекомендации для переговоров с сетью.</li>
-              <li>Подход был масштабирован на более широкий контур.</li>
-            </ul>
-            <p class="result">Эффект: +59 млн ₽ в регионе и +200 млн ₽ в X5.</p>
-          </article>
-
-          <article class="case-card reveal" data-tags="mars">
-            <div class="tag-row">
-              <span class="tag">Mars</span>
-              <span class="tag">Execution</span>
-              <span class="tag">Data Quality</span>
-            </div>
-            <h3>Контроль договорных доп. мест продаж</h3>
-            <p class="case-summary">
-              Выстроил регулярный контроль по фактическому покрытию контрактных
-              точек.
-            </p>
-            <div class="case-facts">
-              <span>мерчендайзинг</span>
-              <span>еженедельный контроль</span>
-              <span>рейтинг</span>
-            </div>
-            <ul>
-              <li>Собрал данные и показал проблему низкого покрытия.</li>
-              <li>Ввел рейтинг по руководителям и командам.</li>
-              <li>Поддержал исполнение через регулярную отчетность.</li>
-            </ul>
-            <p class="result">Эффект: 100% покрытия и около +600 млн ₽ продаж.</p>
-          </article>
-        </div>
+      <section class="section nav-target" id="leadership">
+        <div class="container" id="leadership-section"></div>
       </section>
 
-      <section class="section container reveal" id="experience">
-        <div class="section-head">
-          <h2>Опыт</h2>
-          <p>Два основных этапа карьеры с понятными датами и фокусом.</p>
-        </div>
-
-        <div class="experience-list">
-          <article class="experience-item">
-            <div class="experience-date">
-              <span>03.2023</span>
-              <span>сейчас</span>
-            </div>
-            <div class="experience-body">
-              <h3>Atom</h3>
-              <p class="experience-role">Руководитель отдела аналитики</p>
-              <div class="experience-pills">
-                <span>6 человек</span>
-                <span>50+ дашбордов</span>
-                <span>25+ источников</span>
-                <span>self-service</span>
-              </div>
-              <p>
-                Запустил аналитическое направление, собрал команду, выстроил
-                delivery-процесс, развиваю отчетность и self-service практику.
-              </p>
-            </div>
-          </article>
-
-          <article class="experience-item">
-            <div class="experience-date">
-              <span>12.2019</span>
-              <span>03.2023</span>
-            </div>
-            <div class="experience-body">
-              <h3>Mars</h3>
-              <p class="experience-role">Аналитик -> Middle Data Analyst -> BI Lead</p>
-              <div class="experience-pills">
-                <span>продажи</span>
-                <span>Power BI</span>
-                <span>SQL</span>
-                <span>коммерческий эффект</span>
-              </div>
-              <p>
-                Прошел путь от региональной аналитики до BI-лидирующей роли.
-                Работал с продажами, KPI, витринами и национальной отчетностью.
-              </p>
-            </div>
-          </article>
-        </div>
+      <section class="section nav-target" id="model">
+        <div class="container" id="model-section"></div>
       </section>
 
-      <section class="section alt container reveal" id="model">
-        <div class="section-head">
-          <h2>Как устроен мой BI-процесс</h2>
-          <p>Линейная схема от входящего запроса до self-service использования.</p>
-        </div>
-
-        <ol class="model-flow">
-          <li class="model-step">
-            <div class="model-step-number">01</div>
-            <div class="model-step-content">
-              <h3>Запрос и framing</h3>
-              <p>Фиксирую цель, владельца, критерий успеха и ожидаемый эффект.</p>
-            </div>
-          </li>
-          <li class="model-step">
-            <div class="model-step-number">02</div>
-            <div class="model-step-content">
-              <h3>Оценка по RICE</h3>
-              <p>
-                Использую Reach, Impact, Confidence, Effort для порядка в backlog
-                и прозрачной приоритизации.
-              </p>
-            </div>
-          </li>
-          <li class="model-step">
-            <div class="model-step-number">03</div>
-            <div class="model-step-content">
-              <h3>Системная аналитика и S2T</h3>
-              <p>
-                Описываю источники, правила расчета, маппинг и требования к
-                витрине.
-              </p>
-            </div>
-          </li>
-          <li class="model-step">
-            <div class="model-step-number">04</div>
-            <div class="model-step-content">
-              <h3>Разработка и ревью</h3>
-              <p>
-                Проверяю логику решения, визуальную структуру дашборда и
-                соответствие стандартам.
-              </p>
-            </div>
-          </li>
-          <li class="model-step">
-            <div class="model-step-number">05</div>
-            <div class="model-step-content">
-              <h3>Тестирование и релиз</h3>
-              <p>Провожу проверку с командой и вывожу решение в prod.</p>
-            </div>
-          </li>
-          <li class="model-step">
-            <div class="model-step-number">06</div>
-            <div class="model-step-content">
-              <h3>Контроль качества</h3>
-              <p>
-                Настраиваю мониторинг, слежу за актуальностью данных и
-                стабильностью пайплайнов.
-              </p>
-            </div>
-          </li>
-          <li class="model-step">
-            <div class="model-step-number">07</div>
-            <div class="model-step-content">
-              <h3>Self-service и обучение</h3>
-              <p>
-                Даю командам доступ к данным через витрины, метрики, демо и
-                понятную структуру дашбордов.
-              </p>
-            </div>
-          </li>
-        </ol>
+      <section class="section nav-target" id="domains">
+        <div class="container" id="domains-section"></div>
       </section>
 
-      <section class="section container reveal" id="stack">
-        <div class="section-head">
-          <h2>Стек</h2>
-        </div>
-        <div class="stack-grid">
-          <article class="stack-card">
-            <h3>BI и аналитика</h3>
-            <p>Yandex DataLens, Superset, Power BI, SQL, Trino, DBeaver, Excel.</p>
-          </article>
-          <article class="stack-card">
-            <h3>Платформа данных</h3>
-            <p>Airflow, PySpark, S3, Iceberg, Kafka, API, datamarts.</p>
-          </article>
-          <article class="stack-card">
-            <h3>Процесс</h3>
-            <p>Jira, Confluence, GitLab, RICE, BI-стандарты, data quality.</p>
-          </article>
-        </div>
+      <section class="section nav-target" id="tech">
+        <div class="container" id="tech-section"></div>
       </section>
 
-      <section class="section container reveal" id="contact">
-        <div class="section-head">
-          <h2>Контакты</h2>
-          <p>Открыт к обсуждению lead и head ролей в BI и аналитике.</p>
-        </div>
-        <div class="contact-card">
-          <p>
-            <strong>Email:</strong>
-            <a href="mailto:minelik4@gmail.com">minelik4@gmail.com</a>
-          </p>
-          <p>
-            <strong>Telegram:</strong>
-            <a href="https://t.me/adikant" target="_blank" rel="noopener noreferrer"
-              >@adikant</a
-            >
-          </p>
-          <div class="docs-row">
-            <a
-              href="assets/docs/popov-resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Резюме (PDF)</a
-            >
-          </div>
-        </div>
+      <section class="section nav-target" id="speaking">
+        <div class="container" id="speaking-section"></div>
+      </section>
+
+      <section class="section nav-target" id="timeline">
+        <div class="container" id="timeline-section"></div>
+      </section>
+
+      <section class="section nav-target" id="fit">
+        <div class="container" id="fit-section"></div>
+      </section>
+
+      <section class="section nav-target" id="contact">
+        <div class="container" id="contact-section"></div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
+        <p data-footer-note></p>
         <p>© <span id="year"></span> Александр Попов.</p>
       </div>
     </footer>

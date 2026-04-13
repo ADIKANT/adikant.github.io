@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Executive portfolio preview</title>
+  <desc id="desc">Social preview для executive-портфолио Александра Попова</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f3ecde" />
+      <stop offset="100%" stop-color="#ece3d1" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#102327" />
+      <stop offset="100%" stop-color="#26484b" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="1030" cy="96" r="180" fill="#d9c8a9" opacity="0.35" />
+  <circle cx="114" cy="566" r="160" fill="#a8bfc1" opacity="0.26" />
+  <rect x="72" y="62" width="1056" height="506" rx="34" fill="#f7f1e6" stroke="#d4c5ae" />
+  <g transform="translate(96 106)">
+    <text x="0" y="0" fill="#24494b" font-family="Golos Text, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">EXECUTIVE PORTFOLIO</text>
+    <text x="0" y="78" fill="#102327" font-family="Spectral, Georgia, serif" font-size="62" font-weight="700">Александр Попов</text>
+    <text x="0" y="128" fill="#24494b" font-family="Golos Text, Arial, sans-serif" font-size="28" font-weight="700">Руководитель BI и аналитики</text>
+    <text x="0" y="208" fill="#102327" font-family="Spectral, Georgia, serif" font-size="52" font-weight="600">
+      <tspan x="0" dy="0">Строю и масштабирую BI и аналитику</tspan>
+      <tspan x="0" dy="58">как управленческую функцию</tspan>
+    </text>
+    <text x="0" y="354" fill="#596467" font-family="Golos Text, Arial, sans-serif" font-size="24">
+      <tspan x="0" dy="0">6+ лет опыта • Mars и Atom • команда 6 человек • 50+ дашбордов</tspan>
+      <tspan x="0" dy="34">25+ источников • 1000+ часов автоматизации / месяц • ~300 млн ₽ / год</tspan>
+    </text>
+  </g>
+  <g transform="translate(815 130)">
+    <rect width="248" height="364" rx="28" fill="url(#panel)" />
+    <rect x="24" y="26" width="200" height="164" rx="18" fill="#f7f1e6" opacity="0.18" />
+    <rect x="24" y="222" width="200" height="18" rx="9" fill="#f7f1e6" opacity="0.92" />
+    <rect x="24" y="258" width="162" height="14" rx="7" fill="#c7a068" />
+    <rect x="24" y="292" width="200" height="12" rx="6" fill="#f7f1e6" opacity="0.42" />
+    <rect x="24" y="318" width="170" height="12" rx="6" fill="#f7f1e6" opacity="0.28" />
+    <rect x="24" y="84" width="38" height="76" rx="10" fill="#c7a068" />
+    <rect x="76" y="112" width="38" height="48" rx="10" fill="#7ba0a4" />
+    <rect x="128" y="68" width="38" height="92" rx="10" fill="#f7f1e6" opacity="0.92" />
+    <rect x="180" y="98" width="18" height="62" rx="9" fill="#f7f1e6" opacity="0.5" />
+    <text x="24" y="28" fill="#f7f1e6" font-family="Golos Text, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">BUILD / LEAD / DELIVER / IMPACT</text>
+  </g>
+</svg>
