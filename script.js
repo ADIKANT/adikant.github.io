@@ -17,13 +17,21 @@ function renderButton(link) {
   return `<a class="btn btn-${link.kind || "secondary"}" href="${link.href}"${attrs}>${link.label}</a>`;
 }
 
+function escapeAttribute(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 function renderSectionHead(section) {
   return `
     <div class="section-head reveal">
-      <p class="section-kicker">${section.eyebrow}</p>
+      ${section.eyebrow ? `<p class="section-kicker">${section.eyebrow}</p>` : ""}
       <div class="section-head-grid">
         <h2>${section.title}</h2>
-        <p>${section.intro}</p>
+        ${section.intro ? `<p>${section.intro}</p>` : ""}
       </div>
     </div>
   `;
@@ -180,18 +188,9 @@ function renderHero() {
 
   heroCopy.innerHTML = `
     <div class="hero-stack">
-      <p class="hero-badge hero-motion">${content.hero.badge}</p>
-      <p class="hero-name hero-motion">${content.hero.name}</p>
-      <p class="hero-role hero-motion">${content.hero.role}</p>
       <h1 class="hero-headline hero-motion">${content.hero.headline}</h1>
-      <p class="hero-summary hero-motion">${content.hero.summary}</p>
+      ${content.hero.summary ? `<p class="hero-summary hero-motion">${content.hero.summary}</p>` : ""}
       <p class="hero-proof hero-motion">${content.hero.proofLine}</p>
-      <ul class="trust-strip hero-motion">
-        ${content.hero.trustMarks.map((item) => `<li>${item}</li>`).join("")}
-      </ul>
-      <div class="cta-row hero-motion">
-        ${content.hero.ctas.map(renderButton).join("")}
-      </div>
     </div>
   `;
 
@@ -199,8 +198,12 @@ function renderHero() {
     <div class="portrait-frame hero-motion">
       <img src="${content.hero.portrait.src}" alt="${content.hero.portrait.alt}" loading="eager" />
     </div>
-    <div class="hero-note hero-motion">
-      <p>${content.hero.note}</p>
+    <div class="hero-profile hero-motion">
+      <p class="hero-name">${content.hero.name}</p>
+      <p class="hero-role">${content.hero.role}</p>
+      <div class="cta-row">
+        ${content.hero.ctas.map(renderButton).join("")}
+      </div>
     </div>
   `;
 }
@@ -237,19 +240,85 @@ function renderMetrics() {
 
   root.innerHTML = `
     ${renderSectionHead(content.metrics)}
-    <div class="impact-panel reveal">
-      <div class="impact-grid">
-        ${content.metrics.items
+    <div class="metric-groups">
+      ${content.metrics.groups
+        .map(
+          (group, groupIndex) => `
+            <section class="impact-panel reveal" style="--reveal-delay:${groupIndex * 90}ms">
+              <h3>${group.title}</h3>
+              <div class="impact-grid">
+                ${group.items
+                  .map(
+                    (item, index) => `
+                      <article class="impact-item ${item.tone ? `impact-item-${item.tone}` : ""}" style="--reveal-delay:${index * 40}ms">
+                        <strong>${item.value}</strong>
+                        <span>${item.label}</span>
+                      </article>
+                    `
+                  )
+                  .join("")}
+              </div>
+            </section>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderCaseDetails(item) {
+  const details = item.details
+    .map(
+      (detail) => `
+        <section>
+          <span>${detail.title}</span>
+          ${detail.body ? `<p>${detail.body}</p>` : ""}
+          ${
+            detail.list
+              ? `<ul>${detail.list.map((listItem) => `<li>${listItem}</li>`).join("")}</ul>`
+              : ""
+          }
+        </section>
+      `
+    )
+    .join("");
+
+  return `
+    <details class="case-details">
+      <summary tabindex="0" aria-label="Подробнее: ${escapeAttribute(item.title)}">
+        <span>Подробнее</span>
+      </summary>
+      <div class="case-facts">
+        ${details}
+      </div>
+    </details>
+  `;
+}
+
+function renderSimpleGrid(section, rootSelector, className) {
+  const root = document.querySelector(rootSelector);
+  if (!root) {
+    return;
+  }
+
+  root.innerHTML = `
+    ${renderSectionHead(section)}
+    <div class="${className}">
+      ${section.items
           .map(
             (item, index) => `
-              <article class="impact-item" style="--reveal-delay:${index * 40}ms">
-                <strong>${item.value}</strong>
-                <span>${item.label}</span>
+              <article class="${className}-item reveal" style="--reveal-delay:${index * 70}ms">
+                <h3>${item.title}</h3>
+                ${item.body ? `<p>${item.body}</p>` : ""}
+                ${
+                  item.items
+                    ? `<ul>${item.items.map((listItem) => `<li>${listItem}</li>`).join("")}</ul>`
+                    : ""
+                }
               </article>
             `
           )
           .join("")}
-      </div>
     </div>
   `;
 }
@@ -264,47 +333,51 @@ function renderCases() {
     ${renderSectionHead(content.cases)}
     <div class="cases-list">
       ${content.cases.items
-        .map(
-          (item, index) => `
+        .map((item, index) => {
+          const resultMetrics = item.businessResultMetrics || [];
+          const hasResult = Boolean(item.businessResult) || resultMetrics.length > 0;
+          const surfaceMetrics = item.metrics || [];
+
+          return `
             <article class="case-card ${index % 2 === 1 ? "case-card-reverse" : ""} reveal" style="--reveal-delay:${index * 90}ms">
               <div class="case-copy">
-                <p class="case-company">${item.company}</p>
+                <p class="case-company">${item.company}${item.context ? ` · ${item.context}` : ""}</p>
                 <h3>${item.title}</h3>
                 <p class="case-summary">${item.summary}</p>
-                <ul class="case-metric-strip">
-                  ${item.metrics.map((metric) => `<li>${metric}</li>`).join("")}
-                </ul>
-                <div class="case-facts">
-                  <section>
-                    <span>Контекст</span>
-                    <p>${item.challenge}</p>
-                  </section>
-                  <section>
-                    <span>Моя роль</span>
-                    <p>${item.role}</p>
-                  </section>
-                  <section>
-                    <span>Что сделал</span>
-                    <ul>
-                      ${item.actions.map((action) => `<li>${action}</li>`).join("")}
-                    </ul>
-                  </section>
-                  <section>
-                    <span>Результат</span>
-                    <p>${item.result}</p>
-                  </section>
+                <div class="case-surface">
+                  ${item.problem ? `<section><span>Проблема</span><p>${item.problem}</p></section>` : ""}
+                  ${item.role ? `<section><span>Роль</span><p>${item.role}</p></section>` : ""}
+                  ${
+                    hasResult
+                      ? `<section class="case-surface-result">
+                          <span>Итог</span>
+                          ${item.businessResult ? `<p>${item.businessResult}</p>` : ""}
+                          ${
+                            resultMetrics.length
+                              ? `<ul class="case-result-metrics">${resultMetrics
+                                  .map((metric) => `<li>${metric}</li>`)
+                                  .join("")}</ul>`
+                              : ""
+                          }
+                        </section>`
+                      : ""
+                  }
                 </div>
-                <div class="case-takeaway">
-                  <span>Почему это важно</span>
-                  <p>${item.takeaway}</p>
-                </div>
+                ${
+                  surfaceMetrics.length
+                    ? `<ul class="case-metric-strip">
+                        ${surfaceMetrics.map((metric) => `<li>${metric}</li>`).join("")}
+                      </ul>`
+                    : ""
+                }
+                ${renderCaseDetails(item)}
               </div>
               <div class="case-art">
                 ${renderSafeVisual(item)}
               </div>
             </article>
-          `
-        )
+          `;
+        })
         .join("")}
     </div>
   `;
@@ -319,7 +392,6 @@ function renderMidCta() {
   root.innerHTML = `
     <div class="cta-band reveal">
       <div>
-        <p class="section-kicker">Контактный блок</p>
         <h2>${content.midCta.title}</h2>
         <p>${content.midCta.body}</p>
       </div>
@@ -330,33 +402,36 @@ function renderMidCta() {
   `;
 }
 
-function renderLeadership() {
-  const root = document.querySelector("#leadership-section");
+function renderProfitEfficiency() {
+  renderSimpleGrid(content.profitEfficiency, "#profit-section", "profit-grid");
+}
+
+function renderManagementScope() {
+  renderSimpleGrid(content.managementScope, "#management-section", "management-grid");
+}
+
+function renderFirst90Days() {
+  const root = document.querySelector("#first90-section");
   if (!root) {
     return;
   }
 
   root.innerHTML = `
-    ${renderSectionHead(content.leadership)}
-    <div class="leadership-layout">
-      <aside class="leadership-summary reveal">
-        <p class="leadership-summary-copy">${content.leadership.summary}</p>
-        <ul class="leadership-stats">
-          ${content.leadership.stats.map((item) => `<li>${item}</li>`).join("")}
-        </ul>
-      </aside>
-      <div class="leadership-grid">
-        ${content.leadership.items
-          .map(
-            (item, index) => `
-              <article class="leadership-item reveal" style="--reveal-delay:${index * 60}ms">
-                <h3>${item.title}</h3>
-                <p>${item.body}</p>
-              </article>
-            `
-          )
-          .join("")}
-      </div>
+    ${renderSectionHead(content.first90Days)}
+    <div class="first90-grid">
+      ${content.first90Days.periods
+        .map(
+          (period, index) => `
+            <article class="first90-item reveal" style="--reveal-delay:${index * 75}ms">
+              <p class="first90-label">${period.label}</p>
+              <h3>${period.title}</h3>
+              <ul>
+                ${period.items.map((item) => `<li>${item}</li>`).join("")}
+              </ul>
+            </article>
+          `
+        )
+        .join("")}
     </div>
   `;
 }
@@ -369,12 +444,11 @@ function renderOperatingModel() {
 
   root.innerHTML = `
     ${renderSectionHead(content.operatingModel)}
-    <div class="model-grid">
-      ${content.operatingModel.steps
+    <div class="model-overview">
+      ${content.operatingModel.surface
         .map(
           (item, index) => `
-            <article class="model-step reveal" style="--reveal-delay:${index * 55}ms">
-              <span>${item.step}</span>
+            <article class="model-signal reveal" style="--reveal-delay:${index * 70}ms">
               <h3>${item.title}</h3>
               <p>${item.body}</p>
             </article>
@@ -382,6 +456,24 @@ function renderOperatingModel() {
         )
         .join("")}
     </div>
+    <details class="progressive-details model-details reveal">
+      <summary tabindex="0" aria-label="Показать полный маршрут delivery">
+        <span>Показать полный маршрут delivery</span>
+      </summary>
+      <div class="model-grid">
+        ${content.operatingModel.steps
+          .map(
+            (item, index) => `
+              <article class="model-step" style="--reveal-delay:${index * 55}ms">
+                <span>${item.step}</span>
+                <h3>${item.title}</h3>
+                <p>${item.body}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    </details>
   `;
 }
 
@@ -392,11 +484,18 @@ function renderDomains() {
   }
 
   root.innerHTML = `
-    ${renderSectionHead(content.domains)}
-    <div class="domains-panel reveal">
-      <div class="domain-chip-grid">
+    <div class="domains-layout reveal">
+      <div class="domains-copy">
+        ${content.domains.eyebrow ? `<p class="section-kicker">${content.domains.eyebrow}</p>` : ""}
+        <h2>${content.domains.title}</h2>
+        ${content.domains.intro ? `<p>${content.domains.intro}</p>` : ""}
+      </div>
+      <div class="domain-bubble-chart" aria-label="Домены аналитических задач">
         ${content.domains.items
-          .map((item) => `<span class="domain-chip">${item}</span>`)
+          .map(
+            (item, index) =>
+              `<span class="domain-bubble domain-bubble-${(index % 4) + 1}">${item}</span>`
+          )
           .join("")}
       </div>
     </div>
@@ -409,20 +508,52 @@ function renderTechContext() {
     return;
   }
 
+  const architecture = content.techContext.architecture;
+  const architectureHtml = architecture
+    ? `
+      <div class="architecture-card reveal">
+        <div class="architecture-copy">
+          <h3>${architecture.title}</h3>
+        </div>
+        <ol class="architecture-flow">
+          ${architecture.stages
+            .map(
+              (stage) => `
+                <li>
+                  <strong>${stage.title}</strong>
+                  <span>${stage.body}</span>
+                </li>
+              `
+            )
+            .join("")}
+        </ol>
+        <ul class="architecture-rails">
+          ${architecture.rails.map((rail) => `<li>${rail}</li>`).join("")}
+        </ul>
+      </div>
+    `
+    : "";
+
   root.innerHTML = `
     ${renderSectionHead(content.techContext)}
-    <div class="tech-grid">
+    ${architectureHtml}
+    <details class="progressive-details tech-details reveal">
+      <summary tabindex="0" aria-label="Показать технический контекст">
+        <span>Показать технический контекст</span>
+      </summary>
+      <div class="tech-grid">
       ${content.techContext.items
         .map(
           (item, index) => `
-            <article class="tech-item reveal" style="--reveal-delay:${index * 70}ms">
+            <article class="tech-item" style="--reveal-delay:${index * 70}ms">
               <h3>${item.title}</h3>
               <p>${item.body}</p>
             </article>
           `
         )
         .join("")}
-    </div>
+      </div>
+    </details>
   `;
 }
 
@@ -461,7 +592,7 @@ function renderTimeline() {
       ${content.timeline.items
         .map(
           (item, index) => `
-            <article class="timeline-item reveal" style="--reveal-delay:${index * 90}ms">
+            <article class="timeline-item ${item.current ? "timeline-item-current" : ""} reveal" style="--reveal-delay:${index * 90}ms">
               <p class="timeline-period">${item.period}</p>
               <div class="timeline-content">
                 <h3>${item.company}</h3>
@@ -510,12 +641,7 @@ function renderContact() {
     <div class="contact-band reveal">
       <div class="contact-copy">
         <p class="contact-roles">${content.contact.roles}</p>
-        <div class="contact-list">
-          <p><strong>Email</strong><a href="mailto:${content.contact.email}">${content.contact.email}</a></p>
-          <p><strong>Telegram</strong><a href="${content.contact.telegramUrl}" target="_blank" rel="noopener noreferrer">${content.contact.telegram}</a></p>
-          <p><strong>Резюме</strong><a href="${content.contact.resumeUrl}" target="_blank" rel="noopener noreferrer">PDF</a></p>
-        </div>
-        <p class="contact-note">${content.contact.closing}</p>
+        ${content.contact.closing ? `<p class="contact-note">${content.contact.closing}</p>` : ""}
       </div>
       <div class="contact-actions">
         ${content.contact.actions.map(renderButton).join("")}
@@ -528,6 +654,7 @@ function renderFooter() {
   const node = document.querySelector("[data-footer-note]");
   if (node) {
     node.textContent = content.footer.note;
+    node.hidden = !content.footer.note;
   }
 }
 
@@ -570,9 +697,55 @@ function setupActiveNav() {
   }
 
   const byId = new Map(navLinks.map((link) => [link.dataset.navLink, link]));
+  let lockedNavId = null;
+  let lockedUntil = 0;
+
+  function setActive(id) {
+    navLinks.forEach((link) => {
+      const isActive = link.dataset.navLink === id;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      lockedNavId = link.dataset.navLink;
+      lockedUntil = Date.now() + 1400;
+      setActive(lockedNavId);
+    });
+  });
+
+  window.addEventListener("hashchange", () => {
+    const currentId = window.location.hash.replace("#", "");
+    if (byId.has(currentId)) {
+      lockedNavId = currentId;
+      lockedUntil = Date.now() + 1400;
+      setActive(currentId);
+    }
+  });
+
+  const initialId = window.location.hash
+    ? window.location.hash.replace("#", "")
+    : content.navigation[0]?.id;
+
+  if (byId.has(initialId)) {
+    lockedNavId = initialId;
+    lockedUntil = Date.now() + 3000;
+    setActive(initialId);
+  }
 
   const observer = new IntersectionObserver(
     (entries) => {
+      if (lockedNavId && Date.now() < lockedUntil) {
+        setActive(lockedNavId);
+        return;
+      }
+
       const visible = entries
         .filter((entry) => entry.isIntersecting)
         .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
@@ -581,29 +754,45 @@ function setupActiveNav() {
         return;
       }
 
-      navLinks.forEach((link) => {
-        const isActive = link.dataset.navLink === visible.target.id;
-        link.classList.toggle("is-active", isActive);
-        if (isActive) {
-          link.setAttribute("aria-current", "true");
-        } else {
-          link.removeAttribute("aria-current");
-        }
-      });
+      setActive(visible.target.id);
     },
     {
-      threshold: [0.2, 0.45, 0.7],
-      rootMargin: "-22% 0px -56% 0px"
+      threshold: [0.08, 0.22, 0.45],
+      rootMargin: "-18% 0px -68% 0px"
     }
   );
 
   sections.forEach((section) => observer.observe(section));
 
   const firstLink = byId.get(content.navigation[0]?.id);
-  if (firstLink) {
-    firstLink.classList.add("is-active");
-    firstLink.setAttribute("aria-current", "true");
+  const currentId = initialId;
+
+  if (byId.has(currentId)) {
+    setActive(currentId);
+  } else if (firstLink) {
+    setActive(content.navigation[0]?.id);
   }
+}
+
+function setupDetailsKeyboard() {
+  document.querySelectorAll("details > summary").forEach((summary) => {
+    summary.addEventListener("keydown", (event) => {
+      const isToggleKey =
+        event.key === "Enter" || event.key === " " || event.key === "Spacebar";
+
+      if (!isToggleKey) {
+        return;
+      }
+
+      const details = summary.parentElement;
+      if (!details || details.tagName.toLowerCase() !== "details") {
+        return;
+      }
+
+      event.preventDefault();
+      details.open = !details.open;
+    });
+  });
 }
 
 function init() {
@@ -613,16 +802,19 @@ function init() {
   renderValuePillars();
   renderMetrics();
   renderCases();
+  renderProfitEfficiency();
   renderMidCta();
-  renderLeadership();
+  renderManagementScope();
   renderOperatingModel();
   renderDomains();
   renderTechContext();
   renderSpeaking();
   renderTimeline();
   renderBestFit();
+  renderFirst90Days();
   renderContact();
   renderFooter();
+  setupDetailsKeyboard();
   setupReveal();
   setupActiveNav();
 
