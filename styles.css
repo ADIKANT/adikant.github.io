@@ -276,6 +276,35 @@ a {
   align-items: center;
 }
 
+.hero-support {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 610px) minmax(0, 330px);
+  gap: clamp(1rem, 2vw, 1.8rem);
+  align-items: stretch;
+  justify-content: center;
+  min-height: 150px;
+  padding: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.54);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-support .hero-proof {
+  width: 100%;
+  max-width: none;
+  min-height: 100%;
+  margin: 0;
+  padding: 0.25rem 0.4rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  align-self: stretch;
+  justify-content: flex-start;
+}
+
 .trust-strip {
   display: flex;
   flex-wrap: wrap;
@@ -418,6 +447,16 @@ a {
   box-shadow: var(--shadow-soft);
   display: grid;
   align-content: center;
+}
+
+.hero-support .hero-profile {
+  width: 100%;
+  min-height: 100%;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: none;
 }
 
 .hero-profile .hero-role {
@@ -794,6 +833,8 @@ body.is-ready .hero-motion {
 }
 
 .case-details {
+  grid-column: 1 / -1;
+  order: 3;
   margin-top: 1.05rem;
 }
 
@@ -854,20 +895,20 @@ body.is-ready .hero-motion {
 
 .case-facts {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
   margin-top: 1.15rem;
 }
 
 .case-facts section {
-  padding-top: 0.9rem;
-  border-top: 1px solid rgba(17, 32, 35, 0.1);
+  padding: 0.85rem;
+  border: 1px solid rgba(17, 32, 35, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.54);
 }
 
-.case-facts section:nth-child(3),
-.case-facts section:nth-child(4),
-.case-facts section:last-child {
-  grid-column: 1 / -1;
+.case-fact-actions {
+  grid-column: span 2;
 }
 
 .case-facts span,
@@ -1127,6 +1168,11 @@ body.is-ready .hero-motion {
 .contact-actions .btn-primary:focus-visible,
 .contact-actions .btn-secondary:focus-visible {
   background: #cde6cc;
+}
+
+.cta-band .cta-row {
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .leadership-layout {
@@ -1524,16 +1570,21 @@ body.is-ready .hero-motion {
   content: "→";
   position: absolute;
   top: 50%;
-  right: -0.68rem;
+  right: -0.72rem;
   z-index: 2;
   display: grid;
   place-items: center;
   width: 1.24rem;
   height: 1.24rem;
   border-radius: 50%;
-  background: var(--surface);
+  border: 1px solid rgba(36, 81, 75, 0.12);
+  background: rgba(255, 255, 255, 0.96);
   color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: 0.78rem;
   font-weight: 900;
+  line-height: 1;
+  box-shadow: 0 6px 18px rgba(18, 48, 45, 0.08);
   transform: translateY(-50%);
 }
 
@@ -1782,6 +1833,7 @@ body.is-ready .hero-motion {
   }
 
   .hero-grid,
+  .hero-support,
   .case-card,
   .leadership-layout,
   .cta-band,
@@ -1904,15 +1956,14 @@ body.is-ready .hero-motion {
   }
 
   .case-facts,
+  .hero-support,
   .case-surface,
   .case-result-metrics,
   .architecture-flow {
     grid-template-columns: 1fr;
   }
 
-  .case-facts section:nth-child(3),
-  .case-facts section:nth-child(4),
-  .case-facts section:last-child,
+  .case-fact-actions,
   .case-surface-result {
     grid-column: auto;
   }
@@ -1941,8 +1992,12 @@ body.is-ready .hero-motion {
 
   .hero-stack,
   .hero-summary,
-  .hero-proof,
   .cta-row {
+    width: 100%;
+    max-width: 28ch;
+  }
+
+  .hero-support {
     width: 100%;
     max-width: 28ch;
   }

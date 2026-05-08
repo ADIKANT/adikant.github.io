@@ -189,7 +189,6 @@ function renderHero() {
     <div class="hero-stack">
       <h1 class="hero-headline hero-motion">${content.hero.headline}</h1>
       ${content.hero.summary ? `<p class="hero-summary hero-motion">${content.hero.summary}</p>` : ""}
-      <p class="hero-proof hero-motion">${content.hero.proofLine}</p>
     </div>
   `;
 
@@ -197,14 +196,27 @@ function renderHero() {
     <div class="portrait-frame hero-motion">
       <img src="${content.hero.portrait.src}" alt="${content.hero.portrait.alt}" loading="eager" />
     </div>
-    <div class="hero-profile hero-motion">
-      <p class="hero-name">${content.hero.name}</p>
-      <p class="hero-role">${content.hero.role}</p>
-      <div class="cta-row">
-        ${content.hero.ctas.map(renderButton).join("")}
-      </div>
-    </div>
   `;
+
+  const heroGrid = heroCopy.closest(".hero-grid");
+  if (heroGrid) {
+    heroGrid.querySelector(".hero-support")?.remove();
+    heroGrid.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="hero-support hero-motion">
+        <p class="hero-proof">${content.hero.proofLine}</p>
+        <div class="hero-profile">
+          <p class="hero-name">${content.hero.name}</p>
+          <p class="hero-role">${content.hero.role}</p>
+          <div class="cta-row">
+            ${content.hero.ctas.map(renderButton).join("")}
+          </div>
+        </div>
+      </div>
+    `
+    );
+  }
 }
 
 function renderValuePillars() {
@@ -266,11 +278,19 @@ function renderMetrics() {
 }
 
 function renderCaseDetails(item) {
+  const detailTitleMap = {
+    "Situation": "Situation",
+    "Task / business problem": "Task",
+    "Role / responsibility": "Role",
+    "Actions": "Actions",
+    "Result": "Result"
+  };
+
   const details = item.details
     .map(
       (detail) => `
-        <section>
-          <span>${detail.title}</span>
+        <section class="case-fact-${String(detail.title).toLowerCase().replace(/[^a-zа-я0-9]+/gi, "-").replace(/^-|-$/g, "")}">
+          <span>${detailTitleMap[detail.title] || detail.title}</span>
           ${detail.body ? `<p>${detail.body}</p>` : ""}
           ${
             detail.list
@@ -346,7 +366,7 @@ function renderCases() {
                 <h3>${item.title}</h3>
                 <p class="case-summary">${item.summary}</p>
                 <div class="case-surface">
-                  ${item.problem ? `<section><span>Проблема</span><p>${item.problem}</p></section>` : ""}
+                  ${item.problem ? `<section><span>Задача</span><p>${item.problem}</p></section>` : ""}
                   ${item.role ? `<section><span>Роль</span><p>${item.role}</p></section>` : ""}
                   ${
                     hasResult
@@ -371,11 +391,11 @@ function renderCases() {
                       </ul>`
                     : ""
                 }
-                ${renderCaseDetails(item)}
               </div>
               <div class="case-art">
                 ${renderSafeVisual(item)}
               </div>
+              ${renderCaseDetails(item)}
             </article>
           `;
         })
