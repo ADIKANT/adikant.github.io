@@ -262,6 +262,7 @@ a {
 
 .hero-proof {
   max-width: 58ch;
+  min-height: 114px;
   padding: 1rem 1.1rem;
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -270,6 +271,8 @@ a {
   color: rgba(17, 32, 35, 0.82);
   font-size: 0.95rem;
   overflow-wrap: anywhere;
+  display: flex;
+  align-items: center;
 }
 
 .trust-strip {
@@ -348,7 +351,7 @@ a {
 
 .hero-media {
   display: grid;
-  width: min(100%, 330px);
+  width: min(100%, 320px);
   gap: 0.9rem;
   justify-self: start;
 }
@@ -381,17 +384,20 @@ a {
   aspect-ratio: 1;
   border-radius: 22px;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 33%;
   filter: saturate(0.92) contrast(1.02);
 }
 
 .hero-profile {
-  width: 100%;
+  width: min(100%, 320px);
+  min-height: 114px;
   padding: 1rem;
   border: 1px solid var(--line);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.66);
   box-shadow: var(--shadow-soft);
+  display: grid;
+  align-content: center;
 }
 
 .hero-profile .hero-role {
@@ -902,6 +908,12 @@ body.is-ready .hero-motion {
   margin-top: 1rem;
 }
 
+.case-visual-launch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .visual-stat {
   padding: 0.85rem;
   border-radius: 18px;
@@ -922,20 +934,6 @@ body.is-ready .hero-motion {
 
 .case-visual-launch .visual-stat:last-child:nth-child(odd) {
   grid-column: 1 / -1;
-}
-
-.case-visual-launch .visual-bars {
-  display: flex;
-  align-items: end;
-  gap: 0.7rem;
-  height: 180px;
-  margin-top: 1.2rem;
-}
-
-.case-visual-launch .visual-bar {
-  flex: 1;
-  border-radius: 20px 20px 8px 8px;
-  background: linear-gradient(180deg, #f7faf6, #a66f3f);
 }
 
 .case-visual-flow .visual-flow {
@@ -1011,9 +1009,10 @@ body.is-ready .hero-motion {
 }
 
 .visual-control-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 1rem;
+  align-items: center;
   padding: 0.9rem 1rem;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.05);
@@ -1029,14 +1028,23 @@ body.is-ready .hero-motion {
 
 .visual-control-row strong {
   font-size: 1rem;
+  line-height: 1;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .case-visual-control .visual-control-row:first-child {
   background: rgba(205, 230, 204, 0.16);
 }
 
+.case-visual-control .visual-control-row:first-child span {
+  color: rgba(247, 250, 246, 0.9);
+  font-size: 1.12rem;
+  line-height: 1;
+}
+
 .case-visual-control .visual-control-row:first-child strong {
-  font-size: 1.35rem;
+  font-size: 1.45rem;
 }
 
 .cta-band {

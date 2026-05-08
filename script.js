@@ -56,19 +56,10 @@ function renderSafeVisual(caseItem) {
       )
       .join("");
 
-    const bars = visual.items
-      .map(
-        (item, index) => `
-          <span class="visual-bar" style="height:${44 + index * 12}%"></span>
-        `
-      )
-      .join("");
-
     return `
       <div class="case-visual case-visual-launch">
         <p class="visual-label">${visual.label}</p>
         <div class="visual-stats">${items}</div>
-        <div class="visual-bars">${bars}</div>
       </div>
     `;
   }
