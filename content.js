@@ -39,7 +39,7 @@ window.PORTFOLIO_CONTENT = {
     { id: "profit", label: "Эффект" },
     { id: "management", label: "Управление" },
     { id: "model", label: "Процесс" },
-    { id: "tech", label: "Тех" },
+    { id: "tech", label: "Техстек" },
     { id: "timeline", label: "Траектория" },
     { id: "contact", label: "Контакт" }
   ],
@@ -132,9 +132,7 @@ window.PORTFOLIO_CONTENT = {
         items: [
           { value: "0 -> 200", label: "пользователей BI в месяц" },
           { value: "30+", label: "бизнес-команд заказчиков" },
-          { value: "150", label: "реализованных бизнес-задач", tone: "success" },
-          { value: "82%", label: "завершенных запросов" },
-          { value: "180", label: "задач в управляемом контуре" }
+          { value: "150", label: "реализованных бизнес-задач", tone: "success" }
         ]
       }
     ]
@@ -550,23 +548,51 @@ window.PORTFOLIO_CONTENT = {
       stages: [
         {
           title: "Источники",
-          body: "операционные системы, события, файлы и внешние данные"
+          body: "операционные системы, события, файлы и внешние данные",
+          tools: [
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg", label: "БД" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/salesforce.svg", label: "CRM" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftexcel.svg", label: "Excel" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachekafka.svg", label: "Kafka" }
+          ]
         },
         {
           title: "Загрузка",
-          body: "batch и near-real-time потоки в единый контур данных"
+          body: "batch и near-real-time потоки в единый контур данных",
+          tools: [
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apacheflink.svg", label: "Flink" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachekafka.svg", label: "Streaming" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apacheairflow.svg", label: "Batch" }
+          ]
         },
         {
           title: "LakeHouse",
-          body: "raw и curated слои, объектное хранение, табличные форматы"
+          body: "raw и curated слои, объектное хранение, табличные форматы",
+          tools: [
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazons3.svg", label: "S3" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/clickhouse.svg", label: "ClickHouse" },
+            { iconUrl: "https://apache.org/logos/res/iceberg/iceberg.png", label: "Iceberg" }
+          ]
         },
         {
           title: "Обработка",
-          body: "оркестрация, SQL, PySpark, витрины и проверка качества"
+          body: "оркестрация, SQL, PySpark, витрины и проверка качества",
+          tools: [
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachespark.svg", label: "PySpark" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/shield-check.svg", label: "Data quality" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apacheairflow.svg", label: "Airflow" }
+          ]
         },
         {
           title: "Serving",
-          body: "BI, API, SQL-доступ и self-service для бизнес-команд"
+          body: "BI, API, SQL-доступ и self-service для бизнес-команд",
+          tools: [
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/yandexcloud.svg", label: "DataLens" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachesuperset.svg", label: "Superset" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/powerbi.svg", label: "Power BI" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/dbeaver.svg", label: "DBeaver" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/trino.svg", label: "Trino" }
+          ]
         }
       ],
       rails: ["governance", "доступы", "data quality", "monitoring", "lineage"]
@@ -609,7 +635,9 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "Доклад на конференции Яндекса Data&ML",
         body:
-          "Выступил с докладом про BI и аналитику и усилил узнаваемость компании в профессиональном аналитическом сообществе."
+          "Выступил с докладом про BI и аналитику и усилил узнаваемость компании в профессиональном аналитическом сообществе. Моя часть начинается с 23:35.",
+        href: "https://yandex.cloud/ru/events/dataml2b?videoTab=2",
+        linkLabel: "Смотреть запись с 23:35"
       },
       {
         title: "Демо, воркшопы и обучение",
@@ -661,7 +689,7 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "BI уже есть, но работает хаотично",
         body:
-          "Много запросов и отчетов, но не хватает intake, приоритизации, roadmap, backlog, QA, стандартов и понятного release-процесса."
+          "Много запросов и отчетов, но не хватает прозрачности, приоритизации, roadmap, backlog, QA, стандартов и понятного release-процесса."
       },
       {
         title: "Нужен мост между бизнесом и data platform",

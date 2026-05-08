@@ -1,33 +1,16 @@
-# adikant.github.io
+# Александр Попов - Head of BI / Head of Analytics
 
-Публичное executive-портфолио Александра Попова для GitHub Pages.
+Публичное executive-портфолио Александра Попова для ролей Head of BI, Head of Analytics, BI Lead и руководителя отдела аналитики.
 
-## Архитектура
+Сайт: [https://adikant.github.io/](https://adikant.github.io/)
 
-- `index.html` — семантический shell страницы, SEO/meta, якоря секций.
-- `content.js` — основной редактируемый слой контента: hero, метрики, кейсы, leadership, CTA, контакты.
-- `script.js` — рендеринг секций из `content.js`, reveal-анимации, активная навигация.
-- `styles.css` — визуальная система и адаптивная верстка.
-- `assets/docs/popov-resume.pdf` — актуальное резюме.
-- `assets/images/profile.jpg` — исходный портрет.
-- `assets/images/profile-hero.jpg` — уменьшенная версия портрета для hero.
-- `assets/images/og-preview.svg` — social preview для Open Graph и Twitter.
-- `assets/images/favicon.svg` — favicon.
+## О чем портфолио
 
-## Что менять чаще всего
-
-- Тексты, цифры, CTA, контакты, trust marks, кейсы:
-  `content.js`
-- Визуальную систему, сетку, стили секций:
-  `styles.css`
-- Social preview и favicon:
-  `assets/images/og-preview.svg`, `assets/images/favicon.svg`
-- Резюме:
-  `assets/docs/popov-resume.pdf`
-- Портрет:
-  `assets/images/profile.jpg`
-- Hero-версия портрета:
-  `assets/images/profile-hero.jpg`
+- запуск BI-функции и корпоративной отчетности с нуля;
+- управление командой, backlog, delivery, QA, release и self-service;
+- бизнес-эффект аналитики: рост выручки, экономия, автоматизация и прозрачность управления;
+- кейсы Atom и Mars с публичными агрегированными метриками;
+- технический контекст BI на стыке бизнеса и data platform.
 
 ## Локальный просмотр
 
@@ -35,19 +18,17 @@
 python3 -m http.server 8080
 ```
 
-Открой [http://localhost:8080](http://localhost:8080).
+Открыть локально: [http://localhost:8080](http://localhost:8080)
 
-## Публикация на GitHub Pages
+## Структура
 
-1. Запушить изменения в `main`.
-2. В GitHub открыть `Settings` -> `Pages`.
-3. В `Build and deployment` выбрать `Deploy from a branch`.
-4. Указать `main` и `/ (root)`.
-5. Дождаться публикации на `https://adikant.github.io/`.
+- `content.js` - основной редактируемый слой: тексты, метрики, кейсы, CTA, контакты.
+- `index.html` - статический shell, SEO/meta и якоря секций.
+- `script.js` - рендеринг секций, навигация, раскрываемые блоки.
+- `styles.css` - визуальная система и адаптивная верстка.
+- `assets/docs/popov-resume.pdf` - актуальное резюме.
+- `assets/images/` - публичные изображения и social preview.
 
-## Правила для публичной версии
+## Публичная безопасность
 
-- Не публиковать реальные внутренние Jira-скриншоты, dashboard screenshots и другие конфиденциальные визуалы.
-- Не добавлять `TODO`, placeholders и незаполненные секции.
-- Не придумывать новые цифры: использовать только подтвержденные факты.
-- Если метрика спорная, выбирать более консервативную формулировку.
+Сайт не должен содержать внутренние ссылки, issue IDs, закрытые dashboard URLs, конфиденциальные скриншоты или непроверенные метрики. Для публичной версии используются только агрегированные факты.

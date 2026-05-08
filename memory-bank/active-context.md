@@ -18,6 +18,7 @@ The executive redesign has been refined for the 2026-05-07 v2 brief:
 - header navigation is full-width without the name/brand block, and hash-based active navigation is locked briefly on load/click so the selected section is highlighted;
 - the first-90-days onboarding section now sits after the best-fit scenarios and includes team/role diagnostics and target team contour planning;
 - contact section keeps only role positioning and action buttons; duplicate email/Telegram/resume rows were removed;
+- latest annotation pass keeps Atom launch visual metrics pinned to the top of the case art, removes the accidental top rule from expandable summaries, and replaces text abbreviations in the architecture flow with public CDN tool icons;
 - public UI copy avoids internal links, issue identifiers, confidential dashboard details, and direct internal-tool markers.
 
 ## Working Assumptions

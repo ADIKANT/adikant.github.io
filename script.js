@@ -13,8 +13,16 @@ function renderButton(link) {
   const attrs = isExternal
     ? ' target="_blank" rel="noopener noreferrer"'
     : "";
+  const isTelegram = /t\.me|telegram/i.test(`${link.href || ""} ${link.label || ""}`);
+  const icon = isTelegram
+    ? `<span class="btn-icon btn-icon-telegram" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M20.7 4.4 3.8 10.9c-1 .4-1 1.7.1 2l4.2 1.3 1.6 4.9c.3.9 1.4 1.1 2 .4l2.3-2.4 4.3 3.2c.8.6 1.9.1 2-1l2.2-13.5c.2-1-.8-1.8-1.8-1.4Zm-4 4.5-6.1 5.5-.3 2.6-1-3.2 7.4-4.9Z" />
+        </svg>
+      </span>`
+    : "";
 
-  return `<a class="btn btn-${link.kind || "secondary"}" href="${link.href}"${attrs}>${link.label}</a>`;
+  return `<a class="btn btn-${link.kind || "secondary"}" href="${link.href}"${attrs}>${icon}<span class="btn-label">${link.label}</span></a>`;
 }
 
 function escapeAttribute(value) {
@@ -328,6 +336,8 @@ function renderCases() {
           const resultMetrics = item.businessResultMetrics || [];
           const hasResult = Boolean(item.businessResult) || resultMetrics.length > 0;
           const surfaceMetrics = item.metrics || [];
+          const resultMetricClass =
+            resultMetrics.length === 1 ? " case-result-metrics-single" : "";
 
           return `
             <article class="case-card ${index % 2 === 1 ? "case-card-reverse" : ""} reveal" style="--reveal-delay:${index * 90}ms">
@@ -345,7 +355,7 @@ function renderCases() {
                           ${item.businessResult ? `<p>${item.businessResult}</p>` : ""}
                           ${
                             resultMetrics.length
-                              ? `<ul class="case-result-metrics">${resultMetrics
+                              ? `<ul class="case-result-metrics${resultMetricClass}">${resultMetrics
                                   .map((metric) => `<li>${metric}</li>`)
                                   .join("")}</ul>`
                               : ""
@@ -513,6 +523,28 @@ function renderTechContext() {
                 <li>
                   <strong>${stage.title}</strong>
                   <span>${stage.body}</span>
+                  ${
+                    stage.tools?.length
+                      ? `<ul class="architecture-tools">
+                          ${stage.tools
+                            .map(
+                              (tool) => `
+                                <li class="architecture-tool">
+                                  <span class="architecture-tool-icon" aria-hidden="true">
+                                    ${
+                                      tool.iconUrl
+                                        ? `<img src="${escapeAttribute(tool.iconUrl)}" alt="" loading="lazy" />`
+                                        : tool.icon || ""
+                                    }
+                                  </span>
+                                  <span>${tool.label}</span>
+                                </li>
+                              `
+                            )
+                            .join("")}
+                        </ul>`
+                      : ""
+                  }
                 </li>
               `
             )
@@ -563,6 +595,11 @@ function renderSpeaking() {
             <article class="speaking-item reveal" style="--reveal-delay:${index * 70}ms">
               <h3>${item.title}</h3>
               <p>${item.body}</p>
+              ${
+                item.href
+                  ? `<a class="speaking-link" href="${item.href}" target="_blank" rel="noopener noreferrer">${item.linkLabel || "Открыть запись"}</a>`
+                  : ""
+              }
             </article>
           `
         )
