@@ -14,15 +14,19 @@ function renderButton(link) {
     ? ' target="_blank" rel="noopener noreferrer"'
     : "";
   const isTelegram = /t\.me|telegram/i.test(`${link.href || ""} ${link.label || ""}`);
+  const isHeadHunter = /hh\.ru|headhunter/i.test(`${link.href || ""} ${link.label || ""}`);
   const icon = isTelegram
     ? `<span class="btn-icon btn-icon-telegram" aria-hidden="true">
         <svg viewBox="0 0 24 24" focusable="false">
           <path d="M20.7 4.4 3.8 10.9c-1 .4-1 1.7.1 2l4.2 1.3 1.6 4.9c.3.9 1.4 1.1 2 .4l2.3-2.4 4.3 3.2c.8.6 1.9.1 2-1l2.2-13.5c.2-1-.8-1.8-1.8-1.4Zm-4 4.5-6.1 5.5-.3 2.6-1-3.2 7.4-4.9Z" />
         </svg>
       </span>`
-    : "";
+    : isHeadHunter
+      ? `<span class="btn-icon btn-icon-hh" aria-hidden="true">hh</span>`
+      : "";
+  const extraClass = isHeadHunter ? " btn-headhunter" : "";
 
-  return `<a class="btn btn-${link.kind || "secondary"}" href="${link.href}"${attrs}>${icon}<span class="btn-label">${link.label}</span></a>`;
+  return `<a class="btn btn-${link.kind || "secondary"}${extraClass}" href="${link.href}"${attrs}>${icon}<span class="btn-label">${link.label}</span></a>`;
 }
 
 function escapeAttribute(value) {
@@ -209,9 +213,9 @@ function renderHero() {
         <div class="hero-profile">
           <p class="hero-name">${content.hero.name}</p>
           <p class="hero-role">${content.hero.role}</p>
-          <div class="cta-row">
-            ${content.hero.ctas.map(renderButton).join("")}
-          </div>
+        </div>
+        <div class="hero-cta-row cta-row">
+          ${content.hero.ctas.map(renderButton).join("")}
         </div>
       </div>
     `
@@ -353,11 +357,11 @@ function renderCases() {
     <div class="cases-list">
       ${content.cases.items
         .map((item, index) => {
-          const resultMetrics = item.businessResultMetrics || [];
-          const hasResult = Boolean(item.businessResult) || resultMetrics.length > 0;
+          const surfaceSections = [
+            item.problem ? `<section><span>Задача</span><p>${item.problem}</p></section>` : "",
+            item.role ? `<section><span>Роль</span><p>${item.role}</p></section>` : ""
+          ].filter(Boolean);
           const surfaceMetrics = item.metrics || [];
-          const resultMetricClass =
-            resultMetrics.length === 1 ? " case-result-metrics-single" : "";
 
           return `
             <article class="case-card ${index % 2 === 1 ? "case-card-reverse" : ""} reveal" style="--reveal-delay:${index * 90}ms">
@@ -365,25 +369,13 @@ function renderCases() {
                 <p class="case-company">${item.company}${item.context ? ` · ${item.context}` : ""}</p>
                 <h3>${item.title}</h3>
                 <p class="case-summary">${item.summary}</p>
-                <div class="case-surface">
-                  ${item.problem ? `<section><span>Задача</span><p>${item.problem}</p></section>` : ""}
-                  ${item.role ? `<section><span>Роль</span><p>${item.role}</p></section>` : ""}
-                  ${
-                    hasResult
-                      ? `<section class="case-surface-result">
-                          <span>Итог</span>
-                          ${item.businessResult ? `<p>${item.businessResult}</p>` : ""}
-                          ${
-                            resultMetrics.length
-                              ? `<ul class="case-result-metrics${resultMetricClass}">${resultMetrics
-                                  .map((metric) => `<li>${metric}</li>`)
-                                  .join("")}</ul>`
-                              : ""
-                          }
-                        </section>`
-                      : ""
-                  }
-                </div>
+                ${
+                  surfaceSections.length
+                    ? `<div class="case-surface">
+                        ${surfaceSections.join("")}
+                      </div>`
+                    : ""
+                }
                 ${
                   surfaceMetrics.length
                     ? `<ul class="case-metric-strip">
@@ -684,6 +676,8 @@ function renderContact() {
     return;
   }
 
+  const hhResume = content.contact.hhResume;
+
   root.innerHTML = `
     ${renderSectionHead(content.contact)}
     <div class="contact-band reveal">
@@ -691,6 +685,19 @@ function renderContact() {
         <p class="contact-roles">${content.contact.roles}</p>
         ${content.contact.closing ? `<p class="contact-note">${content.contact.closing}</p>` : ""}
       </div>
+      ${
+        hhResume
+          ? `<a class="contact-hh-card" href="${hhResume.href}" target="_blank" rel="noopener noreferrer" aria-label="${escapeAttribute(hhResume.title)}">
+              <span class="contact-hh-icon" aria-hidden="true">
+                ${hhResume.iconText || "hh"}
+              </span>
+              <span class="contact-hh-copy">
+                <strong>${hhResume.title}</strong>
+                <span>${hhResume.body}</span>
+              </span>
+            </a>`
+          : ""
+      }
       <div class="contact-actions">
         ${content.contact.actions.map(renderButton).join("")}
       </div>

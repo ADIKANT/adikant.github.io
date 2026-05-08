@@ -23,7 +23,7 @@ window.PORTFOLIO_CONTENT = {
         url: "https://adikant.github.io/",
         image: "https://adikant.github.io/assets/images/profile-hero.jpg",
         email: "mailto:minelik4@gmail.com",
-        sameAs: ["https://t.me/adikant"]
+        sameAs: ["https://t.me/adikant", "https://hh.ru/resume/94319226ff0fcc75930039ed1f74474d4e546e"]
       }
     }
   },
@@ -66,6 +66,12 @@ window.PORTFOLIO_CONTENT = {
       {
         label: "Короткое резюме",
         href: "assets/docs/popov-resume.pdf?v=20260507",
+        kind: "secondary",
+        external: true
+      },
+      {
+        label: "Резюме на HeadHunter",
+        href: "https://hh.ru/resume/94319226ff0fcc75930039ed1f74474d4e546e",
         kind: "secondary",
         external: true
       }
@@ -132,7 +138,7 @@ window.PORTFOLIO_CONTENT = {
         items: [
           { value: "0 -> 200", label: "пользователей BI в месяц" },
           { value: "30+", label: "бизнес-команд заказчиков" },
-          { value: "150", label: "реализованных бизнес-задач", tone: "success" }
+          { value: "150", label: "реализованных бизнес-задач" }
         ]
       }
     ]
@@ -320,12 +326,12 @@ window.PORTFOLIO_CONTENT = {
       {
         title: "Сокращение ручного труда",
         body:
-          "Повторяемые отчеты и сверки перевожу в витрины, дашборды и self-service, чтобы команда тратила время на анализ данных, принятие решений и более ценные задачи."
+          "Повторяемые отчеты и сверки перевожу в витрины, дашборды и self-service, чтобы команда инвестировала время в анализ данных, принятие решений и более ценные задачи."
       },
       {
         title: "Снижение рисков",
         body:
-          "Прозрачные метрики, QA и регулярный контроль снижают риск пропустить проблему, принять решение на устаревших данных или спорить из-за некорректных расчетов."
+          "Прозрачные метрики, QA и регулярный контроль снижают риск пропустить проблему, принять решение на устаревших данных и позволяют быть уверенным в корректности расчетов."
       },
       {
         title: "Качественные решения",
@@ -548,9 +554,9 @@ window.PORTFOLIO_CONTENT = {
       stages: [
         {
           title: "Источники",
-          body: "операционные системы, события, файлы и внешние данные",
+          body: "системы, события, файлы и внешние данные",
           tools: [
-            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg", label: "БД" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg", label: "Database" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/salesforce.svg", label: "CRM" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftexcel.svg", label: "Excel" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachekafka.svg", label: "Kafka" }
@@ -714,6 +720,13 @@ window.PORTFOLIO_CONTENT = {
     telegram: "@adikant",
     telegramUrl: "https://t.me/adikant",
     resumeUrl: "assets/docs/popov-resume.pdf?v=20260507",
+    hhResume: {
+      title: "Резюме на HeadHunter",
+      body:
+        "Ссылка на HeadHunter с номером телефона для рекрутеров.",
+      href: "https://hh.ru/resume/94319226ff0fcc75930039ed1f74474d4e546e",
+      iconText: "hh"
+    },
     closing: "",
     actions: [
       { label: "Написать на email", href: "mailto:minelik4@gmail.com", kind: "primary" },

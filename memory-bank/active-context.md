@@ -16,9 +16,11 @@ Immediate files for the next site-editing session:
 
 - Narrative leads with BI / analytics as a management function, not an internal dashboard showcase.
 - Public metrics use the latest Atom scale: 30+ sources, 4500+ objects, 250 data marts, 50+ dashboards, and 0 -> 200 monthly BI users.
-- Case surface is consolidated into three flagship cards: Atom launch, Atom request/delivery/self-service, and Mars commercial impact.
-- Long case/process/technical detail stays behind accessible `<details>` blocks.
+- Case surface is consolidated into three flagship case cards: Atom launch, Atom request/delivery/self-service, and Mars commercial impact.
+- Case cards use the earlier visual layout with alternating art/copy placement, visible summary plus `Задача` / `Роль`, and `Подробнее` disclosure for full Situation / Task / Role / Actions / Result detail. Result is not shown as an inline text block on the default card surface.
+- Hero and contact CTA buttons should keep identical pill geometry and equal widths inside their local button groups.
 - Dashboard example images remain unpublished until final sanitized assets are prepared.
+- Hero and contact sections include a HeadHunter resume link for recruiter-only contact access without publishing the phone number directly on the site.
 
 ## Working Assumptions
 
