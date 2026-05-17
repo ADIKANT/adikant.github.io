@@ -49,96 +49,6 @@ function renderSectionHead(section) {
   `;
 }
 
-function renderSafeVisual(caseItem) {
-  const visual = caseItem.safeVisual;
-
-  if (!visual) {
-    return "";
-  }
-
-  if (visual.type === "launch") {
-    const items = visual.items
-      .map(
-        (item) => `
-          <div class="visual-stat">
-            <strong>${item.value}</strong>
-            <span>${item.label}</span>
-          </div>
-        `
-      )
-      .join("");
-
-    return `
-      <div class="case-visual case-visual-launch">
-        <p class="visual-label">${visual.label}</p>
-        <div class="visual-stats">${items}</div>
-      </div>
-    `;
-  }
-
-  if (visual.type === "flow") {
-    const items = visual.items
-      .map(
-        (item, index) => `
-          <li class="visual-flow-step">
-            <span>${String(index + 1).padStart(2, "0")}</span>
-            <strong>${item}</strong>
-          </li>
-        `
-      )
-      .join("");
-
-    return `
-      <div class="case-visual case-visual-flow">
-        <p class="visual-label">${visual.label}</p>
-        <ol class="visual-flow">${items}</ol>
-      </div>
-    `;
-  }
-
-  if (visual.type === "bars") {
-    const items = visual.items
-      .map(
-        (item) => `
-          <div class="visual-column">
-            <span style="height:${item.value}%"></span>
-            <strong>${item.label}</strong>
-          </div>
-        `
-      )
-      .join("");
-
-    return `
-      <div class="case-visual case-visual-bars">
-        <p class="visual-label">${visual.label}</p>
-        <div class="visual-columns">${items}</div>
-      </div>
-    `;
-  }
-
-  if (visual.type === "control") {
-    const items = visual.items
-      .map(
-        (item) => `
-          <div class="visual-control-row">
-            <span>${item.label}</span>
-            <strong>${item.value}</strong>
-          </div>
-        `
-      )
-      .join("");
-
-    return `
-      <div class="case-visual case-visual-control">
-        <p class="visual-label">${visual.label}</p>
-        <div class="visual-control-list">${items}</div>
-      </div>
-    `;
-  }
-
-  return "";
-}
-
 function renderMeta() {
   document.title = content.seo.title;
   setMetaContent("#meta-description", content.seo.description);
@@ -204,12 +114,32 @@ function renderHero() {
 
   const heroGrid = heroCopy.closest(".hero-grid");
   if (heroGrid) {
+    const proofPoints = content.hero.proofPoints?.length
+      ? `
+        <ul class="hero-proof-list" aria-label="Ключевые доказательства">
+          ${content.hero.proofPoints
+            .map(
+              (item) => `
+                <li>
+                  <strong>${item.value}</strong>
+                  <span>${item.label}</span>
+                </li>
+              `
+            )
+            .join("")}
+        </ul>
+      `
+      : "";
+
     heroGrid.querySelector(".hero-support")?.remove();
     heroGrid.insertAdjacentHTML(
       "beforeend",
       `
       <div class="hero-support hero-motion">
-        <p class="hero-proof">${content.hero.proofLine}</p>
+        <div class="hero-proof-card">
+          <p class="hero-proof">${content.hero.proofLine}</p>
+          ${proofPoints}
+        </div>
         <div class="hero-profile">
           <p class="hero-name">${content.hero.name}</p>
           <p class="hero-role">${content.hero.role}</p>
@@ -223,16 +153,16 @@ function renderHero() {
   }
 }
 
-function renderValuePillars() {
+function renderValueFit() {
   const root = document.querySelector("#value-section");
   if (!root) {
     return;
   }
 
   root.innerHTML = `
-    ${renderSectionHead(content.valuePillars)}
+    ${renderSectionHead(content.valueFit)}
     <div class="value-grid">
-      ${content.valuePillars.items
+      ${content.valueFit.items
         .map(
           (item, index) => `
             <article class="value-item reveal" style="--reveal-delay:${index * 70}ms">
@@ -247,101 +177,43 @@ function renderValuePillars() {
   `;
 }
 
-function renderMetrics() {
-  const root = document.querySelector("#impact-section");
+function renderExperienceProof() {
+  const root = document.querySelector("#experience-section");
   if (!root) {
     return;
   }
 
   root.innerHTML = `
-    ${renderSectionHead(content.metrics)}
-    <div class="metric-groups">
-      ${content.metrics.groups
+    ${renderSectionHead(content.experienceProof)}
+    <div class="experience-list">
+      ${content.experienceProof.items
         .map(
-          (group, groupIndex) => `
-            <section class="impact-panel reveal" style="--reveal-delay:${groupIndex * 90}ms">
-              <h3>${group.title}</h3>
-              <div class="impact-grid">
-                ${group.items
-                  .map(
-                    (item, index) => `
-                      <article class="impact-item ${item.tone ? `impact-item-${item.tone}` : ""}" style="--reveal-delay:${index * 40}ms">
-                        <strong>${item.value}</strong>
-                        <span>${item.label}</span>
-                      </article>
-                    `
-                  )
-                  .join("")}
+          (item, index) => `
+            <article class="experience-card ${item.current ? "experience-card-current" : ""} reveal" style="--reveal-delay:${index * 90}ms">
+              <div class="experience-meta">
+                <p class="timeline-period">${item.period}</p>
+                <h3>${item.company}</h3>
+                <p class="timeline-role">${item.role}</p>
+                <p>${item.context}</p>
               </div>
-            </section>
+              <div class="experience-proof">
+                <div class="experience-metrics">
+                  ${item.metrics
+                    .map(
+                      (metric) => `
+                        <div class="experience-metric">
+                          <strong>${metric.value}</strong>
+                          <span>${metric.label}</span>
+                        </div>
+                      `
+                    )
+                    .join("")}
+                </div>
+              </div>
+            </article>
           `
         )
         .join("")}
-    </div>
-  `;
-}
-
-function renderCaseDetails(item) {
-  const detailTitleMap = {
-    "Situation": "Situation",
-    "Task / business problem": "Task",
-    "Role / responsibility": "Role",
-    "Actions": "Actions",
-    "Result": "Result"
-  };
-
-  const details = item.details
-    .map(
-      (detail) => `
-        <section class="case-fact-${String(detail.title).toLowerCase().replace(/[^a-zа-я0-9]+/gi, "-").replace(/^-|-$/g, "")}">
-          <span>${detailTitleMap[detail.title] || detail.title}</span>
-          ${detail.body ? `<p>${detail.body}</p>` : ""}
-          ${
-            detail.list
-              ? `<ul>${detail.list.map((listItem) => `<li>${listItem}</li>`).join("")}</ul>`
-              : ""
-          }
-        </section>
-      `
-    )
-    .join("");
-
-  return `
-    <details class="case-details">
-      <summary tabindex="0" aria-label="Подробнее: ${escapeAttribute(item.title)}">
-        <span>Подробнее</span>
-      </summary>
-      <div class="case-facts">
-        ${details}
-      </div>
-    </details>
-  `;
-}
-
-function renderSimpleGrid(section, rootSelector, className) {
-  const root = document.querySelector(rootSelector);
-  if (!root) {
-    return;
-  }
-
-  root.innerHTML = `
-    ${renderSectionHead(section)}
-    <div class="${className}">
-      ${section.items
-          .map(
-            (item, index) => `
-              <article class="${className}-item reveal" style="--reveal-delay:${index * 70}ms">
-                <h3>${item.title}</h3>
-                ${item.body ? `<p>${item.body}</p>` : ""}
-                ${
-                  item.items
-                    ? `<ul>${item.items.map((listItem) => `<li>${listItem}</li>`).join("")}</ul>`
-                    : ""
-                }
-              </article>
-            `
-          )
-          .join("")}
     </div>
   `;
 }
@@ -359,12 +231,13 @@ function renderCases() {
         .map((item, index) => {
           const surfaceSections = [
             item.problem ? `<section><span>Задача</span><p>${item.problem}</p></section>` : "",
-            item.role ? `<section><span>Роль</span><p>${item.role}</p></section>` : ""
+            item.actions ? `<section><span>Действия</span><p>${item.actions}</p></section>` : ""
           ].filter(Boolean);
           const surfaceMetrics = item.metrics || [];
+          const resultItems = item.resultItems || [];
 
           return `
-            <article class="case-card ${index % 2 === 1 ? "case-card-reverse" : ""} reveal" style="--reveal-delay:${index * 90}ms">
+            <article class="case-card reveal" style="--reveal-delay:${index * 90}ms">
               <div class="case-copy">
                 <p class="case-company">${item.company}${item.context ? ` · ${item.context}` : ""}</p>
                 <h3>${item.title}</h3>
@@ -384,10 +257,29 @@ function renderCases() {
                     : ""
                 }
               </div>
-              <div class="case-art">
-                ${renderSafeVisual(item)}
-              </div>
-              ${renderCaseDetails(item)}
+              ${
+                resultItems.length || item.result
+                  ? `<aside class="case-result-panel">
+                      <span>Результат</span>
+                      ${
+                        resultItems.length
+                          ? `<div class="case-result-grid">
+                              ${resultItems
+                                .map(
+                                  (resultItem) => `
+                                    <div class="case-result-item">
+                                      <strong>${resultItem.value}</strong>
+                                      <small>${resultItem.label}</small>
+                                    </div>
+                                  `
+                                )
+                                .join("")}
+                            </div>`
+                          : `<p>${item.result}</p>`
+                      }
+                    </aside>`
+                  : ""
+              }
             </article>
           `;
         })
@@ -415,32 +307,24 @@ function renderMidCta() {
   `;
 }
 
-function renderProfitEfficiency() {
-  renderSimpleGrid(content.profitEfficiency, "#profit-section", "profit-grid");
-}
-
-function renderManagementScope() {
-  renderSimpleGrid(content.managementScope, "#management-section", "management-grid");
-}
-
-function renderFirst90Days() {
-  const root = document.querySelector("#first90-section");
+function renderBusinessImpact() {
+  const root = document.querySelector("#impact-section");
   if (!root) {
     return;
   }
 
   root.innerHTML = `
-    ${renderSectionHead(content.first90Days)}
-    <div class="first90-grid">
-      ${content.first90Days.periods
+    ${renderSectionHead(content.businessImpact)}
+    <div class="business-impact-grid">
+      ${content.businessImpact.items
         .map(
-          (period, index) => `
-            <article class="first90-item reveal" style="--reveal-delay:${index * 75}ms">
-              <p class="first90-label">${period.label}</p>
-              <h3>${period.title}</h3>
-              <ul>
-                ${period.items.map((item) => `<li>${item}</li>`).join("")}
-              </ul>
+          (item, index) => `
+            <article class="business-impact-card business-impact-${item.tone || "default"} reveal" style="--reveal-delay:${index * 70}ms">
+              <div>
+                <strong>${item.value}</strong>
+                <span>${item.label}</span>
+              </div>
+              <p>${item.body}</p>
             </article>
           `
         )
@@ -449,19 +333,23 @@ function renderFirst90Days() {
   `;
 }
 
-function renderOperatingModel() {
-  const root = document.querySelector("#model-section");
+function renderManagementPlaybook() {
+  const root = document.querySelector("#management-section");
   if (!root) {
     return;
   }
 
+  const playbook = content.managementPlaybook;
+  const delivery = playbook.delivery;
+  const first90 = playbook.first90Days;
+
   root.innerHTML = `
-    ${renderSectionHead(content.operatingModel)}
-    <div class="model-overview">
-      ${content.operatingModel.surface
+    ${renderSectionHead(playbook)}
+    <div class="management-playbook-grid">
+      ${playbook.pillars
         .map(
           (item, index) => `
-            <article class="model-signal reveal" style="--reveal-delay:${index * 70}ms">
+            <article class="management-playbook-item reveal" style="--reveal-delay:${index * 70}ms">
               <h3>${item.title}</h3>
               <p>${item.body}</p>
             </article>
@@ -474,10 +362,10 @@ function renderOperatingModel() {
         <span>Показать полный маршрут delivery</span>
       </summary>
       <div class="model-grid">
-        ${content.operatingModel.steps
+        ${delivery.steps
           .map(
-            (item, index) => `
-              <article class="model-step" style="--reveal-delay:${index * 55}ms">
+            (item) => `
+              <article class="model-step">
                 <span>${item.step}</span>
                 <h3>${item.title}</h3>
                 <p>${item.body}</p>
@@ -487,41 +375,37 @@ function renderOperatingModel() {
           .join("")}
       </div>
     </details>
-  `;
-}
-
-function renderDomains() {
-  const root = document.querySelector("#domains-section");
-  if (!root) {
-    return;
-  }
-
-  root.innerHTML = `
-    <div class="domains-layout reveal">
-      <div class="domains-copy">
-        ${content.domains.eyebrow ? `<p class="section-kicker">${content.domains.eyebrow}</p>` : ""}
-        <h2>${content.domains.title}</h2>
-        ${content.domains.intro ? `<p>${content.domains.intro}</p>` : ""}
-      </div>
-      <div class="domain-bubble-chart" aria-label="Домены аналитических задач">
-        ${content.domains.items
+    <details class="progressive-details first90-details reveal">
+      <summary tabindex="0" aria-label="${escapeAttribute(first90.title)}">
+        <span>${first90.title}</span>
+      </summary>
+      <div class="first90-grid">
+        ${first90.periods
           .map(
-            (item, index) =>
-              `<span class="domain-bubble domain-bubble-${(index % 4) + 1}">${item}</span>`
+            (period) => `
+              <article class="first90-item">
+                <p class="first90-label">${period.label}</p>
+                <h3>${period.title}</h3>
+                <ul>
+                  ${period.items.map((item) => `<li>${item}</li>`).join("")}
+                </ul>
+              </article>
+            `
           )
           .join("")}
       </div>
-    </div>
+    </details>
   `;
 }
 
 function renderTechContext() {
-  const root = document.querySelector("#tech-section");
+  const root = document.querySelector("#platform-section");
   if (!root) {
     return;
   }
 
-  const architecture = content.techContext.architecture;
+  const section = content.platformContext;
+  const architecture = section.architecture;
   const architectureHtml = architecture
     ? `
       <div class="architecture-card reveal">
@@ -570,14 +454,14 @@ function renderTechContext() {
     : "";
 
   root.innerHTML = `
-    ${renderSectionHead(content.techContext)}
+    ${renderSectionHead(section)}
     ${architectureHtml}
     <details class="progressive-details tech-details reveal">
-      <summary tabindex="0" aria-label="Показать технический контекст">
-        <span>Показать технический контекст</span>
+      <summary tabindex="0" aria-label="Показать платформенный контекст">
+        <span>Показать платформенный контекст</span>
       </summary>
       <div class="tech-grid">
-      ${content.techContext.items
+      ${section.items
         .map(
           (item, index) => `
             <article class="tech-item" style="--reveal-delay:${index * 70}ms">
@@ -593,15 +477,15 @@ function renderTechContext() {
 }
 
 function renderSpeaking() {
-  const root = document.querySelector("#speaking-section");
+  const root = document.querySelector("#publicity-section");
   if (!root) {
     return;
   }
 
   root.innerHTML = `
-    ${renderSectionHead(content.speaking)}
+    ${renderSectionHead(content.publicity)}
     <div class="speaking-grid">
-      ${content.speaking.items
+      ${content.publicity.items
         .map(
           (item, index) => `
             <article class="speaking-item reveal" style="--reveal-delay:${index * 70}ms">
@@ -612,56 +496,6 @@ function renderSpeaking() {
                   ? `<a class="speaking-link" href="${item.href}" target="_blank" rel="noopener noreferrer">${item.linkLabel || "Открыть запись"}</a>`
                   : ""
               }
-            </article>
-          `
-        )
-        .join("")}
-    </div>
-  `;
-}
-
-function renderTimeline() {
-  const root = document.querySelector("#timeline-section");
-  if (!root) {
-    return;
-  }
-
-  root.innerHTML = `
-    ${renderSectionHead(content.timeline)}
-    <div class="timeline-list">
-      ${content.timeline.items
-        .map(
-          (item, index) => `
-            <article class="timeline-item ${item.current ? "timeline-item-current" : ""} reveal" style="--reveal-delay:${index * 90}ms">
-              <p class="timeline-period">${item.period}</p>
-              <div class="timeline-content">
-                <h3>${item.company}</h3>
-                <p class="timeline-role">${item.role}</p>
-                <p>${item.body}</p>
-              </div>
-            </article>
-          `
-        )
-        .join("")}
-    </div>
-  `;
-}
-
-function renderBestFit() {
-  const root = document.querySelector("#fit-section");
-  if (!root) {
-    return;
-  }
-
-  root.innerHTML = `
-    ${renderSectionHead(content.bestFit)}
-    <div class="fit-grid">
-      ${content.bestFit.items
-        .map(
-          (item, index) => `
-            <article class="fit-item reveal" style="--reveal-delay:${index * 70}ms">
-              <h3>${item.title}</h3>
-              <p>${item.body}</p>
             </article>
           `
         )
@@ -854,19 +688,14 @@ function init() {
   renderMeta();
   renderNavigation();
   renderHero();
-  renderValuePillars();
-  renderMetrics();
+  renderValueFit();
+  renderExperienceProof();
   renderCases();
-  renderProfitEfficiency();
+  renderBusinessImpact();
   renderMidCta();
-  renderManagementScope();
-  renderOperatingModel();
-  renderDomains();
+  renderManagementPlaybook();
   renderTechContext();
   renderSpeaking();
-  renderTimeline();
-  renderBestFit();
-  renderFirst90Days();
   renderContact();
   renderFooter();
   setupDetailsKeyboard();

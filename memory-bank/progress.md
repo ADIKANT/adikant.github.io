@@ -29,3 +29,13 @@
 - Addressed the second detailed browser review pass: removed the metrics eyebrow, hero summary, duplicate case result text/metric strips, and duplicate contact rows; renamed request case to "Управляемый поток аналитических запросов"; clarified people-management wording and first-90-days copy.
 - Added a simplified public architecture summary to the technical section based on the attached architecture deck at a high level only: sources, loading, LakeHouse, processing, serving, and governance/access/quality/monitoring/lineage rails.
 - Reworked the domains section into a bubble-chart layout next to the title and updated the speaking-card wording to emphasize external company visibility from the Yandex Data&ML talk.
+
+## 2026-05-13
+
+- Implemented the information-architecture refactor requested after review of the portfolio density problem.
+- Reordered the public page to `Ценность -> Опыт -> Кейсы -> Эффект -> Управление -> Платформа -> Публичность -> Контакт`.
+- Replaced the detached metrics section with role-linked `experienceProof` cards for Atom and Mars.
+- Reworked case cards so each shows task, role, and result on the surface, with detail kept in accessible disclosures.
+- Replaced the text-heavy profit section with a four-card business-impact infographic.
+- Consolidated management scope, delivery route, and first-90-days onboarding into one management playbook with progressive disclosure.
+- Kept live DataLens embedding out of the current page and recorded it as a future sandbox track with synthetic data only.

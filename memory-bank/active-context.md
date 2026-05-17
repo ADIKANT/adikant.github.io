@@ -2,30 +2,34 @@
 
 ## Current Slice
 
-Current work is the public executive portfolio site for Head of BI / Head of Analytics positioning. The latest implementation is the 2026-05-07 v2 redesign: a static GitHub Pages page driven by `content.js`, with layout in `index.html`, behavior in `script.js`, and styles in `styles.css`.
+Current work is the public executive portfolio site for Head of BI / Head of Analytics positioning. The latest implementation is the 2026-05-13 information-architecture refactor: a static GitHub Pages page driven by `content.js`, with layout in `index.html`, behavior in `script.js`, and styles in `styles.css`.
 
 Immediate files for the next site-editing session:
 
-- `content.js` for public copy, metrics, cases, section content, and CTA text.
-- `styles.css` for layout, hero/profile support band, case details, bubble chart, and responsive fixes.
-- `script.js` for rendering grouped metrics, case details, navigation state, and keyboard behavior.
-- `index.html` for static shell, metadata, and asset references.
+- `content.js` for public copy, navigation, role-linked proof metrics, cases, business-impact infographic, management playbook, platform context, and CTA text.
+- `script.js` for rendering hero proof points, experience proof, case details, business impact, management playbook, platform context, navigation state, and keyboard behavior.
+- `styles.css` for hero/profile support band, experience proof cards, business-impact cards, management playbook, architecture flow, and responsive behavior.
+- `index.html` for static shell, metadata, section order, and cache-busted asset references.
 - `assets/images/profile-hero.jpg` for the current portrait.
 
 ## Current Public Surface
 
-- Narrative leads with BI / analytics as a management function, not an internal dashboard showcase.
-- Public metrics use the latest Atom scale: 30+ sources, 4500+ objects, 250 data marts, 50+ dashboards, and 0 -> 200 monthly BI users.
-- Case surface is consolidated into three flagship case cards: Atom launch, Atom request/delivery/self-service, and Mars commercial impact.
-- Case cards use the earlier visual layout with alternating art/copy placement, visible summary plus `Задача` / `Роль`, and `Подробнее` disclosure for full Situation / Task / Role / Actions / Result detail. Result is not shown as an inline text block on the default card surface.
+- Narrative leads with BI as a management function: team, process, self-service, data platform dependencies, and business effect.
+- Navigation is now: `Ценность`, `Опыт`, `Кейсы`, `Эффект`, `Управление`, `Платформа`, `Публичность`, `Контакт`.
+- Detached metrics were replaced by role-linked proof in `experienceProof`: Atom shows function/team/platform/adoption scale; Mars shows commercial effect.
+- Case surface is consolidated into three flagship cards: Atom launch, Atom managed delivery, and Mars commercial impact. Each card shows task, role, and result on the surface, with details in accessible `<details>`.
+- Business impact is a compact infographic for revenue, annual savings, automated hours, and BI adoption.
+- Management, delivery route, and first-90-days logic are consolidated into one management playbook with progressive disclosure.
+- Platform context remains secondary and high-level; governance rails use public-safe generic labels for access control, sensitive data, policy, data quality, monitoring, and lineage.
 - Hero and contact CTA buttons should keep identical pill geometry and equal widths inside their local button groups.
-- Dashboard example images remain unpublished until final sanitized assets are prepared.
 - Hero and contact sections include a HeadHunter resume link for recruiter-only contact access without publishing the phone number directly on the site.
 
 ## Working Assumptions
 
 - `materials for future dev/` and `dasboards examples/` are local source/evidence folders and must stay out of the public published surface.
 - Public UI copy must avoid internal links, issue identifiers, confidential dashboard details, and direct internal-tool markers.
+- The old `/Users/alexandr/Downloads/portfolio_site_codex_brief_ru.md` source is missing and treated as stale unless restored.
+- Future DataLens dashboard examples should be built only in a separate live sandbox with synthetic mock data; do not add placeholders to the current page.
 - The current portrait remains `assets/images/profile-hero.jpg` unless the user provides a replacement.
 
 ## Archive

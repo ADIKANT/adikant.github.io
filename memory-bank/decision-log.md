@@ -17,3 +17,11 @@
 - Consolidate cases when overlap weakens the scan: Atom self-service belongs inside request delivery, and both Mars revenue/control stories work better as one commercial-impact case.
 - Use the attached architecture deck only as source context for a simplified public diagram; do not reproduce internal architecture pages, internal system details, or operational URLs on the site.
 - Prefer right-side visual metric blocks over repeating the same case results in left-side prose when the metric is already visible in the card.
+
+## 2026-05-13
+
+- Reframed the site around information architecture rather than visual redesign: preserve the existing visual language, but make the first scan flow from value to role-linked proof, cases, business impact, management model, platform context, publicity, and contact.
+- Replace detached metrics and late career timeline with `experienceProof`, so Atom and Mars metrics sit next to the roles that produced them.
+- Consolidate duplicate narrative blocks: value plus best-fit became one value/fit section; metrics plus profit became one business-impact infographic; management scope, delivery, and first 90 days became one management playbook.
+- Keep live DataLens examples out of the current page until a separate ClickHouse/DataLens sandbox with fully synthetic mock data is built and security-reviewed.
+- For sensitive/personal-data controls in the public platform diagram, use generic public-safe rails such as access control, sensitive data, policy, quality, monitoring, and lineage instead of unconfirmed internal tool names.
