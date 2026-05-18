@@ -371,7 +371,7 @@ window.PORTFOLIO_CONTENT = {
           ]
         },
         {
-          title: "Инжест и обработка",
+          title: "Обработка",
           body: "оркестрация, потоковая обработка, SQL, PySpark и витринный слой",
           tools: [
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apacheflink.svg", label: "Flink" },

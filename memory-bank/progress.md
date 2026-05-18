@@ -47,10 +47,10 @@
 - Promoted the DataLens dashboard automation story into a separate Atom case: 15+ dashboards in queue, self-built API/JavaScript automation, and typical MVP cycle reduced from 1-3 days to about 2 hours.
 - Kept future Habr/GitHub publication links out of the public page until they actually exist, and recorded them as backlog.
 - Added PostgreSQL and Microsoft SQL to the public LakeHouse technology row so it no longer implies the experience was only ClickHouse.
-- Addressed browser review comments: removed duplicate automation card from platform context, changed the automation case result to a `Было -> Стало` comparison, converted management cards to bullet lists, added API as a source, combined ingest/processing, added a governance layer, and kept the hero two-column layout through tablet width.
+- Addressed browser review comments: removed duplicate automation card from platform context, changed the automation case result to a `Было -> Стало` comparison, converted management cards to bullet lists, added API as a source, simplified the processing layer, added a governance layer, and kept the hero two-column layout through tablet width.
 
 ## 2026-05-18
 
-- Added Python to the public `Инжест и обработка` platform layer next to PySpark and SQL.
+- Added Python to the public `Обработка` platform layer next to PySpark and SQL.
 - Added a plain in-progress note to the Atom DataLens automation result panel about preparing a GitHub repository and DataLens course, without adding any unpublished links.
 - Replaced the link-preview image used by OG/Twitter metadata with a 1200x630 PNG (`og-preview-v2.png`) and shortened share descriptions for cleaner HeadHunter previews.
