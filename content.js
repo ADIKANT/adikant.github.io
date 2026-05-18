@@ -212,7 +212,8 @@ window.PORTFOLIO_CONTENT = {
         resultComparison: {
           before: { label: "Было", value: "1-3 дня", note: "ручная сборка MVP" },
           after: { label: "Стало", value: "~2 часа", note: "первый MVP через API pipeline" }
-        }
+        },
+        resultNote: "В процессе - подготовка GitHub-репозитория и курса по DataLens."
       },
       {
         company: "Mars",
@@ -376,6 +377,7 @@ window.PORTFOLIO_CONTENT = {
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apacheflink.svg", label: "Flink" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apacheairflow.svg", label: "Airflow" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachespark.svg", label: "PySpark" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg", label: "Python" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/database.svg", label: "SQL" }
           ]
         },

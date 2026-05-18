@@ -12,6 +12,7 @@
 - Metrics should be attached to the relevant career role where possible, not only shown as a detached metrics block.
 - DataLens live dashboard examples are a future separate track only: use a separate ClickHouse/DataLens sandbox with synthetic mock data and no placeholder on the current public page.
 - Public copy may mention DataLens dashboard-development automation only in a generalized, public-safe form: internal templates/rules, JavaScript, requirements/S2T, prepared data, dataviz standards, DataLens API, and about 2 hours to a typical MVP. Do not name local plugin repos or internal automation paths.
+- The Atom DataLens automation case may include the in-progress note about preparing a GitHub repository and DataLens course, but only as plain text without links until those materials are actually published.
 
 ## Confirmed Metrics / Facts
 
@@ -32,6 +33,7 @@
 - Do not make architecture the core of the message.
 - Use generic public-safe labels for access control, sensitive data, policy, quality, monitoring, and lineage unless a concrete tool name is explicitly confirmed safe for publication.
 - Do not expose local plugin names, repository paths, internal dashboard URLs, Jira markers, credentials, tokens, or implementation-only diagnostics in public site copy.
+- Do not add future GitHub/course links for the DataLens automation case before publication; the only allowed current reference is the exact in-progress note in that case.
 
 ## Open Follow-up
 

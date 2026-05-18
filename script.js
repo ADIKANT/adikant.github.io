@@ -292,6 +292,7 @@ function renderCases() {
                             </div>`
                           : `<p>${item.result}</p>`
                       }
+                      ${item.resultNote ? `<p class="case-result-note">${item.resultNote}</p>` : ""}
                     </aside>`
                   : ""
               }
