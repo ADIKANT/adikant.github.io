@@ -235,6 +235,7 @@ function renderCases() {
           ].filter(Boolean);
           const surfaceMetrics = item.metrics || [];
           const resultItems = item.resultItems || [];
+          const resultComparison = item.resultComparison;
 
           return `
             <article class="case-card reveal" style="--reveal-delay:${index * 90}ms">
@@ -262,7 +263,21 @@ function renderCases() {
                   ? `<aside class="case-result-panel">
                       <span>Результат</span>
                       ${
-                        resultItems.length
+                        resultComparison
+                          ? `<div class="case-before-after" aria-label="Было и стало">
+                              <div class="case-before-after-item">
+                                <small>${resultComparison.before.label}</small>
+                                <strong>${resultComparison.before.value}</strong>
+                                <em>${resultComparison.before.note}</em>
+                              </div>
+                              <div class="case-before-after-arrow" aria-hidden="true">→</div>
+                              <div class="case-before-after-item case-before-after-item-after">
+                                <small>${resultComparison.after.label}</small>
+                                <strong>${resultComparison.after.value}</strong>
+                                <em>${resultComparison.after.note}</em>
+                              </div>
+                            </div>`
+                          : resultItems.length
                           ? `<div class="case-result-grid">
                               ${resultItems
                                 .map(
@@ -351,7 +366,11 @@ function renderManagementPlaybook() {
           (item, index) => `
             <article class="management-playbook-item reveal" style="--reveal-delay:${index * 70}ms">
               <h3>${item.title}</h3>
-              <p>${item.body}</p>
+              ${
+                item.items?.length
+                  ? `<ul>${item.items.map((entry) => `<li>${entry}</li>`).join("")}</ul>`
+                  : `<p>${item.body}</p>`
+              }
             </article>
           `
         )
@@ -446,9 +465,13 @@ function renderTechContext() {
             )
             .join("")}
         </ol>
-        <ul class="architecture-rails">
-          ${architecture.rails.map((rail) => `<li>${rail}</li>`).join("")}
-        </ul>
+        ${
+          architecture.rails?.length
+            ? `<ul class="architecture-rails">
+                ${architecture.rails.map((rail) => `<li>${rail}</li>`).join("")}
+              </ul>`
+            : ""
+        }
       </div>
     `
     : "";

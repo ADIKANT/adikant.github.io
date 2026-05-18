@@ -155,9 +155,9 @@ window.PORTFOLIO_CONTENT = {
 
   cases: {
     eyebrow: "Кейсы",
-    title: "Три кейса: запуск функции, delivery и деньги",
+    title: "Четыре кейса: запуск функции, delivery, автоматизация и деньги",
     intro:
-      "Эти истории показывают, как я превращаю запросы бизнеса в работающую BI-функцию, управляемый delivery и измеримый финансовый эффект.",
+      "Эти истории показывают, как я превращаю запросы бизнеса в работающую BI-функцию, управляемый delivery, автоматизацию разработки и измеримый финансовый эффект.",
     items: [
       {
         company: "Atom",
@@ -196,6 +196,23 @@ window.PORTFOLIO_CONTENT = {
           { value: "1000+", label: "часов в месяц" },
           { value: "~300 млн ₽", label: "экономия в год" }
         ]
+      },
+      {
+        company: "Atom",
+        context: "BI automation",
+        title: "Автоматизация разработки DataLens-дашбордов через API",
+        summary:
+          "В очереди было больше 15 дашбордов, новые запросы продолжали появляться, а ресурсов на ручную разработку каждого решения не хватало.",
+        problem:
+          "Сократить цикл от требований и данных до первого работающего MVP-дашборда без потери правил dataviz, качества и управляемости разработки.",
+        actions:
+          "Самостоятельно спроектировал, протестировал с нуля и довел до рабочего инструмента pipeline для генерации DataLens-дашбордов на JavaScript через API.",
+        result:
+          "MVP типового дашборда собирается примерно за 2 часа вместо 1-3 дней ручной разработки, а очередь dashboard-задач стала управляемой.",
+        resultComparison: {
+          before: { label: "Было", value: "1-3 дня", note: "ручная сборка MVP" },
+          after: { label: "Стало", value: "~2 часа", note: "первый MVP через API pipeline" }
+        }
       },
       {
         company: "Mars",
@@ -283,23 +300,19 @@ window.PORTFOLIO_CONTENT = {
     pillars: [
       {
         title: "People",
-        body:
-          "Команда, роли, найм, адаптация, 1:1, обратная связь, развитие и понятная ответственность за результат."
+        items: ["команда", "роли", "найм и адаптация", "1:1 и feedback", "развитие", "ответственность"]
       },
       {
         title: "Process",
-        body:
-          "Единый вход, backlog, RICE, постановка, QA, release, support и прозрачные trade-offs для бизнеса."
+        items: ["единый вход", "backlog и RICE", "постановка", "QA и release", "support", "trade-offs"]
       },
       {
         title: "BI product",
-        body:
-          "Метрики, витрины, дашборды, стандарты качества, self-service и регулярное использование решений."
+        items: ["метрики", "витрины", "дашборды", "QA standards", "self-service", "adoption"]
       },
       {
         title: "Partnership",
-        body:
-          "Работа с senior stakeholders, roadmap, ожиданиями, рисками и зависимостями от data platform."
+        items: ["senior stakeholders", "roadmap", "ожидания", "риски", "зависимости от data platform"]
       }
     ],
     delivery: {
@@ -352,16 +365,18 @@ window.PORTFOLIO_CONTENT = {
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg", label: "Database" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/salesforce.svg", label: "CRM" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftexcel.svg", label: "Excel" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/braces.svg", label: "API" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachekafka.svg", label: "Kafka" }
           ]
         },
         {
-          title: "Загрузка",
-          body: "batch и near-real-time потоки в единый контур данных",
+          title: "Инжест и обработка",
+          body: "оркестрация, потоковая обработка, SQL, PySpark и витринный слой",
           tools: [
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apacheflink.svg", label: "Flink" },
-            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachekafka.svg", label: "Streaming" },
-            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apacheairflow.svg", label: "Batch" }
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apacheairflow.svg", label: "Airflow" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachespark.svg", label: "PySpark" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/database.svg", label: "SQL" }
           ]
         },
         {
@@ -369,17 +384,10 @@ window.PORTFOLIO_CONTENT = {
           body: "raw и curated слои, объектное хранение, табличные форматы",
           tools: [
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazons3.svg", label: "S3" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg", label: "PostgreSQL" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftsqlserver.svg", label: "Microsoft SQL" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/clickhouse.svg", label: "ClickHouse" },
             { iconUrl: "https://apache.org/logos/res/iceberg/iceberg.png", label: "Iceberg" }
-          ]
-        },
-        {
-          title: "Обработка",
-          body: "оркестрация, SQL, PySpark, витрины и проверки качества",
-          tools: [
-            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachespark.svg", label: "PySpark" },
-            { iconUrl: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/shield-check.svg", label: "Data quality" },
-            { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apacheairflow.svg", label: "Airflow" }
           ]
         },
         {
@@ -392,9 +400,20 @@ window.PORTFOLIO_CONTENT = {
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/dbeaver.svg", label: "DBeaver" },
             { iconUrl: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/trino.svg", label: "Trino" }
           ]
+        },
+        {
+          title: "Governance",
+          body: "метаданные, качество, метрики, доступы и lineage",
+          tools: [
+            { iconUrl: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/book-open-check.svg", label: "OpenMetadata" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/shield-check.svg", label: "Data quality" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/gauge.svg", label: "Metrics" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/key-round.svg", label: "Access control" },
+            { iconUrl: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/git-branch.svg", label: "Lineage" }
+          ]
         }
       ],
-      rails: ["access control", "sensitive data", "policy", "data quality", "monitoring", "lineage"]
+      rails: []
     },
     items: [
       {

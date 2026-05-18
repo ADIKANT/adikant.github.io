@@ -39,3 +39,12 @@
 - Replaced the text-heavy profit section with a four-card business-impact infographic.
 - Consolidated management scope, delivery route, and first-90-days onboarding into one management playbook with progressive disclosure.
 - Kept live DataLens embedding out of the current page and recorded it as a future sandbox track with synthetic data only.
+
+## 2026-05-17
+
+- Added a public-safe platform-context item about automated DataLens dashboard development: internal templates/rules, JavaScript, requirements/S2T, prepared data, dataviz standards, and about 2 hours to a typical MVP.
+- Recorded the publication boundary: describe the capability generically and keep local plugin repos, internal paths, private dashboard URLs, Jira markers, credentials, tokens, and debug details out of public site copy.
+- Promoted the DataLens dashboard automation story into a separate Atom case: 15+ dashboards in queue, self-built API/JavaScript automation, and typical MVP cycle reduced from 1-3 days to about 2 hours.
+- Kept future Habr/GitHub publication links out of the public page until they actually exist, and recorded them as backlog.
+- Added PostgreSQL and Microsoft SQL to the public LakeHouse technology row so it no longer implies the experience was only ClickHouse.
+- Addressed browser review comments: removed duplicate automation card from platform context, changed the automation case result to a `Было -> Стало` comparison, converted management cards to bullet lists, added API as a source, combined ingest/processing, added a governance layer, and kept the hero two-column layout through tablet width.

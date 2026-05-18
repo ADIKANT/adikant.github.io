@@ -17,10 +17,10 @@ Immediate files for the next site-editing session:
 - Narrative leads with BI as a management function: team, process, self-service, data platform dependencies, and business effect.
 - Navigation is now: `Ценность`, `Опыт`, `Кейсы`, `Эффект`, `Управление`, `Платформа`, `Публичность`, `Контакт`.
 - Detached metrics were replaced by role-linked proof in `experienceProof`: Atom shows function/team/platform/adoption scale; Mars shows commercial effect.
-- Case surface is consolidated into three flagship cards: Atom launch, Atom managed delivery, and Mars commercial impact. Each card shows task, role, and result on the surface, with details in accessible `<details>`.
+- Case surface now includes four flagship cards: Atom launch, Atom managed delivery, Atom DataLens dashboard automation, and Mars commercial impact. The automation case keeps the 15+ queue context in the summary and uses a compact `1-3 days -> ~2 hours` result comparison.
 - Business impact is a compact infographic for revenue, annual savings, automated hours, and BI adoption.
 - Management, delivery route, and first-90-days logic are consolidated into one management playbook with progressive disclosure.
-- Platform context remains secondary and high-level; governance rails use public-safe generic labels for access control, sensitive data, policy, data quality, monitoring, and lineage.
+- Platform context remains secondary and high-level: sources include API, ingest and processing are combined, LakeHouse includes PostgreSQL / Microsoft SQL / ClickHouse, and governance is a final visible layer.
 - Hero and contact CTA buttons should keep identical pill geometry and equal widths inside their local button groups.
 - Hero and contact sections include a HeadHunter resume link for recruiter-only contact access without publishing the phone number directly on the site.
 
@@ -28,6 +28,7 @@ Immediate files for the next site-editing session:
 
 - `materials for future dev/` and `dasboards examples/` are local source/evidence folders and must stay out of the public published surface.
 - Public UI copy must avoid internal links, issue identifiers, confidential dashboard details, and direct internal-tool markers.
+- DataLens dashboard automation belongs in the Atom case, not as a duplicate platform-context card. It can be described publicly as generalized templates/rules, DataLens API, JavaScript, requirements/S2T, prepared data, and about 2 hours to MVP; do not name local plugin repos, internal paths, private dashboard URLs, Jira markers, or token/debug details.
 - The old `/Users/alexandr/Downloads/portfolio_site_codex_brief_ru.md` source is missing and treated as stale unless restored.
 - Future DataLens dashboard examples should be built only in a separate live sandbox with synthetic mock data; do not add placeholders to the current page.
 - The current portrait remains `assets/images/profile-hero.jpg` unless the user provides a replacement.

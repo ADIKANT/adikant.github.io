@@ -1064,6 +1064,69 @@ body.is-ready .hero-motion {
   grid-column: 1 / -1;
 }
 
+.case-before-after {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.case-before-after-item {
+  display: grid;
+  align-content: center;
+  min-height: 148px;
+  padding: 1rem;
+  border: 1px solid rgba(247, 250, 246, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.case-before-after-item-after {
+  background: rgba(143, 188, 143, 0.14);
+  border-color: rgba(205, 230, 204, 0.18);
+}
+
+.case-before-after-item small,
+.case-before-after-item strong,
+.case-before-after-item em {
+  display: block;
+}
+
+.case-before-after-item small {
+  color: rgba(247, 250, 246, 0.68);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-before-after-item strong {
+  margin-top: 0.42rem;
+  color: #f7faf6;
+  font-size: clamp(1.75rem, 3vw, 2.45rem);
+  line-height: 0.98;
+}
+
+.case-before-after-item em {
+  margin-top: 0.5rem;
+  color: rgba(247, 250, 246, 0.7);
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.24;
+}
+
+.case-before-after-arrow {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  color: rgba(247, 250, 246, 0.86);
+  font-family: Arial, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
 .case-metric-strip {
   display: flex;
   flex-wrap: wrap;
@@ -1370,6 +1433,33 @@ body.is-ready .hero-motion {
 .model-signal p {
   margin-top: 0.55rem;
   color: var(--muted);
+}
+
+.management-playbook-item ul {
+  display: grid;
+  gap: 0.42rem;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.management-playbook-item li {
+  position: relative;
+  padding-left: 0.95rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.35;
+}
+
+.management-playbook-item li::before {
+  content: "";
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--warm);
 }
 
 .management-grid-item ul {
@@ -1970,8 +2060,6 @@ body.is-ready .hero-motion {
     padding-top: 3.8rem;
   }
 
-  .hero-grid,
-  .hero-support,
   .case-card,
   .leadership-layout,
   .cta-band,
@@ -1981,16 +2069,17 @@ body.is-ready .hero-motion {
   }
 
   .hero-grid {
-    justify-items: center;
+    grid-template-columns: minmax(0, 1.15fr) minmax(220px, 280px);
+    justify-items: stretch;
   }
 
   .hero-copy {
-    justify-self: center;
+    justify-self: stretch;
   }
 
   .hero-media {
-    justify-items: center;
-    justify-self: center;
+    justify-items: stretch;
+    justify-self: stretch;
   }
 
   .portrait-frame {
@@ -1998,24 +2087,24 @@ body.is-ready .hero-motion {
   }
 
   .hero-support {
-    width: min(100%, var(--hero-side-width));
-    justify-self: center;
+    grid-template-columns: minmax(0, 1.15fr) minmax(220px, 280px);
+    width: 100%;
+    justify-self: stretch;
   }
 
   .hero-profile {
     width: min(100%, var(--hero-card-width));
   }
 
-  .hero-support .hero-profile,
-  .hero-support .hero-cta-row {
-    width: var(--hero-card-width);
-    max-width: calc(100vw - 28px);
-    margin-right: auto;
-    margin-left: auto;
+  .hero-support .hero-profile {
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+    margin-left: 0;
   }
 
   .hero-cta-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .hero-proof-list {
@@ -2146,8 +2235,45 @@ body.is-ready .hero-motion {
     grid-template-columns: 1fr;
   }
 
+  .hero-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .hero-copy {
+    justify-self: center;
+  }
+
+  .hero-media {
+    justify-items: center;
+    justify-self: center;
+  }
+
+  .hero-support {
+    width: min(100%, var(--hero-side-width));
+    justify-self: center;
+  }
+
+  .hero-support .hero-profile,
+  .hero-support .hero-cta-row {
+    width: var(--hero-card-width);
+    max-width: calc(100vw - 28px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
   .hero-cta-row {
     grid-template-columns: 1fr;
+  }
+
+  .case-before-after {
+    grid-template-columns: 1fr;
+  }
+
+  .case-before-after-arrow {
+    width: 100%;
+    min-height: 28px;
+    transform: rotate(90deg);
   }
 
   .contact-actions,
