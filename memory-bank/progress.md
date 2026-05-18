@@ -53,3 +53,4 @@
 
 - Added Python to the public `Инжест и обработка` platform layer next to PySpark and SQL.
 - Added a plain in-progress note to the Atom DataLens automation result panel about preparing a GitHub repository and DataLens course, without adding any unpublished links.
+- Replaced the link-preview image used by OG/Twitter metadata with a 1200x630 PNG (`og-preview-v2.png`) and shortened share descriptions for cleaner HeadHunter previews.

@@ -1,12 +1,12 @@
 window.PORTFOLIO_CONTENT = {
   seo: {
-    title: "Александр Попов - Head of BI / Head of Analytics, руководитель BI и аналитики",
+    title: "Александр Попов - Head of BI / Head of Analytics",
     description:
-      "Александр Попов строит BI как управляемую функцию: команда, delivery, self-service, data platform и измеримый бизнес-эффект в Atom и Mars.",
+      "BI как управляемая функция: команда, delivery, self-service и измеримый бизнес-эффект.",
     keywords:
       "Александр Попов, BI, аналитика, head of analytics, head of BI, BI lead, executive portfolio",
     url: "https://adikant.github.io/",
-    ogImage: "https://adikant.github.io/assets/images/og-preview.svg",
+    ogImage: "https://adikant.github.io/assets/images/og-preview-v2.png",
     ogImageAlt: "Портфолио Александра Попова для head / lead ролей в BI и аналитике",
     themeColor: "#102327",
     twitterCard: "summary_large_image",

@@ -24,6 +24,7 @@ Immediate files for the next site-editing session:
 - Platform context remains secondary and high-level: sources include API, ingest and processing are combined with Python/PySpark/SQL tooling, LakeHouse includes PostgreSQL / Microsoft SQL / ClickHouse, and governance is a final visible layer.
 - Hero and contact CTA buttons should keep identical pill geometry and equal widths inside their local button groups.
 - Hero and contact sections include a HeadHunter resume link for recruiter-only contact access without publishing the phone number directly on the site.
+- Social sharing preview uses `assets/images/og-preview-v2.png` as a 1200x630 PNG so HeadHunter and other unfurl clients do not depend on SVG support or JavaScript-updated metadata.
 
 ## Working Assumptions
 
