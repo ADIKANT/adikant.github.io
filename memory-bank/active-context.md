@@ -15,7 +15,7 @@ Immediate files for site-editing sessions:
 
 ## Current Public Surface
 
-- Page structure is now: Hero, `Где я полезен`, `Опыт`, `Избранные кейсы`, `Как организована работа аналитики`, `Выступление и контакты`.
+- Page structure is now: Hero, `Ключевые зоны ответственности`, `Опыт`, `Избранные кейсы`, `Как организована работа аналитики`, `Выступление и контакты`.
 - The top navigation bar is intentionally absent. `skip-link`, section anchors, canonical URLs and static SEO remain generated.
 - Hero first screen contains `Александр Попов`, `Руководитель отдела аналитики и BI`, the current positioning paragraph, three non-financial confirmations, and large CTA buttons for Telegram, PDF resume and HeadHunter.
 - Telegram and HeadHunter are mandatory public CTA channels on the home page, contacts section and case pages.
@@ -23,6 +23,9 @@ Immediate files for site-editing sessions:
 - Financial metrics are removed from the first screen.
 - The standalone `Ценность`, `Эффект`, intermediate CTA, `Первые 90 дней`, `Платформа`, and old `Публичность` sections were removed.
 - Experience contains two roles: Атом and Mars.
+- Case objects now use a separate `problem` field in addition to `context` and `task`.
+- Home case cards show the business problem from `problem`, not the neutral context, so each card reads as a business case rather than an internal request-processing story.
+- Case detail pages follow the order: `Контекст`, `Проблема`, `Задача`, `Моя роль`, `Что сделал`, `Результат`, `Как измерялся результат`, `Границы ответственности`, `Инструменты`, CTA.
 - Атом experience uses current resume-backed facts plus the user-confirmed dashboard count: team of 6 specialists, 30+ business teams as a retained first-screen confirmation, about 200 active BI users, more than 30 dashboards in use, corporate reporting for key functions, and about 300 mln RUB annual effect by business-customer estimate in the selected case.
 - Mars experience shows growth from analyst intern to lead BI analyst, commercial analytics, sales/KPI reporting, national clients and regions, and a team metric of 3 people.
 - Mars public financial metrics are not summed. The old contract-display monetary value was removed from public text pending confirmation.

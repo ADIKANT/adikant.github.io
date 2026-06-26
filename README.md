@@ -15,7 +15,7 @@
 ## Структура публичной страницы
 
 1. Hero
-2. Где я полезен
+2. Ключевые зоны ответственности
 3. Опыт
 4. Избранные кейсы
 5. Примеры дашбордов, только если есть опубликованный sandbox-пример
@@ -64,7 +64,7 @@ python3 -m http.server 8080
 ## Как добавить новый кейс
 
 1. Добавить объект в `content.js` в массив `cases`.
-2. Заполнить обязательные поля: `slug`, `company`, `period`, `title`, `lead`, `context`, `task`, `role`, `actions`, `results`, `measurement`, `attribution`, `tools`, `evidence`.
+2. Заполнить обязательные поля: `slug`, `company`, `period`, `title`, `lead`, `context`, `problem`, `task`, `role`, `actions`, `results`, `measurement`, `attribution`, `tools`, `evidence`.
 3. Убедиться, что результаты содержат значение, единицу, масштаб, пояснение и тип.
 4. Запустить `npm run build` и `npm run validate`.
 

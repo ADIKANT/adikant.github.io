@@ -6,12 +6,14 @@
 - The public site language is Russian.
 - The site is used after resume review and should provide evidence of management experience, not repeat promotional resume copy.
 - The target roles are руководитель отдела аналитики, руководитель BI-направления, Head of BI, and Head of Analytics.
-- The public page structure is: Hero, Где я полезен, Опыт, Избранные кейсы, optional Примеры дашбордов only when at least one example is published, Как организована работа аналитики, Выступление и контакты.
+- The public page structure is: Hero, Ключевые зоны ответственности, Опыт, Избранные кейсы, optional Примеры дашбордов only when at least one example is published, Как организована работа аналитики, Выступление и контакты.
 - The top navigation bar is intentionally absent. Section anchors and `skip-link` remain available in static HTML.
 - Telegram and HeadHunter are mandatory visible CTA channels on the home page, contacts section and case pages. PDF resume CTA stays available.
 - Email must not be published in generated HTML, JSON-LD, CTA, contact block or case pages.
 - Removed as standalone sections: `Ценность`, `Эффект`, intermediate CTA, `Первые 90 дней`, `Платформа`, and the old `Публичность` section.
 - Content should remain easy to update from `content.js`.
+- Main case objects must include a separate `problem` field. Home case cards show that business problem instead of neutral context, and case detail pages use the order `Контекст`, `Проблема`, `Задача`, `Моя роль`, `Что сделал`, `Результат`, `Как измерялся результат`, `Границы ответственности`, `Инструменты`.
+- Case copy should read as external business cases, not as an internal story of request handling.
 - SEO baseline must include title, meta description, Open Graph, favicon, and schema.org profile data.
 - Unsafe closed dashboard and Jira screenshots must not be published.
 - Dashboard examples are configured in `content.js`, but public cards, pages, previews, and navigation are generated only for `published` examples on fully synthetic data.

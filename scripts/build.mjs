@@ -5,7 +5,7 @@ import { portfolioContent as content } from "../content.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteUrl = content.site.baseUrl.replace(/\/$/, "");
-const buildVersion = "20260626-case-polish-2";
+const buildVersion = "20260626-case-problem-1";
 const currentYear = "2026";
 
 const publishedDashboards = content.dashboardExamples.filter(
@@ -325,7 +325,7 @@ function renderCasesHome() {
                   <div class="case-card-head">
                     <p class="case-company">${escapeHtml(caseItem.company)} · ${escapeHtml(caseItem.period)}</p>
                     <h3>${escapeHtml(caseItem.title)}</h3>
-                    <p>${escapeHtml(caseItem.context)}</p>
+                    <p>${escapeHtml(caseItem.problem)}</p>
                   </div>
                   <div class="case-card-body">
                     <section>
@@ -528,10 +528,11 @@ function renderCasePage(caseItem) {
       <section class="section case-detail-section">
         <div class="container case-detail-grid">
           ${renderCaseDetailBlock("Контекст", caseItem.context)}
+          ${renderCaseDetailBlock("Проблема", caseItem.problem)}
           ${renderCaseDetailBlock("Задача", caseItem.task)}
           ${renderCaseDetailBlock("Моя роль", caseItem.role)}
           <section class="case-detail-block">
-            <h2>Что было сделано</h2>
+            <h2>Что сделал</h2>
             <ul>
               ${caseItem.actions.map((action) => `<li>${escapeHtml(action)}</li>`).join("")}
             </ul>
@@ -554,7 +555,7 @@ function renderCasePage(caseItem) {
           ${renderCaseDetailBlock("Как измерялся результат", caseItem.measurement)}
           ${renderCaseDetailBlock("Границы ответственности", caseItem.attribution)}
           <section class="case-detail-block">
-            <h2>Использованные инструменты</h2>
+            <h2>Инструменты</h2>
             <ul class="tech-list case-tech-list">
               ${caseItem.tools.map((tool) => `<li>${escapeHtml(tool)}</li>`).join("")}
             </ul>
@@ -563,7 +564,7 @@ function renderCasePage(caseItem) {
             caseItem.additionalProject
               ? `<section class="case-detail-block case-detail-wide">
                   <h2>${escapeHtml(caseItem.additionalProject.title)}</h2>
-                  <p>${escapeHtml(caseItem.additionalProject.body)}</p>
+                  ${renderParagraphs(caseItem.additionalProject.body)}
                 </section>`
               : ""
           }
@@ -602,6 +603,13 @@ function renderCaseDetailBlock(title, body) {
       <p>${escapeHtml(body)}</p>
     </section>
   `;
+}
+
+function renderParagraphs(body) {
+  return String(body ?? "")
+    .split(/\n{2,}/)
+    .map((paragraph) => `<p>${escapeHtml(paragraph.trim())}</p>`)
+    .join("");
 }
 
 function renderRobots() {

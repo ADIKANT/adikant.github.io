@@ -90,6 +90,10 @@ function pngSize(buffer) {
   };
 }
 
+function normalizeText(value) {
+  return String(value ?? "").trim().replace(/\s+/g, " ");
+}
+
 async function trackedFiles(paths) {
   try {
     const { stdout } = await execFile("git", ["ls-files", ...paths], { cwd: rootDir });
@@ -110,6 +114,7 @@ async function validateContentModel() {
       "title",
       "lead",
       "context",
+      "problem",
       "task",
       "role",
       "actions",
@@ -124,6 +129,20 @@ async function validateContentModel() {
       if (!caseItem[field] || (Array.isArray(caseItem[field]) && caseItem[field].length === 0)) {
         fail(`Case ${caseItem.slug || caseItem.title} is missing ${field}`);
       }
+    }
+
+    const problem = normalizeText(caseItem.problem);
+    const context = normalizeText(caseItem.context);
+    const task = normalizeText(caseItem.task);
+
+    if (!problem) {
+      fail(`Case ${caseItem.slug} problem must not be empty`);
+    }
+    if (problem && problem === context) {
+      fail(`Case ${caseItem.slug} problem must differ from context`);
+    }
+    if (problem && problem === task) {
+      fail(`Case ${caseItem.slug} problem must differ from task`);
     }
 
     if (slugs.has(caseItem.slug)) {
@@ -200,6 +219,18 @@ async function validateHtml() {
     "AGENTS.md",
     ...(await walk("memory-bank", (file) => file.endsWith(".md") && !file.includes(`${path.sep}archive${path.sep}`)))
   ];
+  const forbiddenPublicTextPatterns = [
+    [/Запросов становилось больше, и бизнесу нужен был понятный способ договориться/i, "contains removed request-growth wording"],
+    [/Без общего процесса было сложнее согласовывать приоритеты/i, "contains removed process wording"],
+    [/личн(?:ых|ые)\s+договоренност/i, "contains personal-agreements wording"],
+    [/Публично безопасные материалы/i, "contains prompt artifact materials wording"],
+    [/Тип результата:/i, "contains technical result type wording"],
+    [/50\+\s*дашборд/i, "contains removed old dashboard count"],
+    [/4500/i, "contains removed object-scale metric"],
+    [/250\+?\s*витрин/i, "contains removed mart-scale metric"],
+    [/10\s*ТБ/i, "contains removed data-volume metric"],
+    [/600\s*(млн|million|м)/i, "contains removed Mars financial metric"]
+  ];
 
   for (const file of publicTextFiles) {
     const text = await read(file);
@@ -225,6 +256,11 @@ async function validateHtml() {
     }
     if (closedUrl.test(text)) {
       fail(`${file} contains a closed URL`);
+    }
+    for (const [pattern, message] of forbiddenPublicTextPatterns) {
+      if (pattern.test(text)) {
+        fail(`${file} ${message}`);
+      }
     }
   }
 
@@ -298,6 +334,8 @@ async function validatePublicSurface(htmlFiles) {
   const forbiddenHtmlPatterns = [
     [/minelik4@gmail\.com/i, "generated HTML contains public email"],
     [/mailto:/i, "generated HTML contains mailto link"],
+    [/Запросов становилось больше, и бизнесу нужен был понятный способ договориться/i, "generated HTML contains removed request-growth wording"],
+    [/Без общего процесса было сложнее согласовывать приоритеты/i, "generated HTML contains removed process wording"],
     [/Публично безопасные материалы/i, "case pages contain the prompt artifact materials block"],
     [/Тип результата:/i, "case pages contain technical result type text"],
     [/личн(?:ых|ые)\s+договоренност/i, "public copy contains the personal-agreements wording"],
@@ -330,6 +368,9 @@ async function validatePublicSurface(htmlFiles) {
   if (!indexHtml.includes(content.contact.telegramUrl)) {
     fail("Home page is missing Telegram CTA");
   }
+  if (!indexHtml.includes(content.assets.resume)) {
+    fail("Home page is missing PDF resume CTA");
+  }
   if (!indexHtml.includes(content.contact.hhResume.href)) {
     fail("Home page is missing HeadHunter CTA");
   }
@@ -337,8 +378,34 @@ async function validatePublicSurface(htmlFiles) {
   for (const caseItem of content.cases) {
     const casePath = path.join("cases", caseItem.slug, "index.html");
     const caseHtml = htmlByFile.get(casePath) || "";
+    const href = `/cases/${caseItem.slug}/`;
+    const linkIndex = indexHtml.indexOf(`href="${href}"`);
+    const articleStart = linkIndex === -1 ? -1 : indexHtml.lastIndexOf("<article", linkIndex);
+    const articleEnd = linkIndex === -1 ? -1 : indexHtml.indexOf("</article>", linkIndex);
+    const cardHtml = articleStart === -1 || articleEnd === -1 ? "" : indexHtml.slice(articleStart, articleEnd);
+
+    if (!cardHtml) {
+      fail(`Home page case card is missing for ${caseItem.slug}`);
+    } else {
+      if (!cardHtml.includes(caseItem.problem)) {
+        fail(`Home page case card for ${caseItem.slug} must render problem`);
+      }
+      if (cardHtml.includes(caseItem.context)) {
+        fail(`Home page case card for ${caseItem.slug} renders context instead of problem`);
+      }
+    }
+
+    if (!caseHtml.includes("<h2>Проблема</h2>")) {
+      fail(`${casePath} is missing the Problem section heading`);
+    }
+    if (!caseHtml.includes(caseItem.problem)) {
+      fail(`${casePath} is missing the case problem text`);
+    }
     if (!caseHtml.includes(content.contact.telegramUrl)) {
       fail(`${casePath} is missing Telegram CTA`);
+    }
+    if (!caseHtml.includes(content.assets.resume)) {
+      fail(`${casePath} is missing PDF resume CTA`);
     }
     if (!caseHtml.includes(content.contact.hhResume.href)) {
       fail(`${casePath} is missing HeadHunter CTA`);
