@@ -420,12 +420,24 @@ async function validateSocialPreview() {
   const svg = await read("assets/images/og-preview.svg");
   const siteFields = JSON.stringify(content.site);
   const previewText = `${svg}\n${siteFields}`;
+  const indexHtml = await read("index.html");
+  const expectedOgImage = `${content.site.baseUrl.replace(/\/$/, "")}${content.site.ogImage}`;
   const forbiddenPreviewPatterns = [
     [/Head of BI\s*\/\s*Head of Analytics/i, "social preview contains old slash positioning"],
     [/BI как управляемая функция/i, "social preview contains old BI-function positioning"],
     [/50\+\s*дашборд/i, "social preview contains old dashboard count"],
     [/300\s*млн/i, "social preview contains financial metric"]
   ];
+
+  if (content.site.ogImage !== "/assets/images/og-preview-v3.png") {
+    fail("site.ogImage must point to the cache-busting og-preview-v3.png asset");
+  }
+  if (!content.site.socialTitle) {
+    fail("site.socialTitle is missing");
+  }
+  if (!content.site.socialDescription) {
+    fail("site.socialDescription is missing");
+  }
 
   for (const [pattern, message] of forbiddenPreviewPatterns) {
     if (pattern.test(previewText)) {
@@ -437,6 +449,7 @@ async function validateSocialPreview() {
     "Александр Попов",
     "Руководитель отдела аналитики и BI",
     "Запуск аналитической функции",
+    "BI-процесс",
     "6 человек в команде",
     "30+ бизнес-команд",
     "200 активных пользователей BI"
@@ -446,10 +459,22 @@ async function validateSocialPreview() {
     }
   }
 
-  const png = await readFile(path.join(rootDir, "assets/images/og-preview-v2.png"));
+  if (!indexHtml.includes(`content="${expectedOgImage}"`)) {
+    fail("index.html social meta must reference og-preview-v3.png");
+  }
+  if (indexHtml.includes("og-preview-v2.png")) {
+    fail("index.html still references the old og-preview-v2.png asset");
+  }
+  for (const required of [content.site.socialTitle, content.site.socialDescription]) {
+    if (!indexHtml.includes(required)) {
+      fail(`index.html social meta is missing required text: ${required}`);
+    }
+  }
+
+  const png = await readFile(path.join(rootDir, "assets/images/og-preview-v3.png"));
   const size = pngSize(png);
   if (!size || size.width !== 1200 || size.height !== 630) {
-    fail("assets/images/og-preview-v2.png must be a 1200x630 PNG");
+    fail("assets/images/og-preview-v3.png must be a 1200x630 PNG");
   }
 }
 

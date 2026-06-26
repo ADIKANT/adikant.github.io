@@ -1,23 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Александр Попов - руководитель отдела аналитики и BI</title>
   <desc id="desc">Social preview публичного портфолио Александра Попова</desc>
+  <defs>
+    <clipPath id="portrait-clip">
+      <rect x="816" y="112" width="288" height="288" rx="24"/>
+    </clipPath>
+  </defs>
   <rect width="1200" height="630" fill="#f6f7f4"/>
   <rect x="56" y="56" width="1088" height="518" rx="28" fill="#ffffff" stroke="#d8ded9" stroke-width="2"/>
   <rect x="84" y="84" width="8" height="462" rx="4" fill="#173a34"/>
-  <g transform="translate(128 130)">
-    <text x="0" y="0" fill="#102321" font-family="Arial, sans-serif" font-size="68" font-weight="800">Александр Попов</text>
-    <text x="0" y="62" fill="#173a34" font-family="Arial, sans-serif" font-size="34" font-weight="700">Руководитель отдела аналитики и BI</text>
-    <text x="0" y="140" fill="#3f4b48" font-family="Arial, sans-serif" font-size="30">
+  <circle cx="1084" cy="92" r="118" fill="#edf2ee" opacity="0.8"/>
+  <circle cx="962" cy="566" r="154" fill="#edf2ee" opacity="0.7"/>
+  <g transform="translate(128 126)">
+    <text x="0" y="0" fill="#173a34" font-family="Arial, sans-serif" font-size="18" font-weight="800">АНАЛИТИКА И BI</text>
+    <text x="0" y="78" fill="#102321" font-family="Arial, sans-serif" font-size="68" font-weight="800">Александр Попов</text>
+    <text x="0" y="128" fill="#173a34" font-family="Arial, sans-serif" font-size="34" font-weight="700">Руководитель отдела аналитики и BI</text>
+    <text x="0" y="210" fill="#3f4b48" font-family="Arial, sans-serif" font-size="30">
       <tspan x="0" dy="0">Запуск аналитической функции, команда,</tspan>
       <tspan x="0" dy="42">BI-процесс и управленческая отчетность.</tspan>
     </text>
   </g>
-  <g transform="translate(128 400)">
-    <rect x="0" y="0" width="276" height="92" rx="20" fill="#edf2ee" stroke="#d8ded9"/>
-    <text x="28" y="56" fill="#102321" font-family="Arial, sans-serif" font-size="25" font-weight="800">6 человек в команде</text>
-    <rect x="308" y="0" width="276" height="92" rx="20" fill="#edf2ee" stroke="#d8ded9"/>
-    <text x="336" y="56" fill="#102321" font-family="Arial, sans-serif" font-size="25" font-weight="800">30+ бизнес-команд</text>
-    <rect x="616" y="0" width="356" height="92" rx="20" fill="#edf2ee" stroke="#d8ded9"/>
-    <text x="644" y="56" fill="#102321" font-family="Arial, sans-serif" font-size="23" font-weight="800">200 активных пользователей BI</text>
+  <rect x="808" y="104" width="304" height="304" rx="28" fill="#ffffff" stroke="#d8ded9" stroke-width="2"/>
+  <image href="profile-hero.jpg" x="816" y="112" width="288" height="288" preserveAspectRatio="xMidYMid slice" clip-path="url(#portrait-clip)"/>
+  <g transform="translate(128 438)">
+    <rect x="0" y="0" width="244" height="76" rx="18" fill="#edf2ee" stroke="#d8ded9"/>
+    <text x="28" y="47" fill="#102321" font-family="Arial, sans-serif" font-size="23" font-weight="800">6 человек в команде</text>
+    <rect x="276" y="0" width="260" height="76" rx="18" fill="#edf2ee" stroke="#d8ded9"/>
+    <text x="304" y="47" fill="#102321" font-family="Arial, sans-serif" font-size="23" font-weight="800">30+ бизнес-команд</text>
+    <rect x="568" y="0" width="354" height="76" rx="18" fill="#edf2ee" stroke="#d8ded9"/>
+    <text x="596" y="47" fill="#102321" font-family="Arial, sans-serif" font-size="22" font-weight="800">200 активных пользователей BI</text>
   </g>
 </svg>

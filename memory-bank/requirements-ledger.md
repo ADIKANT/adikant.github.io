@@ -19,7 +19,7 @@
 - Dashboard examples are configured in `content.js`, but public cards, pages, previews, and navigation are generated only for `published` examples on fully synthetic data.
 - The architecture scheme is mandatory inside `Как организована работа аналитики` and must keep five stages: `Источники -> Обработка -> LakeHouse -> Serving -> Governance`.
 - Architecture tools must use local SVG icons and visible text names.
-- Social preview assets must match the current role and non-financial proof points, with no old preview positioning or financial metric.
+- Social preview assets must match the current role and non-financial proof points, with no old preview positioning or financial metric. When Telegram or other messengers keep stale link-preview cache, the active Open Graph PNG should move to a fresh filename such as `og-preview-v3.png`.
 - `codex-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` and `.DS_Store` are working artifacts and must not be tracked for public publication.
 
 ## Confirmed Metrics / Facts

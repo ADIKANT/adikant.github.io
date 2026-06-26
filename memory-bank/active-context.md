@@ -33,7 +33,7 @@ Immediate files for site-editing sessions:
 - The work approach section contains the request process and the required five-column architecture scheme: `Источники -> Обработка -> LakeHouse -> Serving -> Governance`.
 - Architecture icons are local monochrome SVG files from `assets/icons/architecture/`; tool names remain visible as text and arrows are decorative.
 - Main content and case pages are present in static HTML and remain readable without JavaScript.
-- Social preview assets were updated for the current role and non-financial first-screen proof points: `assets/images/og-preview.svg` and `assets/images/og-preview-v2.png`.
+- Social preview assets use the current role and non-financial first-screen proof points. The active Open Graph PNG should use a fresh versioned filename such as `assets/images/og-preview-v3.png` when Telegram or other messengers keep stale link-preview cache.
 
 ## Working Assumptions
 

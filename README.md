@@ -45,7 +45,7 @@ python3 -m http.server 8080
 - `script.js` - только progressive enhancement: плавное появление блоков и будущая загрузка iframe по действию пользователя.
 - `styles.css` - визуальная система, адаптивная верстка и обязательная пятиэтапная архитектурная схема.
 - `assets/docs/popov-resume.pdf` - актуальное публичное резюме.
-- `assets/images/` - публичные изображения и social preview. При смене позиционирования нужно обновлять `og-preview.svg`, `og-preview-v2.png` и затем запускать build/validate.
+- `assets/images/` - публичные изображения и social preview. При смене позиционирования нужно обновлять `og-preview.svg`, генерировать новый `og-preview-v*.png` с новым именем для сброса кеша мессенджеров и затем запускать build/validate.
 - `assets/icons/architecture/` - локальные декоративные SVG для архитектурной схемы.
 - `materials for future dev/facts_to_confirm.md` - локальный ignored-файл с вопросами по спорным фактам.
 - `codex-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` и `.DS_Store` - рабочие артефакты, не публичный контент.
@@ -98,6 +98,8 @@ GitHub Pages публикует статические файлы из корн�
 npm run build
 npm run validate
 ```
+
+После изменения social preview и публикации отправить `https://adikant.github.io/` в Telegram `@WebpageBot`, дождаться обновления карточки и затем заново вставить ссылку в чат.
 
 ## Публичная безопасность
 

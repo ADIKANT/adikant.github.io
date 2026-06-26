@@ -5,7 +5,7 @@ import { portfolioContent as content } from "../content.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteUrl = content.site.baseUrl.replace(/\/$/, "");
-const buildVersion = "20260626-case-problem-1";
+const buildVersion = "20260626-social-preview-1";
 const currentYear = "2026";
 
 const publishedDashboards = content.dashboardExamples.filter(
@@ -96,6 +96,9 @@ function renderButton(link) {
 function renderHead({ title, description, canonicalPath, type = "website", schema }) {
   const canonical = absoluteUrl(canonicalPath);
   const ogImage = absoluteUrl(content.site.ogImage);
+  const socialTitle = canonicalPath === "/" ? content.site.socialTitle || title : title;
+  const socialDescription =
+    canonicalPath === "/" ? content.site.socialDescription || description : description;
 
   return `
     <meta charset="UTF-8" />
@@ -108,8 +111,8 @@ function renderHead({ title, description, canonicalPath, type = "website", schem
     <link rel="icon" href="${assetUrl(content.site.favicon)}" type="image/svg+xml" />
     <meta property="og:type" content="${escapeHtml(type)}" />
     <meta property="og:locale" content="ru_RU" />
-    <meta property="og:title" content="${escapeHtml(title)}" />
-    <meta property="og:description" content="${escapeHtml(description)}" />
+    <meta property="og:title" content="${escapeHtml(socialTitle)}" />
+    <meta property="og:description" content="${escapeHtml(socialDescription)}" />
     <meta property="og:url" content="${escapeHtml(canonical)}" />
     <meta property="og:image" content="${escapeHtml(ogImage)}" />
     <meta property="og:image:width" content="1200" />
@@ -117,8 +120,8 @@ function renderHead({ title, description, canonicalPath, type = "website", schem
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content="${escapeHtml(content.site.ogImageAlt)}" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${escapeHtml(title)}" />
-    <meta name="twitter:description" content="${escapeHtml(description)}" />
+    <meta name="twitter:title" content="${escapeHtml(socialTitle)}" />
+    <meta name="twitter:description" content="${escapeHtml(socialDescription)}" />
     <meta name="twitter:image" content="${escapeHtml(ogImage)}" />
     <link rel="stylesheet" href="/styles.css?v=${buildVersion}" />
     <script type="application/ld+json">${jsonLd(schema)}</script>

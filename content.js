@@ -3,12 +3,15 @@ export const portfolioContent = {
     baseUrl: "https://adikant.github.io",
     language: "ru",
     title: "Александр Попов - руководитель отдела аналитики и BI",
+    socialTitle: "Александр Попов - руководитель аналитики и BI",
     description:
       "Портфолио руководителя отдела аналитики и BI: запуск аналитической функции, управление командой, процессом BI-решений, качеством данных и внедрением отчетности.",
+    socialDescription:
+      "Запуск аналитической функции, BI-процесс и управленческая отчетность.",
     keywords:
       "Александр Попов, BI, аналитика, руководитель отдела аналитики, руководитель BI, Head of BI, Head of Analytics",
     themeColor: "#173a34",
-    ogImage: "/assets/images/og-preview-v2.png",
+    ogImage: "/assets/images/og-preview-v3.png",
     ogImageAlt: "Портфолио Александра Попова для руководящих ролей в BI и аналитике",
     favicon: "/assets/images/favicon.svg"
   },
