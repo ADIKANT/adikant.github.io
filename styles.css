@@ -1016,7 +1016,9 @@ a {
   }
 
   .hero-media {
-    max-width: 280px;
+    width: 100%;
+    max-width: 520px;
+    justify-self: center;
   }
 
   .section {

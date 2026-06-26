@@ -5,7 +5,7 @@ import { portfolioContent as content } from "../content.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteUrl = content.site.baseUrl.replace(/\/$/, "");
-const buildVersion = "20260626-social-preview-1";
+const buildVersion = "20260626-mobile-hero-photo-1";
 const currentYear = "2026";
 
 const publishedDashboards = content.dashboardExamples.filter(
