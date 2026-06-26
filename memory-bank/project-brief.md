@@ -9,7 +9,7 @@ Rebuild the public portfolio of Alexander Popov as an executive-profile landing 
 - The first screen explains the value proposition in seconds.
 - The page sells Alexander as a function builder, manager, and delivery owner, not only as a hands-on BI specialist.
 - The final site is static, GitHub Pages compatible, mobile friendly, and free of placeholders.
-- Public assets are safe and do not expose internal tools, task names, or sensitive visuals.
+- Public assets are safe and do not expose closed tools, task names, or sensitive visuals.
 
 ## Scope
 

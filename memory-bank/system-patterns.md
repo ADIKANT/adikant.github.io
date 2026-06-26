@@ -10,4 +10,4 @@
 
 - Executive editorial layout with strong typography, restrained motion, and limited accent colors.
 - Prefer section composition, dividers, and rhythm over dense card mosaics.
-- Use safe abstract visuals instead of real internal product screenshots.
+- Use safe abstract visuals instead of real employer product screenshots.

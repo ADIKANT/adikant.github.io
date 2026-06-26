@@ -3,39 +3,59 @@
 ## Confirmed
 
 - The site must stay static and GitHub Pages compatible.
-- The site language is Russian for v1.
-- The public narrative must emphasize build, lead, deliver, and impact.
-- The site needs strong hero positioning, value/fit framing, experience proof, flagship cases, business-impact infographic, management playbook, platform context, publicity/adoption, and strong CTA.
-- Unsafe internal dashboard and Jira screenshots must be removed from the public repo.
-- Content should be easy to update from a lightweight structured file.
-- SEO baseline must include `title`, `meta description`, Open Graph, favicon, and schema.org profile data.
-- Metrics should be attached to the relevant career role where possible, not only shown as a detached metrics block.
-- DataLens live dashboard examples are a future separate track only: use a separate ClickHouse/DataLens sandbox with synthetic mock data and no placeholder on the current public page.
-- Public copy may mention DataLens dashboard-development automation only in a generalized, public-safe form: internal templates/rules, JavaScript, requirements/S2T, prepared data, dataviz standards, DataLens API, and about 2 hours to a typical MVP. Do not name local plugin repos or internal automation paths.
-- The Atom DataLens automation case may include the in-progress note about preparing a GitHub repository and DataLens course, but only as plain text without links until those materials are actually published.
+- The public site language is Russian.
+- The site is used after resume review and should provide evidence of management experience, not repeat promotional resume copy.
+- The target roles are руководитель отдела аналитики, руководитель BI-направления, Head of BI, and Head of Analytics.
+- The public page structure is: Hero, Где я полезен, Опыт, Избранные кейсы, optional Примеры дашбордов only when at least one example is published, Как организована работа аналитики, Выступление и контакты.
+- The top navigation bar is intentionally absent. Section anchors and `skip-link` remain available in static HTML.
+- Telegram and HeadHunter are mandatory visible CTA channels on the home page, contacts section and case pages. PDF resume CTA stays available.
+- Email must not be published in generated HTML, JSON-LD, CTA, contact block or case pages.
+- Removed as standalone sections: `Ценность`, `Эффект`, intermediate CTA, `Первые 90 дней`, `Платформа`, and the old `Публичность` section.
+- Content should remain easy to update from `content.js`.
+- SEO baseline must include title, meta description, Open Graph, favicon, and schema.org profile data.
+- Unsafe closed dashboard and Jira screenshots must not be published.
+- Dashboard examples are configured in `content.js`, but public cards, pages, previews, and navigation are generated only for `published` examples on fully synthetic data.
+- The architecture scheme is mandatory inside `Как организована работа аналитики` and must keep five stages: `Источники -> Обработка -> LakeHouse -> Serving -> Governance`.
+- Architecture tools must use local SVG icons and visible text names.
+- Social preview assets must match the current role and non-financial proof points, with no old preview positioning or financial metric.
+- `codex-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` and `.DS_Store` are working artifacts and must not be tracked for public publication.
 
 ## Confirmed Metrics / Facts
 
-- 6+ years of experience.
-- Atom: launch of analytics direction and corporate reporting in DataLens.
-- Atom: team of 6 people.
-- Atom: 25+ data sources, 4000+ raw objects, 100+ data marts, 100+ DAGs, 50+ dashboards.
-- Atom: 1000+ hours of manual work automated per month, about 300 million RUB annual savings, BI adoption from 0 to 200 MAU.
-- Atom: 30+ teams in the data adoption contour.
-- Atom: DataLens dashboard automation reduced a typical MVP cycle from 1-3 days of manual development to about 2 hours; the motivating queue had 15+ dashboards plus new incoming requests.
-- Mars: +59 million RUB shelf expansion case, +200 million RUB scaled X5 impact, about +600 million RUB additional sales from contract display control.
-- Speaking: Yandex Data&ML conference talk.
+- Current resume source: `CV_Alexandr_Popov_Rus 25.06.26.pdf`.
+- 6+ years of BI and analytics experience.
+- Атом: project of the Russian electric vehicle Атом, АО Кама.
+- Атом: role is `Руководитель отдела аналитики`, period `03.2023 - н.в.`
+- Атом: formed and develops a team of 6 specialists.
+- Атом: manages roadmap, бэклог, priorities, requirements, BI quality, data-quality checks, metrics descriptions, release and support of BI solutions.
+- Атом: corporate reporting covers finance, HR, procurement, sales, marketing, production, product, telematics, risks, and quality.
+- Атом: about 200 active BI users per month.
+- Атом: more than 30 dashboards are used in the BI reporting contour; confirmed by the user on 2026-06-26 for the public Atom launch case.
+- Атом: automation of reporting and analytics reduced manual operations; total annual effect by business-customer estimate is about 300 million RUB.
+- Mars: role is `Ведущий BI-аналитик`, period `12.2019 - 03.2023`.
+- Mars: grew from analyst intern to lead BI analyst over three years.
+- Mars: worked on sales analytics, KPI reporting, national clients, regional teams, Power BI reporting, Excel and Power Query data preparation.
+- Mars: managed a BI direction with a team of 3 people.
+- Mars: shelf-expansion pilot produced 59 million RUB additional sales; scaled X5 effect reached 200 million RUB.
+- Mars: contract display control reached 100 percent coverage and was scaled across Russia.
+- Speaking: Yandex Data&ML conference talk, candidate's part starts at 23:35.
 
-## Constraints
+## Public Copy Constraints
 
-- Do not invent new achievements or unconfirmed numbers.
-- Avoid mixed Russian-English navigation and section labels in the public UI.
-- Do not make architecture the core of the message.
-- Use generic public-safe labels for access control, sensitive data, policy, quality, monitoring, and lineage unless a concrete tool name is explicitly confirmed safe for publication.
-- Do not expose local plugin names, repository paths, internal dashboard URLs, Jira markers, credentials, tokens, or implementation-only diagnostics in public site copy.
-- Do not add future GitHub/course links for the DataLens automation case before publication; the only allowed current reference is the exact in-progress note in that case.
+- Do not invent new achievements, numbers, roles, technologies, links, or screenshots.
+- Do not place financial metrics on the first screen.
+- Do not sum financial effects into a single aggregate.
+- Use `бэклог` in public Russian copy.
+- Use `процесс разработки`, `поставка решения`, `использование BI`, and `заказчики и руководители` instead of English management terms.
+- Explain самостоятельная аналитика at first mention if the English term is used.
+- Avoid slogans, rhetorical questions, decorative arrows, and contrast-slogan constructions.
+- Avoid repeated achievement claims across multiple sections.
+- Keep the technology list compact and aligned with the current resume.
+- Use generic public-safe wording for access, quality, governance, monitoring, and platform dependencies unless a concrete tool is confirmed safe.
 
 ## Open Follow-up
 
-- Workshop count is intentionally left qualitative until explicitly confirmed.
-- Future DataLens sandbox approach must be specified and security-reviewed before embedding anything on the public site.
+- `materials for future dev/facts_to_confirm.md` records local ignored questions about removed or conflicting public metrics.
+- Confirm current public values for Атом source/object/mart scale before publishing those counts again; the `30+ dashboards` count is now approved only for the first Atom case result.
+- Confirm whether the old Mars contract-display monetary value is still public and what period, territory, and methodology should accompany it.
+- Confirm whether the separate DataLens dashboard-automation case should remain public and what exact tooling/role wording is approved.

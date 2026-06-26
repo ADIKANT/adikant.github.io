@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate": "node scripts/validate-content.mjs",
+    "demo:data": "node scripts/generate-demo-data.mjs"
+  }
+}

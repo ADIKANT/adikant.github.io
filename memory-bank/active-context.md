@@ -2,38 +2,43 @@
 
 ## Current Slice
 
-Current work is the public executive portfolio site for Head of BI / Head of Analytics positioning. The latest implementation is the 2026-05-13 information-architecture refactor: a static GitHub Pages page driven by `content.js`, with layout in `index.html`, behavior in `script.js`, and styles in `styles.css`.
+Current work is the public portfolio site for Alexander Popov as a руководитель отдела аналитики и BI. The current implementation is the final 2026-06-26 static polish pass on top of the accepted case-study structure.
 
-Immediate files for the next site-editing session:
+Immediate files for site-editing sessions:
 
-- `content.js` for public copy, navigation, role-linked proof metrics, cases, business-impact infographic, management playbook, platform context, and CTA text.
-- `script.js` for rendering hero proof points, experience proof, case details, business impact, management playbook, platform context, navigation state, and keyboard behavior.
-- `styles.css` for hero/profile support band, experience proof cards, business-impact cards, management playbook, architecture flow, and responsive behavior.
-- `index.html` for static shell, metadata, section order, and cache-busted asset references.
-- `assets/images/profile-hero.jpg` for the current portrait.
+- `content.js` for structured public copy, cases, dashboard example configuration, work approach, architecture, speaking block, and contacts.
+- `scripts/build.mjs` for static generation of `index.html`, case pages, `sitemap.xml`, and `robots.txt`.
+- `scripts/validate-content.mjs` for content, link, architecture, dashboard-status, SEO, and public-safety checks.
+- `script.js` for progressive enhancement only: reveal-on-scroll and future user-triggered dashboard iframe loading.
+- `styles.css` for the simplified visual system, case pages, and responsive architecture scheme.
+- `assets/docs/popov-resume.pdf` for the public resume PDF.
 
 ## Current Public Surface
 
-- Narrative leads with BI as a management function: team, process, self-service, data platform dependencies, and business effect.
-- Navigation is now: `Ценность`, `Опыт`, `Кейсы`, `Эффект`, `Управление`, `Платформа`, `Публичность`, `Контакт`.
-- Detached metrics were replaced by role-linked proof in `experienceProof`: Atom shows function/team/platform/adoption scale; Mars shows commercial effect.
-- Case surface now includes four flagship cards: Atom launch, Atom managed delivery, Atom DataLens dashboard automation, and Mars commercial impact. The automation case keeps the 15+ queue context in the summary and uses a compact `1-3 days -> ~2 hours` result comparison.
-- The automation case may additionally show one plain in-progress note about preparing a GitHub repository and DataLens course; no links are published until those materials exist.
-- Business impact is a compact infographic for revenue, annual savings, automated hours, and BI adoption.
-- Management, delivery route, and first-90-days logic are consolidated into one management playbook with progressive disclosure.
-- Platform context remains secondary and high-level: sources include API, the processing layer uses Python/PySpark/SQL tooling, LakeHouse includes PostgreSQL / Microsoft SQL / ClickHouse, and governance is a final visible layer.
-- Hero and contact CTA buttons should keep identical pill geometry and equal widths inside their local button groups.
-- Hero and contact sections include a HeadHunter resume link for recruiter-only contact access without publishing the phone number directly on the site.
-- Social sharing preview uses `assets/images/og-preview-v2.png` as a 1200x630 PNG so HeadHunter and other unfurl clients do not depend on SVG support or JavaScript-updated metadata.
+- Page structure is now: Hero, `Где я полезен`, `Опыт`, `Избранные кейсы`, `Как организована работа аналитики`, `Выступление и контакты`.
+- The top navigation bar is intentionally absent. `skip-link`, section anchors, canonical URLs and static SEO remain generated.
+- Hero first screen contains `Александр Попов`, `Руководитель отдела аналитики и BI`, the current positioning paragraph, three non-financial confirmations, and large CTA buttons for Telegram, PDF resume and HeadHunter.
+- Telegram and HeadHunter are mandatory public CTA channels on the home page, contacts section and case pages.
+- Email is not published in generated HTML, JSON-LD, CTA, contact block or case pages.
+- Financial metrics are removed from the first screen.
+- The standalone `Ценность`, `Эффект`, intermediate CTA, `Первые 90 дней`, `Платформа`, and old `Публичность` sections were removed.
+- Experience contains two roles: Атом and Mars.
+- Атом experience uses current resume-backed facts plus the user-confirmed dashboard count: team of 6 specialists, 30+ business teams as a retained first-screen confirmation, about 200 active BI users, more than 30 dashboards in use, corporate reporting for key functions, and about 300 mln RUB annual effect by business-customer estimate in the selected case.
+- Mars experience shows growth from analyst intern to lead BI analyst, commercial analytics, sales/KPI reporting, national clients and regions, and a team metric of 3 people.
+- Mars public financial metrics are not summed. The old contract-display monetary value was removed from public text pending confirmation.
+- Dashboard examples are configured in `content.js`, but none are published. No dashboard section, navigation item, iframe, preview, placeholder, sitemap URL or empty dashboard page is generated at zero published examples.
+- The work approach section contains the request process and the required five-column architecture scheme: `Источники -> Обработка -> LakeHouse -> Serving -> Governance`.
+- Architecture icons are local monochrome SVG files from `assets/icons/architecture/`; tool names remain visible as text and arrows are decorative.
+- Main content and case pages are present in static HTML and remain readable without JavaScript.
+- Social preview assets were updated for the current role and non-financial first-screen proof points: `assets/images/og-preview.svg` and `assets/images/og-preview-v2.png`.
 
 ## Working Assumptions
 
-- `materials for future dev/` and `dasboards examples/` are local source/evidence folders and must stay out of the public published surface.
-- Public UI copy must avoid internal links, issue identifiers, confidential dashboard details, and direct internal-tool markers.
-- DataLens dashboard automation belongs in the Atom case, not as a duplicate platform-context card. It can be described publicly as generalized templates/rules, DataLens API, JavaScript, requirements/S2T, prepared data, and about 2 hours to MVP; do not name local plugin repos, internal paths, private dashboard URLs, Jira markers, or token/debug details.
-- GitHub/course preparation for the DataLens automation story can be mentioned only as an in-progress line inside that Atom case and without public URLs until publication.
-- The old `/Users/alexandr/Downloads/portfolio_site_codex_brief_ru.md` source is missing and treated as stale unless restored.
-- Future DataLens dashboard examples should be built only in a separate live sandbox with synthetic mock data; do not add placeholders to the current page.
+- `materials for future dev/` and `dasboards examples/` are local ignored source/evidence folders and must stay out of the public published surface.
+- `materials for future dev/facts_to_confirm.md` is the local ignored place for removed or conflicting metrics that need confirmation before publication.
+- `codex-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` and `.DS_Store` are working artifacts, not public content; they should stay ignored or removed from the Git index without deleting local files.
+- The public page should not expose closed links, issue identifiers, confidential dashboard details, local plugin names, local paths, access data, or implementation-only diagnostics.
+- If a metric conflicts between old site copy, older ledger entries, source briefs, and the fresh CV, keep it out of public copy until the period, territory, methodology, and publication approval are confirmed.
 - The current portrait remains `assets/images/profile-hero.jpg` unless the user provides a replacement.
 
 ## Archive
