@@ -226,6 +226,12 @@ async function validateHtml() {
     [/Публично безопасные материалы/i, "contains prompt artifact materials wording"],
     [/Тип результата:/i, "contains technical result type wording"],
     [/50\+\s*дашборд/i, "contains removed old dashboard count"],
+    [/30\+\s*бизнес-команд/i, "contains old public business-team count"],
+    [/промышленн(?:ого|ое|ый|ая)\s+BI/i, "contains heavy industrial BI wording"],
+    [/не\s+просто/i, "contains contrast-slogan wording"],
+    [/измеримый эффект/i, "contains banned effect wording"],
+    [/управляемый контур/i, "contains banned managed-contour wording"],
+    [/экосистема ценности/i, "contains banned value-ecosystem wording"],
     [/4500/i, "contains removed object-scale metric"],
     [/250\+?\s*витрин/i, "contains removed mart-scale metric"],
     [/10\s*ТБ/i, "contains removed data-volume metric"],
@@ -341,11 +347,18 @@ async function validatePublicSurface(htmlFiles) {
     [/личн(?:ых|ые)\s+договоренност/i, "public copy contains the personal-agreements wording"],
     [/BI как управляемая функция/i, "public HTML contains old positioning"],
     [/Head of BI\s*\/\s*Head of Analytics/i, "public HTML contains old slash positioning"],
+    [/30\+\s*бизнес-команд/i, "public HTML contains old business-team count"],
+    [/промышленн(?:ого|ое|ый|ая)\s+BI/i, "public HTML contains heavy industrial BI wording"],
+    [/не\s+просто/i, "public HTML contains contrast-slogan wording"],
+    [/измеримый эффект/i, "public HTML contains banned effect wording"],
+    [/управляемый контур/i, "public HTML contains banned managed-contour wording"],
+    [/экосистема ценности/i, "public HTML contains banned value-ecosystem wording"],
     [/900\s*(млн|million|м)/i, "public HTML contains a removed financial aggregate"],
     [/id=["']platform["']|href=["']#platform["']|>Платформа</i, "public HTML contains a standalone platform section or navigation"],
     [/>скоро</i, "public HTML contains a placeholder soon label"],
     [/<iframe[\s>]/i, "public HTML contains an iframe while there are no published dashboards"],
     [/codex-goal/i, "public HTML references codex-goal"],
+    [/portfolio-goal/i, "public HTML references portfolio-goal"],
     [/\/Users\//i, "public HTML contains an absolute local path"]
   ];
 
@@ -426,6 +439,7 @@ async function validateSocialPreview() {
     [/Head of BI\s*\/\s*Head of Analytics/i, "social preview contains old slash positioning"],
     [/BI как управляемая функция/i, "social preview contains old BI-function positioning"],
     [/50\+\s*дашборд/i, "social preview contains old dashboard count"],
+    [/30\+\s*бизнес-команд/i, "social preview contains old business-team count"],
     [/300\s*млн/i, "social preview contains financial metric"]
   ];
 
@@ -448,10 +462,10 @@ async function validateSocialPreview() {
   for (const required of [
     "Александр Попов",
     "Руководитель отдела аналитики и BI",
-    "Запуск аналитической функции",
     "BI-процесс",
+    "self-service",
     "6 человек в команде",
-    "30+ бизнес-команд",
+    "20+ бизнес-команд",
     "200 активных пользователей BI"
   ]) {
     if (!svg.includes(required)) {
@@ -606,7 +620,15 @@ async function validateArchitectureIconStyle() {
 }
 
 async function validateTrackedArtifacts() {
-  const tracked = await trackedFiles(["codex-goal", "memory-bank/archive", "__MACOSX", ".DS_Store"]);
+  const tracked = await trackedFiles([
+    "codex-goal",
+    "portfolio-goal",
+    "memory-bank/archive",
+    "screenshots",
+    "demo-data/*.csv",
+    "__MACOSX",
+    ".DS_Store"
+  ]);
   if (tracked.length > 0) {
     fail(`Working artifacts must not be tracked: ${tracked.join(", ")}`);
   }

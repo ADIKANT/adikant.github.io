@@ -5,7 +5,7 @@ import { portfolioContent as content } from "../content.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteUrl = content.site.baseUrl.replace(/\/$/, "");
-const buildVersion = "20260626-mobile-hero-photo-1";
+const buildVersion = "20260629-lead-bi-polish-1";
 const currentYear = "2026";
 
 const publishedDashboards = content.dashboardExamples.filter(
@@ -274,8 +274,8 @@ function formatResult(result) {
     return `BI стал регулярным рабочим инструментом для ${result.value} активных пользователей в месяц${dashboardPhrase}.`;
   }
 
-  if (result.value === "30+" && result.unit === "бизнес-команд") {
-    return "Отчетность и запросы покрывают 30+ бизнес-команд.";
+  if (result.value === "20+" && result.unit === "бизнес-команд") {
+    return "Отчетность и запросы покрывают 20+ бизнес-команд.";
   }
 
   if (result.value === "6" && result.unit === "человек") {

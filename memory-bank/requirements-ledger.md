@@ -20,11 +20,11 @@
 - The architecture scheme is mandatory inside `Как организована работа аналитики` and must keep five stages: `Источники -> Обработка -> LakeHouse -> Serving -> Governance`.
 - Architecture tools must use local SVG icons and visible text names.
 - Social preview assets must match the current role and non-financial proof points, with no old preview positioning or financial metric. When Telegram or other messengers keep stale link-preview cache, the active Open Graph PNG should move to a fresh filename such as `og-preview-v3.png`.
-- `codex-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` and `.DS_Store` are working artifacts and must not be tracked for public publication.
+- `codex-goal/`, `portfolio-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX` and `.DS_Store` are working artifacts and must not be tracked for public publication.
 
 ## Confirmed Metrics / Facts
 
-- Current resume source: `CV_Alexandr_Popov_Rus 25.06.26.pdf`.
+- Current resume source: `CV_Alexandr_Popov_Lead_DA.pdf`, created 2026-06-29.
 - 6+ years of BI and analytics experience.
 - Атом: project of the Russian electric vehicle Атом, АО Кама.
 - Атом: role is `Руководитель отдела аналитики`, period `03.2023 - н.в.`
@@ -32,7 +32,8 @@
 - Атом: manages roadmap, бэклог, priorities, requirements, BI quality, data-quality checks, metrics descriptions, release and support of BI solutions.
 - Атом: corporate reporting covers finance, HR, procurement, sales, marketing, production, product, telematics, risks, and quality.
 - Атом: about 200 active BI users per month.
-- Атом: more than 30 dashboards are used in the BI reporting contour; confirmed by the user on 2026-06-26 for the public Atom launch case.
+- Атом: current resume says 20+ business teams; public site uses 20+ consistently after the 2026-06-29 polish update.
+- Атом: current resume says 50+ dashboards; public site keeps the conservative already-approved wording `more than 30 dashboards` in the Atom launch case.
 - Атом: automation of reporting and analytics reduced manual operations; total annual effect by business-customer estimate is about 300 million RUB.
 - Mars: role is `Ведущий BI-аналитик`, period `12.2019 - 03.2023`.
 - Mars: grew from analyst intern to lead BI analyst over three years.
@@ -58,6 +59,6 @@
 ## Open Follow-up
 
 - `materials for future dev/facts_to_confirm.md` records local ignored questions about removed or conflicting public metrics.
-- Confirm current public values for Атом source/object/mart scale before publishing those counts again; the `30+ dashboards` count is now approved only for the first Atom case result.
+- Confirm current public values for Атом source/object/mart scale before publishing those counts again; the `more than 30 dashboards` count remains approved only for the first Atom case result unless exact `50+ dashboards` wording is approved.
 - Confirm whether the old Mars contract-display monetary value is still public and what period, territory, and methodology should accompany it.
 - Confirm whether the separate DataLens dashboard-automation case should remain public and what exact tooling/role wording is approved.

@@ -81,3 +81,10 @@
 - Updated social preview SVG and PNG for the current role and non-financial proof points.
 - Expanded validation for public-safety phrases, email/mailto, dashboard gating, case CTA coverage, local architecture icons, social preview text, and tracked working artifacts.
 - Marked `codex-goal/`, `memory-bank/archive/`, generated CSV demo data, `.DS_Store`, and `__MACOSX/` as non-public working artifacts.
+
+## 2026-06-29
+
+- Started the Lead BI / Lead Data Analyst polish update from the 2026-06-29 resume.
+- Switched the public business-team count from `30+` to `20+` to match the current resume.
+- Kept `more than 30 dashboards` as the conservative public Atom case wording instead of publishing the exact `50+` resume count.
+- Added `portfolio-goal/` to local working-artifact protection.

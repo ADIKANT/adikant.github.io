@@ -2,7 +2,8 @@
 
 | Source | Type | Trust | Notes | Status |
 | --- | --- | --- | --- | --- |
-| `CV_Alexandr_Popov_Rus 25.06.26.pdf` | Resume source | High | Fresh resume source used for the 2026-06-25 information-architecture refactor; copied into `assets/docs/popov-resume.pdf`. | Current |
+| `CV_Alexandr_Popov_Lead_DA.pdf` | Resume source | High | Current resume source for the 2026-06-29 polish update; copied into `assets/docs/popov-resume.pdf`. | Current |
+| `CV_Alexandr_Popov_Rus 25.06.26.pdf` | Resume source | Medium | Previous resume source used for the 2026-06-25 information-architecture refactor; superseded by the 2026-06-29 Lead DA resume. | Superseded |
 | `materials for future dev/briefs/portfolio_strategy_brief_v2.md` | Product brief | High | Strategy source for leadership positioning, surface-vs-details split, and hiring-manager framing. Local ignored source; do not publish. Current public wording is narrowed to `руководитель отдела аналитики и BI`. | Ingested |
 | `materials for future dev/briefs/common_context_for_codex_v2.md` | Product brief | High | Current public-safe facts, tone balance, and repo workflow context. Local ignored source; do not publish. | Ingested |
 | `materials for future dev/briefs/confidentiality_guardrails.md` | Safety brief | High | Public-safety rules for issue/task exports, closed URLs, screenshots, closed names, and overclaiming. | Ingested |

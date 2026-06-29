@@ -48,7 +48,7 @@ python3 -m http.server 8080
 - `assets/images/` - публичные изображения и social preview. При смене позиционирования нужно обновлять `og-preview.svg`, генерировать новый `og-preview-v*.png` с новым именем для сброса кеша мессенджеров и затем запускать build/validate.
 - `assets/icons/architecture/` - локальные декоративные SVG для архитектурной схемы.
 - `materials for future dev/facts_to_confirm.md` - локальный ignored-файл с вопросами по спорным фактам.
-- `codex-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` и `.DS_Store` - рабочие артефакты, не публичный контент.
+- `codex-goal/`, `portfolio-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` и `.DS_Store` - рабочие артефакты, не публичный контент.
 
 ## Как редактировать контент
 

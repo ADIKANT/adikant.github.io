@@ -26,7 +26,7 @@ Immediate files for site-editing sessions:
 - Case objects now use a separate `problem` field in addition to `context` and `task`.
 - Home case cards show the business problem from `problem`, not the neutral context, so each card reads as a business case rather than an internal request-processing story.
 - Case detail pages follow the order: `Контекст`, `Проблема`, `Задача`, `Моя роль`, `Что сделал`, `Результат`, `Как измерялся результат`, `Границы ответственности`, `Инструменты`, CTA.
-- Атом experience uses current resume-backed facts plus the user-confirmed dashboard count: team of 6 specialists, 30+ business teams as a retained first-screen confirmation, about 200 active BI users, more than 30 dashboards in use, corporate reporting for key functions, and about 300 mln RUB annual effect by business-customer estimate in the selected case.
+- Атом experience uses current resume-backed facts plus the user-confirmed conservative dashboard count: team of 6 specialists, 20+ business teams, about 200 active BI users, more than 30 dashboards in use, corporate reporting for key functions, and about 300 mln RUB annual effect by business-customer estimate in the selected case.
 - Mars experience shows growth from analyst intern to lead BI analyst, commercial analytics, sales/KPI reporting, national clients and regions, and a team metric of 3 people.
 - Mars public financial metrics are not summed. The old contract-display monetary value was removed from public text pending confirmation.
 - Dashboard examples are configured in `content.js`, but none are published. No dashboard section, navigation item, iframe, preview, placeholder, sitemap URL or empty dashboard page is generated at zero published examples.
@@ -39,7 +39,7 @@ Immediate files for site-editing sessions:
 
 - `materials for future dev/` and `dasboards examples/` are local ignored source/evidence folders and must stay out of the public published surface.
 - `materials for future dev/facts_to_confirm.md` is the local ignored place for removed or conflicting metrics that need confirmation before publication.
-- `codex-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` and `.DS_Store` are working artifacts, not public content; they should stay ignored or removed from the Git index without deleting local files.
+- `codex-goal/`, `portfolio-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` and `.DS_Store` are working artifacts, not public content; they should stay ignored or removed from the Git index without deleting local files.
 - The public page should not expose closed links, issue identifiers, confidential dashboard details, local plugin names, local paths, access data, or implementation-only diagnostics.
 - If a metric conflicts between old site copy, older ledger entries, source briefs, and the fresh CV, keep it out of public copy until the period, territory, methodology, and publication approval are confirmed.
 - The current portrait remains `assets/images/profile-hero.jpg` unless the user provides a replacement.
