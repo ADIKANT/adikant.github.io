@@ -5,7 +5,7 @@ import { portfolioContent as content } from "../content.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteUrl = content.site.baseUrl.replace(/\/$/, "");
-const buildVersion = "20260629-lead-bi-polish-1";
+const buildVersion = "20260630-lead-star-1";
 const currentYear = "2026";
 
 const publishedDashboards = content.dashboardExamples.filter(
@@ -263,22 +263,26 @@ function renderExperience() {
 }
 
 function formatResult(result) {
+  if (result.summary) {
+    return result.summary;
+  }
+
   if (result.value === "около 300") {
     return "Около 300 млн рублей в год по оценке бизнес-заказчиков. В расчет входили автоматизация отчетности, сокращение ручных операций и снижение отдельных операционных рисков.";
   }
 
-  if (result.unit === "активных пользователей BI в месяц") {
+  if (result.unit === "MAU в BI") {
     const dashboardPhrase = result.dashboardCount
       ? `; в контуре используется более ${result.dashboardCount.replace("+", "")} дашбордов`
       : "";
-    return `BI стал регулярным рабочим инструментом для ${result.value} активных пользователей в месяц${dashboardPhrase}.`;
+    return `BI стал регулярным рабочим инструментом для ${result.value} MAU в BI${dashboardPhrase}.`;
   }
 
   if (result.value === "20+" && result.unit === "бизнес-команд") {
     return "Отчетность и запросы покрывают 20+ бизнес-команд.";
   }
 
-  if (result.value === "6" && result.unit === "человек") {
+  if (result.value === "6" && result.unit.includes("человек")) {
     return "Сформирована и развивается команда аналитики из 6 человек.";
   }
 
@@ -288,6 +292,10 @@ function formatResult(result) {
 
   if (result.value === "200" && result.unit === "млн рублей") {
     return "200 млн рублей дополнительных продаж после масштабирования подхода на X5.";
+  }
+
+  if (result.value === "100%" && result.unit === "покрытие") {
+    return "Контроль контрактных дополнительных мест продаж довел покрытие до 100 процентов и был масштабирован на Россию.";
   }
 
   return `${result.value} ${result.unit}: ${result.explanation}.`;
@@ -322,28 +330,29 @@ function renderCasesHome() {
         <div class="cases-list">
           ${content.cases
             .map((caseItem) => {
-              const mainResult = caseItem.results[0];
+              const resultText = caseItem.results.map(formatResult).join(" ");
               return `
                 <article class="case-card">
                   <div class="case-card-head">
                     <p class="case-company">${escapeHtml(caseItem.company)} · ${escapeHtml(caseItem.period)}</p>
                     <h3>${escapeHtml(caseItem.title)}</h3>
+                    <p class="case-situation-label">Ситуация</p>
                     <p>${escapeHtml(caseItem.problem)}</p>
                   </div>
                   <div class="case-card-body">
                     <section>
-                      <h4>Моя роль</h4>
-                      <p>${escapeHtml(caseItem.role)}</p>
+                      <h4>Задача</h4>
+                      <p>${escapeHtml(caseItem.task)}</p>
                     </section>
                     <section>
                       <h4>Действия</h4>
                       <ul>
-                        ${caseItem.actions.slice(0, 3).map((action) => `<li>${escapeHtml(action)}</li>`).join("")}
+                        ${caseItem.actions.slice(0, 5).map((action) => `<li>${escapeHtml(action)}</li>`).join("")}
                       </ul>
                     </section>
                     <section class="case-result">
                       <h4>Результат</h4>
-                      <p>${escapeHtml(formatResult(mainResult))}</p>
+                      <p>${escapeHtml(resultText)}</p>
                     </section>
                     <a class="text-link" href="/cases/${escapeHtml(caseItem.slug)}/">Подробнее</a>
                   </div>

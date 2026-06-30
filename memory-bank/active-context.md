@@ -2,7 +2,7 @@
 
 ## Current Slice
 
-Current work is the public portfolio site for Alexander Popov as a руководитель отдела аналитики и BI. The current implementation is the final 2026-06-26 static polish pass on top of the accepted case-study structure.
+Current work is the public portfolio site for Alexander Popov as a руководитель отдела аналитики и BI. The current implementation is the 2026-06-30 lead-portfolio STAR alignment pass on top of the accepted static architecture.
 
 Immediate files for site-editing sessions:
 
@@ -17,29 +17,30 @@ Immediate files for site-editing sessions:
 
 - Page structure is now: Hero, `Ключевые зоны ответственности`, `Опыт`, `Избранные кейсы`, `Как организована работа аналитики`, `Выступление и контакты`.
 - The top navigation bar is intentionally absent. `skip-link`, section anchors, canonical URLs and static SEO remain generated.
-- Hero first screen contains `Александр Попов`, `Руководитель отдела аналитики и BI`, the current positioning paragraph, three non-financial confirmations, and large CTA buttons for Telegram, PDF resume and HeadHunter.
+- Hero first screen contains `Александр Попов`, `Руководитель отдела аналитики и BI`, the current positioning paragraph, four non-financial confirmations (`6+ лет опыта`, `6 человек в команде`, `20+ бизнес-команд`, `200 MAU в BI`), and large CTA buttons for Telegram, PDF resume and HeadHunter.
 - Telegram and HeadHunter are mandatory public CTA channels on the home page, contacts section and case pages.
 - Email is not published in generated HTML, JSON-LD, CTA, contact block or case pages.
 - Financial metrics are removed from the first screen.
 - The standalone `Ценность`, `Эффект`, intermediate CTA, `Первые 90 дней`, `Платформа`, and old `Публичность` sections were removed.
 - Experience contains two roles: Атом and Mars.
 - Case objects now use a separate `problem` field in addition to `context` and `task`.
-- Home case cards show the business problem from `problem`, not the neutral context, so each card reads as a business case rather than an internal request-processing story.
+- Home case cards follow the STAR-like structure from the analyst reference: left side has company, period, title and `Ситуация`; right side has only `Задача`, `Действия`, `Результат`. `Моя роль` stays off home cards.
 - Case detail pages follow the order: `Контекст`, `Проблема`, `Задача`, `Моя роль`, `Что сделал`, `Результат`, `Как измерялся результат`, `Границы ответственности`, `Инструменты`, CTA.
-- Атом experience uses current resume-backed facts plus the user-confirmed conservative dashboard count: team of 6 specialists, 20+ business teams, about 200 active BI users, more than 30 dashboards in use, corporate reporting for key functions, and about 300 mln RUB annual effect by business-customer estimate in the selected case.
+- Four public cases are generated: Atom analytics function launch, Atom analytics delivery process, Atom self-service BI and knowledge base, and Mars shelf/execution control.
+- Атом experience uses current resume-backed facts plus the user-confirmed conservative dashboard count: team of 6 specialists, 20+ business teams, 200 MAU in BI, more than 30 dashboards in use, corporate reporting for key functions, and about 300 mln RUB annual effect by business-customer estimate in the selected case.
 - Mars experience shows growth from analyst intern to lead BI analyst, commercial analytics, sales/KPI reporting, national clients and regions, and a team metric of 3 people.
 - Mars public financial metrics are not summed. The old contract-display monetary value was removed from public text pending confirmation.
 - Dashboard examples are configured in `content.js`, but none are published. No dashboard section, navigation item, iframe, preview, placeholder, sitemap URL or empty dashboard page is generated at zero published examples.
 - The work approach section contains the request process and the required five-column architecture scheme: `Источники -> Обработка -> LakeHouse -> Serving -> Governance`.
 - Architecture icons are local monochrome SVG files from `assets/icons/architecture/`; tool names remain visible as text and arrows are decorative.
 - Main content and case pages are present in static HTML and remain readable without JavaScript.
-- Social preview assets use the current role and non-financial first-screen proof points. The active Open Graph PNG should use a fresh versioned filename such as `assets/images/og-preview-v3.png` when Telegram or other messengers keep stale link-preview cache.
+- Social preview assets use the current role and non-financial first-screen proof points: `6+ лет опыта`, `6 человек в команде`, `200 MAU в BI`. The active Open Graph PNG is `assets/images/og-preview-v3.png`.
 
 ## Working Assumptions
 
 - `materials for future dev/` and `dasboards examples/` are local ignored source/evidence folders and must stay out of the public published surface.
 - `materials for future dev/facts_to_confirm.md` is the local ignored place for removed or conflicting metrics that need confirmation before publication.
-- `codex-goal/`, `portfolio-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` and `.DS_Store` are working artifacts, not public content; they should stay ignored or removed from the Git index without deleting local files.
+- `codex-goal/`, `portfolio-goal/`, `lead-portfolio-goal/`, `LEAD_PORTFOLIO_FINAL_REPORT.md`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` and `.DS_Store` are working artifacts, not public content; they should stay ignored or removed from the Git index without deleting local files.
 - The public page should not expose closed links, issue identifiers, confidential dashboard details, local plugin names, local paths, access data, or implementation-only diagnostics.
 - If a metric conflicts between old site copy, older ledger entries, source briefs, and the fresh CV, keep it out of public copy until the period, territory, methodology, and publication approval are confirmed.
 - The current portrait remains `assets/images/profile-hero.jpg` unless the user provides a replacement.

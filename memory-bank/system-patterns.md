@@ -3,8 +3,8 @@
 ## Content Pattern
 
 - Keep portfolio copy and repeatable content structures in `content.js`.
-- Keep `index.html` as a semantic shell with metadata and section anchors.
-- Render repeated sections from `script.js` using the structured content object.
+- Generate `index.html`, case pages, `sitemap.xml`, and `robots.txt` from `scripts/build.mjs`.
+- Keep `script.js` for progressive enhancement only; the public content must remain readable without JavaScript.
 
 ## Visual Pattern
 

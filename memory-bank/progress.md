@@ -88,3 +88,13 @@
 - Switched the public business-team count from `30+` to `20+` to match the current resume.
 - Kept `more than 30 dashboards` as the conservative public Atom case wording instead of publishing the exact `50+` resume count.
 - Added `portfolio-goal/` to local working-artifact protection.
+
+## 2026-06-30
+
+- Applied the lead-portfolio STAR prompt pack without rebuilding the static architecture from scratch.
+- Updated hero proof points to `6+ лет опыта`, `6 человек в команде`, `20+ бизнес-команд`, and `200 MAU в BI`.
+- Reworked home case cards to the STAR-like reference structure: `Ситуация` on the left, `Задача`, `Действия`, and `Результат` on the right, without `Моя роль` on cards.
+- Added the fourth public case `atom-self-service-bi` for standards, knowledge base and self-service BI.
+- Removed the unused technical project block from `content.js` so DataLens API/Codex-style technical detail is not part of the public content surface.
+- Updated social preview SVG/PNG to the leadership role and non-financial proof points.
+- Extended validation for hero proof points, STAR headings, missing home-card roles, old active-user wording, social preview wording, and lead-portfolio local artifacts.

@@ -23,11 +23,11 @@
   <rect x="808" y="104" width="304" height="304" rx="28" fill="#ffffff" stroke="#d8ded9" stroke-width="2"/>
   <image href="profile-hero.jpg" x="816" y="112" width="288" height="288" preserveAspectRatio="xMidYMid slice" clip-path="url(#portrait-clip)"/>
   <g transform="translate(128 438)">
-    <rect x="0" y="0" width="244" height="76" rx="18" fill="#edf2ee" stroke="#d8ded9"/>
-    <text x="28" y="47" fill="#102321" font-family="Arial, sans-serif" font-size="23" font-weight="800">6 человек в команде</text>
-    <rect x="276" y="0" width="260" height="76" rx="18" fill="#edf2ee" stroke="#d8ded9"/>
-    <text x="304" y="47" fill="#102321" font-family="Arial, sans-serif" font-size="23" font-weight="800">20+ бизнес-команд</text>
-    <rect x="568" y="0" width="354" height="76" rx="18" fill="#edf2ee" stroke="#d8ded9"/>
-    <text x="596" y="47" fill="#102321" font-family="Arial, sans-serif" font-size="22" font-weight="800">200 активных пользователей BI</text>
+    <rect x="0" y="0" width="198" height="76" rx="18" fill="#edf2ee" stroke="#d8ded9"/>
+    <text x="28" y="47" fill="#102321" font-family="Arial, sans-serif" font-size="23" font-weight="800">6+ лет опыта</text>
+    <rect x="230" y="0" width="244" height="76" rx="18" fill="#edf2ee" stroke="#d8ded9"/>
+    <text x="258" y="47" fill="#102321" font-family="Arial, sans-serif" font-size="23" font-weight="800">6 человек в команде</text>
+    <rect x="506" y="0" width="214" height="76" rx="18" fill="#edf2ee" stroke="#d8ded9"/>
+    <text x="534" y="47" fill="#102321" font-family="Arial, sans-serif" font-size="23" font-weight="800">200 MAU в BI</text>
   </g>
 </svg>

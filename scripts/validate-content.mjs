@@ -105,6 +105,21 @@ async function trackedFiles(paths) {
 
 async function validateContentModel() {
   const slugs = new Set();
+  const heroProofPoints = new Set(content.hero.proofPoints);
+
+  for (const requiredProofPoint of ["6+ лет опыта", "200 MAU в BI"]) {
+    if (!heroProofPoints.has(requiredProofPoint)) {
+      fail(`Hero proof points must include ${requiredProofPoint}`);
+    }
+  }
+
+  if ((content.technicalProjects || []).length > 0) {
+    fail("technicalProjects must not be present on the leadership portfolio surface");
+  }
+
+  if (content.cases.length < 4) {
+    fail("Leadership portfolio must include four STAR cases");
+  }
 
   for (const caseItem of content.cases) {
     const required = [
@@ -227,6 +242,7 @@ async function validateHtml() {
     [/Тип результата:/i, "contains technical result type wording"],
     [/50\+\s*дашборд/i, "contains removed old dashboard count"],
     [/30\+\s*бизнес-команд/i, "contains old public business-team count"],
+    [/200\s+активн(?:ых|ые)\s+пользовател/i, "contains old active-BI-users wording"],
     [/промышленн(?:ого|ое|ый|ая)\s+BI/i, "contains heavy industrial BI wording"],
     [/не\s+просто/i, "contains contrast-slogan wording"],
     [/измеримый эффект/i, "contains banned effect wording"],
@@ -344,6 +360,7 @@ async function validatePublicSurface(htmlFiles) {
     [/Без общего процесса было сложнее согласовывать приоритеты/i, "generated HTML contains removed process wording"],
     [/Публично безопасные материалы/i, "case pages contain the prompt artifact materials block"],
     [/Тип результата:/i, "case pages contain technical result type text"],
+    [/200\s+активн(?:ых|ые)\s+пользовател/i, "public HTML contains old active-BI-users wording"],
     [/личн(?:ых|ые)\s+договоренност/i, "public copy contains the personal-agreements wording"],
     [/BI как управляемая функция/i, "public HTML contains old positioning"],
     [/Head of BI\s*\/\s*Head of Analytics/i, "public HTML contains old slash positioning"],
@@ -378,6 +395,14 @@ async function validatePublicSurface(htmlFiles) {
   }
 
   const indexHtml = htmlByFile.get("index.html") || "";
+  if (/<nav[\s>]/i.test(combinedHtml)) {
+    fail("Generated HTML must not contain a top navigation element");
+  }
+  for (const requiredHeroText of ["6+ лет опыта", "200 MAU в BI"]) {
+    if (!indexHtml.includes(requiredHeroText)) {
+      fail(`Home page hero is missing ${requiredHeroText}`);
+    }
+  }
   if (!indexHtml.includes(content.contact.telegramUrl)) {
     fail("Home page is missing Telegram CTA");
   }
@@ -405,6 +430,14 @@ async function validatePublicSurface(htmlFiles) {
       }
       if (cardHtml.includes(caseItem.context)) {
         fail(`Home page case card for ${caseItem.slug} renders context instead of problem`);
+      }
+      if (cardHtml.includes("Моя роль")) {
+        fail(`Home page case card for ${caseItem.slug} must not render role`);
+      }
+      for (const heading of ["Ситуация", "Задача", "Действия", "Результат"]) {
+        if (!cardHtml.includes(`>${heading}<`)) {
+          fail(`Home page case card for ${caseItem.slug} is missing ${heading}`);
+        }
       }
     }
 
@@ -437,10 +470,11 @@ async function validateSocialPreview() {
   const expectedOgImage = `${content.site.baseUrl.replace(/\/$/, "")}${content.site.ogImage}`;
   const forbiddenPreviewPatterns = [
     [/Head of BI\s*\/\s*Head of Analytics/i, "social preview contains old slash positioning"],
+    [/BI Engineer/i, "social preview contains old BI Engineer positioning"],
     [/BI как управляемая функция/i, "social preview contains old BI-function positioning"],
     [/50\+\s*дашборд/i, "social preview contains old dashboard count"],
     [/30\+\s*бизнес-команд/i, "social preview contains old business-team count"],
-    [/300\s*млн/i, "social preview contains financial metric"]
+    [/\b(?:59|200|300|900)\s*(?:млн|million|м)\b|₽|рубл/i, "social preview contains financial metric"]
   ];
 
   if (content.site.ogImage !== "/assets/images/og-preview-v3.png") {
@@ -464,9 +498,9 @@ async function validateSocialPreview() {
     "Руководитель отдела аналитики и BI",
     "BI-процесс",
     "self-service",
+    "6+ лет опыта",
     "6 человек в команде",
-    "20+ бизнес-команд",
-    "200 активных пользователей BI"
+    "200 MAU в BI"
   ]) {
     if (!svg.includes(required)) {
       fail(`social preview SVG is missing required text: ${required}`);
@@ -623,6 +657,8 @@ async function validateTrackedArtifacts() {
   const tracked = await trackedFiles([
     "codex-goal",
     "portfolio-goal",
+    "lead-portfolio-goal",
+    "LEAD_PORTFOLIO_FINAL_REPORT.md",
     "memory-bank/archive",
     "screenshots",
     "demo-data/*.csv",

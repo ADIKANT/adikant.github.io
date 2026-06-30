@@ -12,15 +12,15 @@
 - Email must not be published in generated HTML, JSON-LD, CTA, contact block or case pages.
 - Removed as standalone sections: `Ценность`, `Эффект`, intermediate CTA, `Первые 90 дней`, `Платформа`, and the old `Публичность` section.
 - Content should remain easy to update from `content.js`.
-- Main case objects must include a separate `problem` field. Home case cards show that business problem instead of neutral context, and case detail pages use the order `Контекст`, `Проблема`, `Задача`, `Моя роль`, `Что сделал`, `Результат`, `Как измерялся результат`, `Границы ответственности`, `Инструменты`.
+- Main case objects must include a separate `problem` field. Home case cards use the STAR-like reference structure: company, period, title and `Ситуация` on the left; `Задача`, `Действия`, `Результат` on the right; no `Моя роль` on the home cards. Case detail pages use the order `Контекст`, `Проблема`, `Задача`, `Моя роль`, `Что сделал`, `Результат`, `Как измерялся результат`, `Границы ответственности`, `Инструменты`.
 - Case copy should read as external business cases, not as an internal story of request handling.
 - SEO baseline must include title, meta description, Open Graph, favicon, and schema.org profile data.
 - Unsafe closed dashboard and Jira screenshots must not be published.
 - Dashboard examples are configured in `content.js`, but public cards, pages, previews, and navigation are generated only for `published` examples on fully synthetic data.
 - The architecture scheme is mandatory inside `Как организована работа аналитики` and must keep five stages: `Источники -> Обработка -> LakeHouse -> Serving -> Governance`.
 - Architecture tools must use local SVG icons and visible text names.
-- Social preview assets must match the current role and non-financial proof points, with no old preview positioning or financial metric. When Telegram or other messengers keep stale link-preview cache, the active Open Graph PNG should move to a fresh filename such as `og-preview-v3.png`.
-- `codex-goal/`, `portfolio-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX` and `.DS_Store` are working artifacts and must not be tracked for public publication.
+- Social preview assets must match the current role and non-financial proof points, with no old preview positioning or financial metric. The active Open Graph PNG is `og-preview-v3.png`.
+- `codex-goal/`, `portfolio-goal/`, `lead-portfolio-goal/`, `LEAD_PORTFOLIO_FINAL_REPORT.md`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX` and `.DS_Store` are working artifacts and must not be tracked for public publication.
 
 ## Confirmed Metrics / Facts
 
@@ -31,8 +31,8 @@
 - Атом: formed and develops a team of 6 specialists.
 - Атом: manages roadmap, бэклог, priorities, requirements, BI quality, data-quality checks, metrics descriptions, release and support of BI solutions.
 - Атом: corporate reporting covers finance, HR, procurement, sales, marketing, production, product, telematics, risks, and quality.
-- Атом: about 200 active BI users per month.
-- Атом: current resume says 20+ business teams; public site uses 20+ consistently after the 2026-06-29 polish update.
+- Атом: 200 MAU in BI.
+- Атом: current resume says 20+ business teams; public site uses 20+ consistently after the 2026-06-29 polish update and 2026-06-30 STAR alignment.
 - Атом: current resume says 50+ dashboards; public site keeps the conservative already-approved wording `more than 30 dashboards` in the Atom launch case.
 - Атом: automation of reporting and analytics reduced manual operations; total annual effect by business-customer estimate is about 300 million RUB.
 - Mars: role is `Ведущий BI-аналитик`, period `12.2019 - 03.2023`.
