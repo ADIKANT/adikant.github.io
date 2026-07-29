@@ -1,6 +1,8 @@
-# Active Context
+# Current Workstream
 
-## Current Slice
+## Active Context
+
+### Current Slice
 
 Current work is the public portfolio site for Alexander Popov as a руководитель отдела аналитики и BI. The current implementation is the 2026-06-30 lead-portfolio STAR alignment pass on top of the accepted static architecture.
 
@@ -13,7 +15,7 @@ Immediate files for site-editing sessions:
 - `styles.css` for the simplified visual system, case pages, and responsive architecture scheme.
 - `assets/docs/popov-resume.pdf` for the public resume PDF.
 
-## Current Public Surface
+### Current Public Surface
 
 - Page structure is now: Hero, `Ключевые зоны ответственности`, `Опыт`, `Избранные кейсы`, `Как организована работа аналитики`, `Выступление и контакты`.
 - The top navigation bar is intentionally absent. `skip-link`, section anchors, canonical URLs and static SEO remain generated.
@@ -36,7 +38,7 @@ Immediate files for site-editing sessions:
 - Main content and case pages are present in static HTML and remain readable without JavaScript.
 - Social preview assets use the current role and non-financial first-screen proof points: `6+ лет опыта`, `6 человек в команде`, `200 MAU в BI`. The active Open Graph PNG is `assets/images/og-preview-v3.png`.
 
-## Working Assumptions
+### Working Assumptions
 
 - `materials for future dev/` and `dasboards examples/` are local ignored source/evidence folders and must stay out of the public published surface.
 - `materials for future dev/facts_to_confirm.md` is the local ignored place for removed or conflicting metrics that need confirmation before publication.
@@ -45,6 +47,12 @@ Immediate files for site-editing sessions:
 - If a metric conflicts between old site copy, older ledger entries, source briefs, and the fresh CV, keep it out of public copy until the period, territory, methodology, and publication approval are confirmed.
 - The current portrait remains `assets/images/profile-hero.jpg` unless the user provides a replacement.
 
-## Archive
+### Archive
 
 The pre-compaction detailed 2026-05-07 working notes were preserved in `memory-bank/archive/2026-05-08-active-context-before-compaction.md`.
+
+## Backlog
+
+- Optional future enhancement: add a standalone executive summary PDF.
+- Future enhancement: build a separate live DataLens sandbox using an isolated ClickHouse and fully synthetic mock datasets, then embed reviewed dashboards into the portfolio after a dedicated security and privacy QA pass.
+- Future enhancement: after the DataLens dashboard automation article and public GitHub repository are actually published, add reviewed public links/examples to the portfolio without exposing closed dashboards or non-public implementation details.

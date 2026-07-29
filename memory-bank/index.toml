@@ -1,0 +1,83 @@
+schema_version = "project-memory.v2"
+workspace_id = "adikant.github.io"
+topology = "project"
+adapters = []
+
+[context]
+soft_budget_tokens = 3000
+hard_budget_tokens = 6000
+low_confidence_threshold = 1
+
+[section_priorities]
+"Critical Constraints" = 1000
+"Current State" = 900
+"Active Context" = 1200
+"Next Actions" = 850
+"Current Handoff" = 820
+"Purpose" = 750
+"Requirements" = 750
+"Scope" = 740
+"Sources" = 700
+"Evidence" = 700
+"Technical Context" = 650
+"Decisions" = 650
+"Open Questions" = 650
+"Backlog" = 550
+
+[[modules]]
+id = "project"
+path = "memory-bank/project.md"
+priority = 100
+always = true
+tags = ["constraints", "project", "scope", "status"]
+soft_budget_tokens = 1500
+
+[[modules]]
+id = "current"
+path = "memory-bank/workstreams/current.md"
+priority = 90
+always = false
+tags = ["build", "change", "current", "debug", "fix", "implement", "migration", "status", "task", "test", "update", "work", "задача", "изменить", "исправить", "проверить", "сделать", "текущий"]
+soft_budget_tokens = 3000
+
+[[modules]]
+id = "requirements"
+path = "memory-bank/workstreams/requirements.md"
+priority = 80
+always = false
+tags = ["acceptance", "criteria", "requirement", "requirements", "scope", "spec", "требования"]
+soft_budget_tokens = 1800
+
+[[modules]]
+id = "technical"
+path = "memory-bank/workstreams/technical.md"
+priority = 70
+always = false
+tags = ["architecture", "code", "implementation", "sql", "technical", "test", "архитектура", "код"]
+soft_budget_tokens = 1800
+
+[[modules]]
+id = "sources"
+path = "memory-bank/sources.md"
+priority = 75
+always = false
+tags = ["audit", "evidence", "metadata", "research", "source", "truth", "verify", "источник", "метаданные", "проверить"]
+soft_budget_tokens = 1500
+
+[[modules]]
+id = "decisions"
+path = "memory-bank/decisions.md"
+priority = 70
+always = false
+tags = ["architecture", "decision", "design", "history", "rationale", "архитектура", "решение"]
+soft_budget_tokens = 900
+
+[[evidence]]
+path = "memory-bank/archive/v03-progress-3ac12a87.md"
+sha256 = "3ac12a877346b2a04993eae2ff5d2eb45470f3eff653c6b98fca5716e40c2822"
+kind = "migrated_progress_history"
+
+[[evidence]]
+path = "memory-bank/archive/2026-05-08-active-context-before-compaction.md"
+sha256 = "1160f9cdf49bbd65d88c02fb7b0ff28c73f8524ccce729992b10b2f27469c5ae"
+kind = "preserved_legacy_evidence"

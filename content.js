@@ -25,8 +25,8 @@ export const portfolioContent = {
     portrait: {
       src: "/assets/images/profile-hero.jpg",
       alt: "Александр Попов",
-      width: 1200,
-      height: 1200
+      width: 3091,
+      height: 3089
     },
     resume: "/assets/docs/popov-resume.pdf"
   },

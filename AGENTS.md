@@ -5,3 +5,5 @@
 - Preserve the static GitHub Pages stack: plain HTML, CSS, JS, and lightweight assets only.
 - Keep the public site fully safe for publishing: no closed Jira screens, no confidential dashboard screenshots, no hidden draft blocks.
 - Store editable site copy and structured content in `content.js`; keep layout and styles in `index.html`, `script.js`, and `styles.css`.
+
+Memory Bank context is routed from `memory-bank/index.toml`; do not maintain a fixed startup read list here.

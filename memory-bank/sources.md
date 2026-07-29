@@ -1,4 +1,4 @@
-# Source Map
+# Sources
 
 | Source | Type | Trust | Notes | Status |
 | --- | --- | --- | --- | --- |
