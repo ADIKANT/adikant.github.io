@@ -611,6 +611,104 @@ async function validateGeneratedState() {
   }
 }
 
+async function validateAnalystSite() {
+  const htmlFiles = ["analyst/index.html", "analyst/resume.html"];
+  const expectedCanonicals = new Map([
+    ["analyst/index.html", "https://adikant.github.io/analyst/"],
+    ["analyst/resume.html", "https://adikant.github.io/analyst/resume.html"]
+  ]);
+
+  for (const requiredFile of [
+    ...htmlFiles,
+    "analyst/styles.css",
+    "analyst/script.js",
+    "analyst/robots.txt",
+    "analyst/sitemap.xml",
+    "analyst/assets/docs/popov-resume.pdf",
+    "analyst/assets/images/favicon.svg",
+    "analyst/assets/images/og-preview.png",
+    "analyst/assets/images/profile-hero.jpg"
+  ]) {
+    if (!(await exists(requiredFile))) {
+      fail(`Analyst site file is missing: ${requiredFile}`);
+    }
+  }
+
+  for (const htmlFile of htmlFiles) {
+    if (!(await exists(htmlFile))) {
+      continue;
+    }
+
+    const html = await read(htmlFile);
+    const ids = idsIn(html);
+    const expectedCanonical = expectedCanonicals.get(htmlFile);
+
+    if (!html.includes(`rel="canonical" href="${expectedCanonical}"`)) {
+      fail(`${htmlFile} must use canonical ${expectedCanonical}`);
+    }
+    if (/\/Users\//.test(html) || draftMarkers.some((pattern) => pattern.test(html)) || closedUrl.test(html)) {
+      fail(`${htmlFile} contains a non-public marker`);
+    }
+
+    const refs = [...html.matchAll(/\s(?:href|src)=["']([^"']+)["']/g)].map((match) => match[1]);
+    for (const ref of refs) {
+      if (/^(https?:|mailto:|tel:|data:)/.test(ref)) {
+        continue;
+      }
+
+      if (ref.startsWith("#")) {
+        const id = ref.slice(1);
+        if (id && !ids.has(id)) {
+          fail(`${htmlFile} links to missing anchor ${ref}`);
+        }
+        continue;
+      }
+
+      const [targetPath, anchor] = ref.split("#");
+      const stripped = stripUrl(targetPath);
+      if (!stripped) {
+        continue;
+      }
+
+      const relative = path.normalize(path.join(path.dirname(htmlFile), stripped));
+      const fileTarget = relative.endsWith(path.sep) ? path.join(relative, "index.html") : relative;
+
+      if (!(await exists(fileTarget))) {
+        fail(`${htmlFile} links to missing local file ${ref}`);
+        continue;
+      }
+
+      if (anchor && fileTarget.endsWith(".html")) {
+        const targetIds = idsIn(await read(fileTarget));
+        if (!targetIds.has(anchor)) {
+          fail(`${htmlFile} links to missing anchor ${ref}`);
+        }
+      }
+    }
+  }
+
+  const rootRobots = await read("robots.txt");
+  if (!rootRobots.includes("Sitemap: https://adikant.github.io/analyst/sitemap.xml")) {
+    fail("Root robots.txt must reference the analyst sitemap");
+  }
+
+  const analystRobots = await read("analyst/robots.txt");
+  if (!analystRobots.includes("Sitemap: https://adikant.github.io/analyst/sitemap.xml")) {
+    fail("Analyst robots.txt must reference the analyst sitemap");
+  }
+
+  const analystSitemap = await read("analyst/sitemap.xml");
+  for (const expectedUrl of [
+    "https://adikant.github.io/analyst/",
+    "https://adikant.github.io/analyst/resume.html",
+    "https://adikant.github.io/analyst/assets/docs/popov-resume.pdf"
+  ]) {
+    if (!analystSitemap.includes(`<loc>${expectedUrl}</loc>`)) {
+      fail(`Analyst sitemap is missing ${expectedUrl}`);
+    }
+  }
+}
+
 function publishedDashboardsCount() {
   return content.dashboardExamples.filter((item) => item.status === "published").length;
 }
@@ -675,6 +773,7 @@ await validateHtml();
 await validateSocialPreview();
 await validateArchitecture();
 await validateGeneratedState();
+await validateAnalystSite();
 await validateAssets();
 await validateArchitectureIconStyle();
 await validateTrackedArtifacts();

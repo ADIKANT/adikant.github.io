@@ -629,6 +629,7 @@ function renderRobots() {
 Allow: /
 
 Sitemap: ${absoluteUrl("/sitemap.xml")}
+Sitemap: ${absoluteUrl("/analyst/sitemap.xml")}
 `;
 }
 

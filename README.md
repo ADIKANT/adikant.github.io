@@ -4,6 +4,8 @@
 
 Сайт: [https://adikant.github.io/](https://adikant.github.io/)
 
+Дополнительное портфолио для analyst/BI-позиций: [https://adikant.github.io/analyst/](https://adikant.github.io/analyst/)
+
 ## О чем портфолио
 
 - запуск и развитие аналитической функции;
@@ -47,6 +49,7 @@ python3 -m http.server 8080
 - `assets/docs/popov-resume.pdf` - актуальное публичное резюме.
 - `assets/images/` - публичные изображения и social preview. При смене позиционирования нужно обновлять `og-preview.svg`, генерировать новый `og-preview-v*.png` с новым именем для сброса кеша мессенджеров и затем запускать build/validate.
 - `assets/icons/architecture/` - локальные декоративные SVG для архитектурной схемы.
+- `analyst/` - самостоятельный статический analyst/BI-вариант портфолио со своими HTML-резюме, PDF, стилями, скриптом и ассетами.
 - `materials for future dev/facts_to_confirm.md` - локальный ignored-файл с вопросами по спорным фактам.
 - `codex-goal/`, `portfolio-goal/`, `memory-bank/archive/`, `demo-data/*.csv`, `__MACOSX/` и `.DS_Store` - рабочие артефакты, не публичный контент.
 
@@ -60,6 +63,8 @@ python3 -m http.server 8080
 Не редактировать вручную один и тот же текст в нескольких HTML-файлах. Если текст относится к кейсу, он должен жить в объекте `cases` в `content.js`.
 
 Главные CTA берутся из `content.hero.actions` и `content.contact.actions`: Telegram, PDF-резюме и HeadHunter. Email не публикуется в HTML, JSON-LD, CTA и страницах кейсов.
+
+Подсайт `analyst/` хранится как отдельный готовый статический срез и не генерируется из `content.js`. Его PDF-резюме находится в `analyst/assets/docs/popov-resume.pdf` и не заменяет основное резюме в `assets/docs/popov-resume.pdf`.
 
 ## Как добавить новый кейс
 

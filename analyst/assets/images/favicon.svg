@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">AP favicon</title>
+  <desc id="desc">Монограмма Александра Попова для favicon</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#102327" />
+      <stop offset="100%" stop-color="#24494b" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#bg)" />
+  <path d="M68 186 112 68h31l45 118h-29l-10-28H106l-10 28Zm48-52h24l-12-35Z" fill="#f5f0e6" />
+  <path d="M170 68c18 0 30 11 30 28 0 16-12 27-31 27h-11v63h-28V68Zm-1 31h-11v23h11c8 0 13-4 13-11 0-8-5-12-13-12Z" fill="#c7a068" />
+</svg>
