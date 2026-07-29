@@ -2,7 +2,7 @@
  * The main portfolio owns the shared visual system. Analyst-specific rules
  * below cover only markup that does not exist on the main page.
  */
-@import url("../styles.css?v=20260729-display-sync-1");
+@import url("../styles.css?v=20260729-public-datalens-mcp-2");
 
 .resume-actions {
   margin-top: 1rem;

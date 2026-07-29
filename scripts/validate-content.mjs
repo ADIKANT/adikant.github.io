@@ -106,6 +106,11 @@ async function trackedFiles(paths) {
 async function validateContentModel() {
   const slugs = new Set();
   const heroProofPoints = new Set(content.hero.proofPoints);
+  const publicProjectUrl = "https://github.com/ADIKANT/datalens-dev-mcp";
+
+  if (content.publicProject?.link?.href !== publicProjectUrl) {
+    fail("publicProject must link to the public datalens-dev-mcp repository");
+  }
 
   for (const requiredProofPoint of ["6+ лет опыта", "200 MAU в BI"]) {
     if (!heroProofPoints.has(requiredProofPoint)) {
@@ -467,6 +472,14 @@ async function validateSocialPreview() {
   const siteFields = JSON.stringify(content.site);
   const previewText = `${svg}\n${siteFields}`;
   const indexHtml = await read("index.html");
+  const publicProjectUrl = "https://github.com/ADIKANT/datalens-dev-mcp";
+
+  if ((indexHtml.match(new RegExp(publicProjectUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g")) || []).length !== 1) {
+    fail("index.html must link to the public datalens-dev-mcp repository only from the project block");
+  }
+  if (indexHtml.includes("DataLens MCP на GitHub")) {
+    fail("index.html must not duplicate the datalens-dev-mcp link in the hero actions");
+  }
   const expectedOgImage = `${content.site.baseUrl.replace(/\/$/, "")}${content.site.ogImage}`;
   const forbiddenPreviewPatterns = [
     [/Head of BI\s*\/\s*Head of Analytics/i, "social preview contains old slash positioning"],
@@ -613,6 +626,7 @@ async function validateGeneratedState() {
 
 async function validateAnalystSite() {
   const htmlFiles = ["analyst/index.html", "analyst/resume.html"];
+  const publicProjectUrl = "https://github.com/ADIKANT/datalens-dev-mcp";
   const expectedCanonicals = new Map([
     ["analyst/index.html", "https://adikant.github.io/analyst/"],
     ["analyst/resume.html", "https://adikant.github.io/analyst/resume.html"]
@@ -685,6 +699,14 @@ async function validateAnalystSite() {
         }
       }
     }
+  }
+
+  const analystHome = await read("analyst/index.html");
+  if ((analystHome.match(new RegExp(publicProjectUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g")) || []).length !== 1) {
+    fail("analyst/index.html must link to the public datalens-dev-mcp repository only from the project block");
+  }
+  if (analystHome.includes("DataLens MCP на GitHub")) {
+    fail("analyst/index.html must not duplicate the datalens-dev-mcp link in the hero actions");
   }
 
   const rootRobots = await read("robots.txt");

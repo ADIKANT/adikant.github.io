@@ -5,7 +5,7 @@ import { portfolioContent as content } from "../content.js";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteUrl = content.site.baseUrl.replace(/\/$/, "");
-const buildVersion = "20260729-display-sync-1";
+const buildVersion = "20260729-public-datalens-mcp-2";
 const currentYear = "2026";
 
 const publishedDashboards = content.dashboardExamples.filter(
@@ -322,6 +322,26 @@ function renderUsefulFor() {
   `;
 }
 
+function renderPublicProject() {
+  const project = content.publicProject;
+  return `
+    <section class="public-project-strip" aria-labelledby="public-project-title">
+      <div class="container">
+        <article class="public-project-card">
+          <div class="public-project-copy">
+            <p class="public-project-kicker">${escapeHtml(project.eyebrow)}</p>
+            <h2 id="public-project-title">${escapeHtml(project.title)}</h2>
+            <p>${escapeHtml(project.description)}</p>
+          </div>
+          <a class="btn btn-project" href="${escapeHtml(project.link.href)}" target="_blank" rel="noopener noreferrer">
+            <span class="btn-label">${escapeHtml(project.link.label)}</span>
+          </a>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
 function renderCasesHome() {
   return `
     <section class="section nav-target" id="cases" aria-labelledby="cases-title">
@@ -500,6 +520,7 @@ function renderIndex() {
   const body = `
     <main id="main">
       ${renderHero()}
+      ${renderPublicProject()}
       ${renderUsefulFor()}
       ${renderExperience()}
       ${renderCasesHome()}

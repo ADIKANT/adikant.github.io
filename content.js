@@ -54,6 +54,17 @@ export const portfolioContent = {
     ]
   },
 
+  publicProject: {
+    eyebrow: "Open source · GitHub",
+    title: "Автоматизация разработки дашбордов в Yandex DataLens",
+    description:
+      "datalens-dev-mcp — инструмент для разработки полноценного дашборда в Yandex DataLens с помощью Codex, Claude и других MCP-клиентов. Автоматизирует путь от чтения и аудита объектов до проверки, сохранения и публикации результата и позволяет сократить до 95% ручной работы при разработке.",
+    link: {
+      label: "Открыть репозиторий",
+      href: "https://github.com/ADIKANT/datalens-dev-mcp"
+    }
+  },
+
   usefulFor: {
     eyebrow: "",
     title: "Ключевые зоны ответственности",
